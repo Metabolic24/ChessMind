@@ -11,36 +11,38 @@ import spock.lang.Unroll
 class PlayerSpec extends Specification {
 
     Player player
+    Score score
 
     def setup() {
-        player = new Player()
+        player = new Player()j_pu
+        score =  Mock(Score)
     }
 
     def cleanup() {
     }
 
     @Unroll
-    void "Constraints test on valid player (name : #aName)"() {
+    void "Constraints test on valid player (name : #aName, nickname : #aNickName)"() {
 
         given:"a valid player"
             player.name = aName
             player.nickname = aNickName
             player.description = aDescription
-            player.score = aScore
+            player.score = score
             player.mail = aMail
 
         when: "we trigger the validation of the player"
             def res = player.validate()
 
         then: "the player has no validation error"
-            res==true
+            res
             !player.hasErrors()
 
         where:
-            aName|aNickName|aScore|aMail|aDescription
-            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|null
-            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
-            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|"non-empty Description"
+            aName|aNickName|aMail|aDescription
+            "Thomas"|"toto"|"thomas.toto@gmail.com"|null
+            "Thomas"|"toto"|"thomas.toto@gmail.com"|""
+            "Thomas"|"toto"|"thomas.toto@gmail.com"|"non-empty Description"
     }
 
     @Unroll
@@ -50,24 +52,23 @@ class PlayerSpec extends Specification {
         player.name = aName
         player.nickname = aNickName
         player.description = aDescription
-        player.score = aScore
+        player.score = score
         player.mail = aMail
 
         when: "we trigger the validation of the player"
         def res = player.validate()
 
         then: "the player has validation error"
-        res==false
+        !res
         player.hasErrors()
 
         where:
-        aName|aNickName|aScore|aMail|aDescription
-        "Thomas"|null|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
-        "Thomas"|""|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
-        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
-        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto.gmail.com"|""
-        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|null|""
-        null|"toto"|new Score(score1 : 0, score2 : 0)|null|""
-        ""|"toto"|new Score(score1 : 0, score2 : 0)|null|""
+        aName|aNickName|aMail|aDescription
+        "Thomas1"|null|"thomas.toto@gmail.com"|""
+        "Thomas2"|""|"thomas.toto@gmail.com"|""
+        "Thomas4"|"toto"|"thomas.toto.gmail.com"|""
+        "Thomas5"|"toto"|null|""
+        null|"toto1"|null|""
+        ""|"toto2"|null|""
     }
 }
