@@ -30,7 +30,7 @@ class PlayerSpec extends Specification {
             player.mail = aMail
 
         when: "we trigger the validation of the player"
-            def res = option.validate()
+            def res = player.validate()
 
         then: "the player has no validation error"
             res==true
@@ -38,14 +38,36 @@ class PlayerSpec extends Specification {
 
         where:
             aName|aNickName|aScore|aMail|aDescription
-            "Thomas"|"toto"|0|"thomas.toto@gmail.com"|null
-            "Thomas"|"toto"|0|"thomas.toto@gmail.com"|""
-            "Thomas"|"toto"|0|"thomas.toto@gmail.com"|"non-empty Description"
+            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|null
+            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
+            "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|"non-empty Description"
     }
 
-    /*"Thomas"|null|0|"thomas.toto@gmail.com"
-    "Thomas"|""|0|"thomas.toto@gmail.com"
-    "Thomas"|"toto"|-1|"thomas.toto@gmail.com"
-    "Thomas"|"toto"|0|"thomas.toto.gmail.com"
-    "Thomas"|"toto"|0|null*/
+    @Unroll
+    void "Constraints test on invalid player (name : #aName)"() {
+
+        given:"an invalid player"
+        player.name = aName
+        player.nickname = aNickName
+        player.description = aDescription
+        player.score = aScore
+        player.mail = aMail
+
+        when: "we trigger the validation of the player"
+        def res = player.validate()
+
+        then: "the player has validation error"
+        res==false
+        player.hasErrors()
+
+        where:
+        aName|aNickName|aScore|aMail|aDescription
+        "Thomas"|null|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
+        "Thomas"|""|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
+        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto@gmail.com"|""
+        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|"thomas.toto.gmail.com"|""
+        "Thomas"|"toto"|new Score(score1 : 0, score2 : 0)|null|""
+        null|"toto"|new Score(score1 : 0, score2 : 0)|null|""
+        ""|"toto"|new Score(score1 : 0, score2 : 0)|null|""
+    }
 }

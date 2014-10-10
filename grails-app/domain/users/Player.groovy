@@ -5,10 +5,13 @@ class Player {
     String name
     String nickname
     String description
-    long score
+    Score score
     String mail
 
     static constraints = {
-        mail email:true
+        name blank: false, nullable: false
+        nickname blank: false, nullable: false
+        description blank: true, nullable: true
+        mail email: true, blank: false, nullable: false
     }
 }
