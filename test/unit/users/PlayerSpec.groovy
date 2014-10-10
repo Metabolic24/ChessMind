@@ -14,7 +14,7 @@ class PlayerSpec extends Specification {
     Score score
 
     def setup() {
-        player = new Player()j_pu
+        player = new Player()
         score =  Mock(Score)
     }
 
