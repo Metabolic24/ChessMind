@@ -22,11 +22,11 @@ class PlayerSpec extends Specification {
     }
 
     @Unroll
-    void "Constraints test on valid player (name : #aName, nickname : #aNickName)"() {
+    void "Constraints test on valid player (name : #aName, login : #aLogin)"() {
 
         given:"a valid player"
             player.name = aName
-            player.nickname = aNickName
+            player.login = aLogin
             player.description = aDescription
             player.score = score
             player.mail = aMail
@@ -39,7 +39,7 @@ class PlayerSpec extends Specification {
             !player.hasErrors()
 
         where:
-            aName|aNickName|aMail|aDescription
+            aName|aLogin|aMail|aDescription
             "Thomas"|"toto"|"thomas.toto@gmail.com"|null
             "Thomas"|"toto"|"thomas.toto@gmail.com"|""
             "Thomas"|"toto"|"thomas.toto@gmail.com"|"non-empty Description"
@@ -50,7 +50,7 @@ class PlayerSpec extends Specification {
 
         given:"an invalid player"
         player.name = aName
-        player.nickname = aNickName
+        player.login = aLogin
         player.description = aDescription
         player.score = score
         player.mail = aMail
@@ -63,7 +63,7 @@ class PlayerSpec extends Specification {
         player.hasErrors()
 
         where:
-        aName|aNickName|aMail|aDescription
+        aName|aLogin|aMail|aDescription
         "Thomas1"|null|"thomas.toto@gmail.com"|""
         "Thomas2"|""|"thomas.toto@gmail.com"|""
         "Thomas4"|"toto"|"thomas.toto.gmail.com"|""
