@@ -22,12 +22,13 @@ class PlayerSpec extends Specification {
     }
 
     @Unroll
-    void "Constraints test on valid player (name : #aName, login : #aLogin)"() {
+    void "Constraints test on valid player (login : #aLogin)"() {
 
         given:"a valid player"
             player.name = aName
             player.login = aLogin
             player.description = aDescription
+            player.password = aPwd
             player.score = score
             player.mail = aMail
 
@@ -39,18 +40,20 @@ class PlayerSpec extends Specification {
             !player.hasErrors()
 
         where:
-            aName|aLogin|aMail|aDescription
-            "Thomas"|"toto"|"thomas.toto@gmail.com"|null
-            "Thomas"|"toto"|"thomas.toto@gmail.com"|""
-            "Thomas"|"toto"|"thomas.toto@gmail.com"|"non-empty Description"
+            aName|aLogin|aPwd|aMail|aDescription
+            "a"|"b"|"c"|"d@gmail.com"|"e"
+            "Thomas"|"toto"|"pwd"|"thomas.toto@gmail.com"|null
+            "Thomas"|"toto2"|"pwd"|"thomas.toto@gmail.com"|""
+            "Thomas"|"toto3"|"pwd"|"thomas.toto@gmail.com"|"non-empty Description"
     }
 
     @Unroll
-    void "Constraints test on invalid player (name : #aName)"() {
+    void "Constraints test on invalid player (login : #aLogin)"() {
 
         given:"an invalid player"
         player.name = aName
         player.login = aLogin
+        player.password = aPwd
         player.description = aDescription
         player.score = score
         player.mail = aMail
@@ -63,12 +66,15 @@ class PlayerSpec extends Specification {
         player.hasErrors()
 
         where:
-        aName|aLogin|aMail|aDescription
-        "Thomas1"|null|"thomas.toto@gmail.com"|""
-        "Thomas2"|""|"thomas.toto@gmail.com"|""
-        "Thomas4"|"toto"|"thomas.toto.gmail.com"|""
-        "Thomas5"|"toto"|null|""
-        null|"toto1"|null|""
-        ""|"toto2"|null|""
+        aName|aLogin|aPwd|aMail|aDescription
+        "Thomas1"|null|"pwd"|"thomas.toto@gmail.com"|""
+        "Thomas2"|""|"pwd"|"thomas.toto@gmail.com"|""
+        "Thomas4"|"toto7"|""|"thomas.toto.gmail.com"|""
+        "Thomas4"|"toto8"|null|"thomas.toto.gmail.com"|""
+        "Thomas4"|"toto9"|"pwd"|"thomas.toto.gmail.com"|""
+        "Thomas5"|"toto4"|"pwd"|null|""
+        null|"toto5"|"pwd"|null|""
+        ""|"toto6"|"pwd"|null|""
+
     }
 }

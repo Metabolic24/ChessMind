@@ -12,8 +12,9 @@ class Player{
     static constraints = {
         name blank: false, nullable: false
         login blank: false, nullable: false
+        password blank: false, nullable: false
         description blank: true, nullable: true
-        score nullable:false
+        score nullable: false
         mail email: true, blank: false, nullable: false
     }
 
