@@ -1,5 +1,8 @@
 package users
 
+import groovy.transform.InheritConstructors
+
+@InheritConstructors
 class Moderator extends Player{
 
     static constraints = {

@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${playerInstance?.password}">
+				<li class="fieldcontain">
+					<span id="password-label" class="property-label"><g:message code="player.password.label" default="Password" /></span>
+					
+						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${playerInstance}" field="password"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${playerInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="player.description.label" default="Description" /></span>
@@ -68,11 +77,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${playerInstance?.password}">
+				<g:if test="${playerInstance?.moderator}">
 				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="player.password.label" default="Password" /></span>
+					<span id="moderator-label" class="property-label"><g:message code="player.moderator.label" default="Moderator" /></span>
 					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${playerInstance}" field="password"/></span>
+						<span class="property-value" aria-labelledby="moderator-label"><g:formatBoolean boolean="${playerInstance?.moderator}" /></span>
 					
 				</li>
 				</g:if>

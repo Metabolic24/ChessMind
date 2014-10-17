@@ -15,6 +15,21 @@ class PlayerController {
         respond Player.list(params), model:[playerInstanceCount: Player.count()]
     }
 
+    def administrators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Administrator.list(params), model:[administratorInstanceCount: Administrator.count()]
+    }
+
+    def moderators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Moderator.list(params), model:[moderatorInstanceCount: Moderator.count()]
+    }
+
+    def players(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Player.list(params), model:[playerInstanceCount: Player.count()]
+    }
+
     def show(Player playerInstance) {
         respond playerInstance
     }

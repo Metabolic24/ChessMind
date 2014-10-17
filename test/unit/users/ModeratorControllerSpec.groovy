@@ -5,18 +5,14 @@ package users
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(PlayerController)
-@Mock(Player)
-class PlayerControllerSpec extends Specification {
+@TestFor(ModeratorController)
+@Mock(Moderator)
+class ModeratorControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["name"] = 'aName'
-        params["login"]='aLogin'
-        params["password"]='aPwd'
-        params["description"]=''
-        params["score"]=new Score(score1:0,score2:0)
-        params["mail"]='toto@gmail.com'
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
     }
 
     void "Test the index action returns the correct model"() {
@@ -25,8 +21,8 @@ class PlayerControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.playerInstanceList
-            model.playerInstanceCount == 0
+            !model.moderatorInstanceList
+            model.moderatorInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -34,32 +30,32 @@ class PlayerControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.playerInstance!= null
+            model.moderatorInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
-            def player = new Player()
-            player.validate()
-            controller.save(player)
+            def moderator = new Moderator()
+            moderator.validate()
+            controller.save(moderator)
 
         then:"The create view is rendered again with the correct model"
-            model.playerInstance!= null
+            model.moderatorInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            player = new Player(params)
+            moderator = new Moderator(params)
 
-            controller.save(player)
+            controller.save(moderator)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/player/show/1'
+            response.redirectedUrl == '/moderator/show/1'
             controller.flash.message != null
-            Player.count() == 1
+            Moderator.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -71,11 +67,11 @@ class PlayerControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def player = new Player(params)
-            controller.show(player)
+            def moderator = new Moderator(params)
+            controller.show(moderator)
 
         then:"A model is populated containing the domain instance"
-            model.playerInstance == player
+            model.moderatorInstance == moderator
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -87,11 +83,11 @@ class PlayerControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def player = new Player(params)
-            controller.edit(player)
+            def moderator = new Moderator(params)
+            controller.edit(moderator)
 
         then:"A model is populated containing the domain instance"
-            model.playerInstance == player
+            model.moderatorInstance == moderator
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -100,28 +96,28 @@ class PlayerControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/player/index'
+            response.redirectedUrl == '/moderator/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def player = new Player()
-            player.validate()
-            controller.update(player)
+            def moderator = new Moderator()
+            moderator.validate()
+            controller.update(moderator)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.playerInstance == player
+            model.moderatorInstance == moderator
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            player = new Player(params).save(flush: true)
-            controller.update(player)
+            moderator = new Moderator(params).save(flush: true)
+            controller.update(moderator)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/player/show/$player.id"
+            response.redirectedUrl == "/moderator/show/$moderator.id"
             flash.message != null
     }
 
@@ -131,23 +127,23 @@ class PlayerControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/player/index'
+            response.redirectedUrl == '/moderator/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def player = new Player(params).save(flush: true)
+            def moderator = new Moderator(params).save(flush: true)
 
         then:"It exists"
-            Player.count() == 1
+            Moderator.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(player)
+            controller.delete(moderator)
 
         then:"The instance is deleted"
-            Player.count() == 0
-            response.redirectedUrl == '/player/index'
+            Moderator.count() == 0
+            response.redirectedUrl == '/moderator/index'
             flash.message != null
     }
 }

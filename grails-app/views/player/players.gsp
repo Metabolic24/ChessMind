@@ -1,20 +1,21 @@
 
-<%@ page import="users.Player" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'player.label', default: 'Player')}" />
-		<title><g:message code="default.list.label" args="['Users']" /></title>
+        <g:set var="playerList" value="${users.Player.list().findAll {player -> !player.isAdministrator() && !player.isModerator()}}" />
+
+		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<a href="#list-player" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
-                <li><g:link class="list" action="players"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="list" action="moderators"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="players"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
                 <li><g:link class="list" action="administrators"><g:message code="default.list.label" args="['Administrator']" /></g:link></li>
 			</ul>
 		</div>
@@ -42,7 +43,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${playerInstanceList}" status="i" var="playerInstance">
+				<g:each in="${playerList}" status="i" var="playerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean: playerInstance, field: "name")}</g:link></td>
@@ -56,12 +57,13 @@
 						<td>${fieldValue(bean: playerInstance, field: "score")}</td>
 					
 						<td>${fieldValue(bean: playerInstance, field: "mail")}</td>
+					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${playerInstanceCount ?: 0}" />
+				<g:paginate total="${playerList.size() ?: 0}" />
 			</div>
 		</div>
 	</body>

@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'password', 'error')} required">
+	<label for="password">
+		<g:message code="player.password.label" default="Password" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="password" required="" value="${playerInstance?.password}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="player.description.label" default="Description" />
@@ -47,12 +56,11 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'password', 'error')} required">
-	<label for="password">
-		<g:message code="player.password.label" default="Password" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'moderator', 'error')} ">
+	<label for="moderator">
+		<g:message code="player.moderator.label" default="Moderator" />
+		
 	</label>
-	<g:textField name="password" required="" value="${playerInstance?.password}"/>
+	<g:checkBox name="moderator" value="${playerInstance?.moderator}" />
 
 </div>
-
