@@ -11,8 +11,7 @@ class AdministratorController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Administrator.list(params), model:[administratorInstanceCount: Administrator.count()]
+        redirect(uri:"/player/index")
     }
 
     def show(Administrator administratorInstance) {
@@ -20,8 +19,13 @@ class AdministratorController {
     }
 
     def create() {
-        respond new Administrator(params)
+        redirect(uri:"/player/create")
     }
+
+    def administrators() {
+        redirect(uri:"/player/administrators")
+    }
+
 
     @Transactional
     def save(Administrator administratorInstance) {

@@ -12,8 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="players"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-player" class="content scaffold-show" role="main">
@@ -73,15 +74,6 @@
 					<span id="mail-label" class="property-label"><g:message code="player.mail.label" default="Mail" /></span>
 					
 						<span class="property-value" aria-labelledby="mail-label"><g:fieldValue bean="${playerInstance}" field="mail"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${playerInstance?.moderator}">
-				<li class="fieldcontain">
-					<span id="moderator-label" class="property-label"><g:message code="player.moderator.label" default="Moderator" /></span>
-					
-						<span class="property-value" aria-labelledby="moderator-label"><g:formatBoolean boolean="${playerInstance?.moderator}" /></span>
 					
 				</li>
 				</g:if>

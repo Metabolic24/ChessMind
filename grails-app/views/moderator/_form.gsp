@@ -61,7 +61,6 @@
 		<g:message code="moderator.moderator.label" default="Moderator" />
 		
 	</label>
-	<g:checkBox name="moderator" value="${moderatorInstance?.moderator}" />
+	<g:checkBox name="moderator" value="${moderatorInstance?.isModerator()}" />
 
 </div>
-

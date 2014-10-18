@@ -55,4 +55,3 @@
 	<g:field type="email" name="mail" required="" value="${administratorInstance?.mail}"/>
 
 </div>
-

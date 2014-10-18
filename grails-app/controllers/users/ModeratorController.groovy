@@ -11,8 +11,7 @@ class ModeratorController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Moderator.list(params), model:[moderatorInstanceCount: Moderator.count()]
+        redirect(uri:"/player/index")
     }
 
     def show(Moderator moderatorInstance) {
@@ -20,7 +19,11 @@ class ModeratorController {
     }
 
     def create() {
-        respond new Moderator(params)
+        redirect(uri:"/player/create")
+    }
+
+    def moderators() {
+        redirect(uri:"/player/moderators")
     }
 
     @Transactional

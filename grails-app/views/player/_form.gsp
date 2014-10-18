@@ -61,6 +61,6 @@
 		<g:message code="player.moderator.label" default="Moderator" />
 		
 	</label>
-	<g:checkBox name="moderator" value="${playerInstance?.moderator}" />
+	<g:checkBox name="moderator" value="${playerInstance?.isModerator()}" disable="${playerInstance?.isAdministrator()}" />
 
 </div>

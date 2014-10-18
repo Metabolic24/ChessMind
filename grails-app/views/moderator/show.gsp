@@ -11,9 +11,10 @@
 		<a href="#show-moderator" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
+                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="moderators"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-moderator" class="content scaffold-show" role="main">
@@ -73,15 +74,6 @@
 					<span id="mail-label" class="property-label"><g:message code="moderator.mail.label" default="Mail" /></span>
 					
 						<span class="property-value" aria-labelledby="mail-label"><g:fieldValue bean="${moderatorInstance}" field="mail"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${moderatorInstance?.moderator}">
-				<li class="fieldcontain">
-					<span id="moderator-label" class="property-label"><g:message code="moderator.moderator.label" default="Moderator" /></span>
-					
-						<span class="property-value" aria-labelledby="moderator-label"><g:formatBoolean boolean="${moderatorInstance?.moderator}" /></span>
 					
 				</li>
 				</g:if>

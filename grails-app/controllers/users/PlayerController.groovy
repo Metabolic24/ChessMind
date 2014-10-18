@@ -31,7 +31,14 @@ class PlayerController {
     }
 
     def show(Player playerInstance) {
-        respond playerInstance
+        if(playerInstance?.isModerator()) {
+            redirect(uri: "/moderator/show/${playerInstance.getId()}")
+        } else if(playerInstance?.isAdministrator()){
+            redirect(uri: "/administrator/show/${playerInstance.getId()}")
+        } else {
+            respond playerInstance
+        }
+
     }
 
     def create() {

@@ -15,7 +15,7 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="['User']" /></g:link></li>
-                <li><g:link class="list" action="players"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
+                <li><g:link class="list" action="moderators"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
                 <li><g:link class="list" action="administrators"><g:message code="default.list.label" args="['Administrator']" /></g:link></li>
 			</ul>
 		</div>
