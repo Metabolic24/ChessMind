@@ -57,6 +57,11 @@ class PlayerController {
             return
         }
 
+        // Création du modérateur si l'option moderator est cochée
+        if (params["moderator"]!=null) {
+            playerInstance = new Moderator(name:playerInstance.name,login:playerInstance.login,password:playerInstance.password,score:playerInstance.score,mail:playerInstance.mail).save(failOnError: true)
+        }
+
         playerInstance.save flush:true
 
         request.withFormat {
