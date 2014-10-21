@@ -64,5 +64,3 @@
 	<g:checkBox name="moderator" value="${playerInstance?.isModerator()}" disable="${playerInstance?.isAdministrator()}" />
 
 </div>
-
-

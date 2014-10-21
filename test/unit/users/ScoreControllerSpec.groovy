@@ -10,8 +10,8 @@ class ScoreControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["score1"]=2l;
+        params["score2"]=3l;
     }
 
     void "Test the index action returns the correct model"() {
@@ -36,7 +36,7 @@ class ScoreControllerSpec extends Specification {
 
         when: "The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
-        def score = new Score()
+        def score = new Score(score1:-2l, score2:0)
         score.validate()
         controller.save(score)
 
@@ -101,7 +101,7 @@ class ScoreControllerSpec extends Specification {
 
         when: "An invalid domain instance is passed to the update action"
         response.reset()
-        def score = new Score()
+        def score = new Score(score1: -2l,score2: 0)
         score.validate()
         controller.update(score)
 
