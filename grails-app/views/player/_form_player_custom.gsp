@@ -38,15 +38,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'score', 'error')} required">
-	<label for="score">
-		<g:message code="player.score.label" default="Score" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="score" name="score.id" from="${users.Score.list()}" optionKey="id" required="" value="${playerInstance?.score?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'mail', 'error')} required">
 	<label for="mail">
 		<g:message code="player.mail.label" default="Mail" />

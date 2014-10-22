@@ -10,7 +10,7 @@ class Player{
     String mail
 
     static constraints = {
-        name blank: false, nullable: false
+        name blank: false, nullable: false, unique: true
         login blank: false, nullable: false
         password blank: false, nullable: false
         description blank: true, nullable: true
