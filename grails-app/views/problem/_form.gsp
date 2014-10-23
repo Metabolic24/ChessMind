@@ -65,12 +65,4 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'solved', 'error')} ">
-	<label for="solved">
-		<g:message code="problem.solved.label" default="Solved" />
-		
-	</label>
-	<g:checkBox name="solved" value="${problemInstance?.solved}" />
-
-</div>
 
