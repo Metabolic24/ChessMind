@@ -36,7 +36,7 @@
 						<g:sortableColumn property="description" title="${message(code: 'player.description.label', default: 'Description')}" />
 					
 						<th><g:message code="player.score.label" default="Score" /></th>
-					
+
 						<g:sortableColumn property="mail" title="${message(code: 'player.mail.label', default: 'Mail')}" />
 
                         <th>Moderator</th>
@@ -56,9 +56,9 @@
 						<td>${fieldValue(bean: playerInstance, field: "password")}</td>
 					
 						<td>${fieldValue(bean: playerInstance, field: "description")}</td>
-					
-						<td>${fieldValue(bean: playerInstance, field: "score")}</td>
-					
+
+                        <td>${fieldValue(bean: playerInstance, field: "score.score1")} / ${fieldValue(bean: playerInstance, field: "score.score2")}</td>
+
 						<td>${fieldValue(bean: playerInstance, field: "mail")}</td>
 
                         <td><g:checkBox name="moderator" value="${playerInstance.isModerator()}" disabled="true" /></td>

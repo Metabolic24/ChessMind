@@ -54,7 +54,7 @@
 					
 						<td>${fieldValue(bean: playerInstance, field: "description")}</td>
 					
-						<td>${fieldValue(bean: playerInstance, field: "score")}</td>
+						<td>${fieldValue(bean: playerInstance, field: "score.score1")} / ${fieldValue(bean: playerInstance, field: "score.score2")}</td>
 					
 						<td>${fieldValue(bean: playerInstance, field: "mail")}</td>
 					
