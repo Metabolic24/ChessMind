@@ -27,4 +27,5 @@ class Player{
     public boolean isModerator() {
         return false;
     }
+
 }
