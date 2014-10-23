@@ -23,7 +23,7 @@
 			</g:if>
 			<ol class="property-list score">
 			
-				<g:if test="${scoreInstance?.score1}">
+				<g:if test="${scoreInstance?.score1>=0}">
 				<li class="fieldcontain">
 					<span id="score1-label" class="property-label"><g:message code="score.score1.label" default="Score1" /></span>
 					
@@ -32,7 +32,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${scoreInstance?.score2}">
+				<g:if test="${scoreInstance?.score2>=0}">
 				<li class="fieldcontain">
 					<span id="score2-label" class="property-label"><g:message code="score.score2.label" default="Score2" /></span>
 					

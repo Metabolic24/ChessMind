@@ -1,6 +1,6 @@
 package users
 
-
+import score.Score
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -52,10 +52,9 @@ class PlayerController {
             return
         }
 
-        /*Score score = new Score(score1:0l,score2:0l)
-        score.save flush:true
-        playerInstance.score = score
-        playerInstance.validate()*/
+        playerInstance.score = new Score(score1:0l,score2:0l)
+        playerInstance.validate()
+
 
         if (playerInstance.hasErrors()){
             respond playerInstance.errors, view:'create'

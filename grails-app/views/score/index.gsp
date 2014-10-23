@@ -35,12 +35,14 @@
 				<tbody>
 				<g:each in="${scoreInstanceList}" status="i" var="scoreInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${scoreInstance.id}">${fieldValue(bean: scoreInstance, field: "score1")}</g:link></td>
+
+                        <td><g:link action="show" controller="Player" id="${scoreInstance.player.id}">${fieldValue(bean: scoreInstance, field: "player")}</g:link></td>
+
+                        <td>${fieldValue(bean: scoreInstance, field: "score1")}</td>
 					
 						<td>${fieldValue(bean: scoreInstance, field: "score2")}</td>
 					
-						<td>${fieldValue(bean: scoreInstance, field: "player")}</td>
+
 					
 					</tr>
 				</g:each>
