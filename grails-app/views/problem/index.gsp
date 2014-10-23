@@ -23,7 +23,8 @@
 			<table>
 			<thead>
 					<tr>
-					
+                        <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
+
 						<g:sortableColumn property="description" title="${message(code: 'problem.description.label', default: 'Description')}" />
 					
 						<g:sortableColumn property="blackPlayer" title="${message(code: 'problem.blackPlayer.label', default: 'Black Player')}" />
@@ -42,8 +43,10 @@
 				<g:each in="${problemInstanceList}" status="i" var="problemInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "description")}</g:link></td>
-					
+						<td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
+
+                        <td>${fieldValue(bean: problemInstance, field: "description")}</td>
+
 						<td>${fieldValue(bean: problemInstance, field: "blackPlayer")}</td>
 					
 						<td>${fieldValue(bean: problemInstance, field: "whitePlayer")}</td>
