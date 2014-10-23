@@ -30,7 +30,7 @@
 			<g:form url="[resource:playerInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${playerInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form" />
+					<g:render template="form_player_custom" />
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

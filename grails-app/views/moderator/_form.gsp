@@ -38,15 +38,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: moderatorInstance, field: 'score', 'error')} required">
-	<label for="score">
-		<g:message code="moderator.score.label" default="Score" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="score" name="score.id" from="${users.Score.list()}" optionKey="id" required="" value="${moderatorInstance?.score?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: moderatorInstance, field: 'mail', 'error')} required">
 	<label for="mail">
 		<g:message code="moderator.mail.label" default="Mail" />
