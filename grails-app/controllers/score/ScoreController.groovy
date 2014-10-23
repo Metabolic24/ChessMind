@@ -1,4 +1,5 @@
-package users
+package score
+
 
 
 import static org.springframework.http.HttpStatus.*
@@ -11,7 +12,7 @@ class ScoreController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Score.list(params), model: [scoreInstanceCount: Score.count()]
+        respond Score.list(params), model:[scoreInstanceCount: Score.count()]
     }
 
     def show(Score scoreInstance) {
@@ -30,11 +31,11 @@ class ScoreController {
         }
 
         if (scoreInstance.hasErrors()) {
-            respond scoreInstance.errors, view: 'create'
+            respond scoreInstance.errors, view:'create'
             return
         }
 
-        scoreInstance.save flush: true
+        scoreInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -57,18 +58,18 @@ class ScoreController {
         }
 
         if (scoreInstance.hasErrors()) {
-            respond scoreInstance.errors, view: 'edit'
+            respond scoreInstance.errors, view:'edit'
             return
         }
 
-        scoreInstance.save flush: true
+        scoreInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Score.label', default: 'Score'), scoreInstance.id])
                 redirect scoreInstance
             }
-            '*' { respond scoreInstance, [status: OK] }
+            '*'{ respond scoreInstance, [status: OK] }
         }
     }
 
@@ -80,14 +81,14 @@ class ScoreController {
             return
         }
 
-        scoreInstance.delete flush: true
+        scoreInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Score.label', default: 'Score'), scoreInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -97,7 +98,7 @@ class ScoreController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'score.label', default: 'Score'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }

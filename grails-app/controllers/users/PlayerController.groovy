@@ -52,10 +52,10 @@ class PlayerController {
             return
         }
 
-        Score score = new Score(score1:0l,score2:0l)
+        /*Score score = new Score(score1:0l,score2:0l)
         score.save flush:true
         playerInstance.score = score
-        playerInstance.validate()
+        playerInstance.validate()*/
 
         if (playerInstance.hasErrors()){
             respond playerInstance.errors, view:'create'

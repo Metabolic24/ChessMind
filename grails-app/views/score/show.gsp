@@ -1,5 +1,5 @@
 
-<%@ page import="users.Score" %>
+<%@ page import="score.Score" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,6 +37,15 @@
 					<span id="score2-label" class="property-label"><g:message code="score.score2.label" default="Score2" /></span>
 					
 						<span class="property-value" aria-labelledby="score2-label"><g:fieldValue bean="${scoreInstance}" field="score2"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${scoreInstance?.player}">
+				<li class="fieldcontain">
+					<span id="player-label" class="property-label"><g:message code="score.player.label" default="Player" /></span>
+					
+						<span class="property-value" aria-labelledby="player-label"><g:link controller="player" action="show" id="${scoreInstance?.player?.id}">${scoreInstance?.player?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

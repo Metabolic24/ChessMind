@@ -3,6 +3,7 @@ package users
 
 
 import grails.test.mixin.*
+import score.Score
 import spock.lang.*
 
 @TestFor(AdministratorController)

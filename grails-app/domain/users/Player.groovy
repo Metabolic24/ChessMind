@@ -1,5 +1,7 @@
 package users
 
+import score.Score
+
 class Player{
 
     String name

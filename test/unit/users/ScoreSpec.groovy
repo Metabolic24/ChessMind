@@ -1,6 +1,8 @@
 package users
 
+import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import score.Score
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -8,12 +10,14 @@ import spock.lang.Unroll
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Score)
+@Mock([Player,Score])
 class ScoreSpec extends Specification {
 
     Score score
 
     def setup() {
         score = new Score()
+        score.player = Mock(Player)
     }
 
     def cleanup() {

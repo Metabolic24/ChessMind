@@ -1,4 +1,4 @@
-<%@ page import="users.Score" %>
+<%@ page import="score.Score" %>
 <!DOCTYPE html>
 <html>
 	<head>

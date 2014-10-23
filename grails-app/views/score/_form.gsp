@@ -1,4 +1,4 @@
-<%@ page import="users.Score" %>
+<%@ page import="score.Score" %>
 
 
 
@@ -17,6 +17,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="score2" type="number" min="0" value="${scoreInstance.score2}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: scoreInstance, field: 'player', 'error')} required">
+	<label for="player">
+		<g:message code="score.player.label" default="Player" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="player" name="player.id" from="${users.Player.list()}" optionKey="id" required="" value="${scoreInstance?.player?.id}" class="many-to-one"/>
 
 </div>
 
