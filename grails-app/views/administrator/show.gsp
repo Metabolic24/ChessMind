@@ -63,8 +63,8 @@
 				<g:if test="${administratorInstance?.score}">
 				<li class="fieldcontain">
 					<span id="score-label" class="property-label"><g:message code="administrator.score.label" default="Score" /></span>
-					
-						<span class="property-value" aria-labelledby="score-label"><g:link controller="score" action="show" id="${administratorInstance?.score?.id}">${administratorInstance?.score?.encodeAsHTML()}</g:link></span>
+
+                    <span class="property-value" aria-labelledby="score-label">${fieldValue(bean: administratorInstance, field: "score.score1")} / ${fieldValue(bean: administratorInstance, field: "score.score2")}</span>
 					
 				</li>
 				</g:if>

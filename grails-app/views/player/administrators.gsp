@@ -53,7 +53,7 @@
 
                         <td>${fieldValue(bean: administratorInstance, field: "description")}</td>
 
-                        <td>${fieldValue(bean: administratorInstance, field: "score")}</td>
+                        <td>${fieldValue(bean: administratorInstance, field: "score.score1")} / ${fieldValue(bean: administratorInstance, field: "score.score2")}</td>
 
                         <td>${fieldValue(bean: administratorInstance, field: "mail")}</td>
                     </tr>
