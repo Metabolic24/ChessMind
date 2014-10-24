@@ -11,6 +11,9 @@ class Problem {
     boolean solved
 
     static constraints = {
+        // TODO add constraints
+        // solved nullable : false, blank : false
+        // date nullable : false
         description blank : true, nullable : true
         blackPlayer blank : true, nullable : true
         whitePlayer blank : true, nullable : true
