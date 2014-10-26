@@ -1,9 +1,11 @@
 package users
 
+import problems.Problem
 import score.Score
 
 class Player{
 
+    static hasMany = [problems : Problem]
     String name
     String login
     String password

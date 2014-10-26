@@ -65,4 +65,21 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'player', 'error')} required">
+	<label for="player">
+		<g:message code="problem.player.label" default="Player" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="player" name="player.id" from="${users.Player.list()}" optionKey="id" required="" value="${problemInstance?.player?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'solved', 'error')} ">
+	<label for="solved">
+		<g:message code="problem.solved.label" default="Solved" />
+		
+	</label>
+	<g:checkBox name="solved" value="${problemInstance?.solved}" />
+
+</div>
 

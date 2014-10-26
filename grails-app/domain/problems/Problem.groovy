@@ -1,6 +1,9 @@
 package problems
 
+import users.Player
+
 class Problem {
+    static belongsTo = [player : Player]
     byte[] image
     String description
     String blackPlayer

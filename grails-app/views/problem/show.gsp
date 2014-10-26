@@ -80,7 +80,16 @@
 				<g:if test="${problemInstance?.image}">
 				<li class="fieldcontain">
 					<span id="image-label" class="property-label"><g:message code="problem.image.label" default="Image" /></span>
-                    <img src="${createLink(controller:'problem', action:'viewImage', id: problemInstance.id)}"/>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${problemInstance?.player}">
+				<li class="fieldcontain">
+					<span id="player-label" class="property-label"><g:message code="problem.player.label" default="Player" /></span>
+					
+						<span class="property-value" aria-labelledby="player-label"><g:link controller="player" action="show" id="${problemInstance?.player?.id}">${problemInstance?.player?.encodeAsHTML()}</g:link></span>
+					
 				</li>
 				</g:if>
 			
