@@ -12,8 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.label" args="['User']" /></g:link></li>
+                <li><g:link class="list" action="players"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-player" class="content scaffold-show" role="main">
@@ -62,8 +63,8 @@
 				<g:if test="${playerInstance?.score}">
 				<li class="fieldcontain">
 					<span id="score-label" class="property-label"><g:message code="player.score.label" default="Score" /></span>
-					
-						<span class="property-value" aria-labelledby="score-label"><g:link controller="score" action="show" id="${playerInstance?.score?.id}">${playerInstance?.score?.encodeAsHTML()}</g:link></span>
+
+                    <span class="property-value" aria-labelledby="score-label">${fieldValue(bean: playerInstance, field: "score.score1")} / ${fieldValue(bean: playerInstance, field: "score.score2")}</span>
 					
 				</li>
 				</g:if>

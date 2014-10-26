@@ -15,7 +15,7 @@ class PlayerControllerSpec extends Specification {
         params["login"]='aLogin'
         params["password"]='aPwd'
         params["description"]=''
-        params["score"]=new Score(score1:0,score2:0)
+        params["score"]=Mock(Score)
         params["mail"]='toto@gmail.com'
     }
 

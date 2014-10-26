@@ -5,13 +5,16 @@ import score.Score
 
 class Player{
 
-    static hasMany = [problems : Problem]
+    /*Attributes*/
+
     String name
     String login
     String password
     String description
     Score score
     String mail
+
+    /*Attribute constraints*/
 
     static constraints = {
         name blank: false, nullable: false, unique: true
@@ -21,6 +24,10 @@ class Player{
         score nullable: false
         mail email: true, blank: false, nullable: false
     }
+
+    /*GORM constraints*/
+
+    static hasMany = [problems : Problem]
 
     public boolean isAdministrator() {
         return false;

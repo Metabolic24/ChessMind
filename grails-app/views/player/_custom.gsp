@@ -36,16 +36,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'score', 'error')} required">
-    <label for="score">
-        <g:message code="player.score.label" default="Score"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="score" name="score.id" from="${score.Score.list()}" optionKey="id" required=""
-              value="${playerInstance?.score?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'mail', 'error')} required">
     <label for="mail">
         <g:message code="player.mail.label" default="Mail"/>
@@ -58,26 +48,9 @@
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'moderator', 'error')} ">
     <label for="moderator">
         <g:message code="player.moderator.label" default="Moderator"/>
+
     </label>
     <g:checkBox name="moderator" value="${playerInstance?.isModerator()}"
                 disable="${playerInstance?.isAdministrator()}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'problems', 'error')} ">
-    <label for="problems">
-        <g:message code="player.problems.label" default="Problems"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${playerInstance?.problems ?}" var="p">
-            <li><g:link controller="problem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="problem" action="create"
-                    params="['player.id': playerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'problem.label', default: 'Problem')])}</g:link>
-        </li>
-    </ul>
 
 </div>
-

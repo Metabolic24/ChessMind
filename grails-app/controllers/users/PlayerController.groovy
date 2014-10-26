@@ -1,5 +1,6 @@
 package users
 
+import score.Score
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -14,7 +15,29 @@ class PlayerController {
         respond Player.list(params), model: [playerInstanceCount: Player.count()]
     }
 
+    def administrators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Administrator.list(params), model:[administratorInstanceCount: Administrator.count()]
+    }
+
+    def moderators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Moderator.list(params), model:[moderatorInstanceCount: Moderator.count()]
+    }
+
+    def players(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Player.list(params), model: [playerInstanceCount: Player.count()]
+    }
+
     def show(Player playerInstance) {
+        if(playerInstance?.isModerator()) {
+            redirect(uri: "/moderator/show/${playerInstance.getId()}")
+        } else if(playerInstance?.isAdministrator()){
+            redirect(uri: "/administrator/show/${playerInstance.getId()}")
+        } else {
+            respond playerInstance
+        }
         respond playerInstance
     }
 
@@ -29,9 +52,16 @@ class PlayerController {
             return
         }
 
+        playerInstance.score = new Score(score1:0l,score2:0l)
+        playerInstance.validate()
+
         if (playerInstance.hasErrors()) {
             respond playerInstance.errors, view: 'create'
             return
+        }
+
+        if (params["moderator"]!=null) {
+            playerInstance = new Moderator(name:playerInstance.name,login:playerInstance.login,password:playerInstance.password,score:playerInstance.score,mail:playerInstance.mail).save(failOnError: true)
         }
 
         playerInstance.save flush: true

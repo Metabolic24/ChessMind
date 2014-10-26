@@ -1,10 +1,11 @@
-package users
+package score
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import score.Score
 import spock.lang.Specification
 import spock.lang.Unroll
+import users.Player
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
