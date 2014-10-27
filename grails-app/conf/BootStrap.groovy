@@ -23,7 +23,7 @@ class BootStrap {
                 username: 'admin',
                 score: new Score(score1: 0l, score2: 0l),
                 mail: "m@hotmail.fr",
-                password: springSecurityService.encodePassword('admin'),
+                password: "admin",
                 enabled: true).save(failOnError: true, flush:true)
 
         if (!adminUser.authorities.contains(adminRole)) {

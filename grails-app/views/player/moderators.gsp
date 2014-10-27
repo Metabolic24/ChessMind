@@ -31,8 +31,6 @@
 					
 						<g:sortableColumn property="login" title="${message(code: 'moderator.username.label', default: 'Login')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'moderator.password.label', default: 'Password')}" />
-					
 						<g:sortableColumn property="description" title="${message(code: 'moderator.description.label', default: 'Description')}" />
 					
 						<th><g:message code="moderator.score.label" default="Score" /></th>
@@ -48,8 +46,6 @@
                         <td><g:link action="show" id="${moderatorInstance.id}">${fieldValue(bean: moderatorInstance, field: "name")}</g:link></td>
 
                         <td>${fieldValue(bean: moderatorInstance, field: "username")}</td>
-
-                        <td>${fieldValue(bean: moderatorInstance, field: "password")}</td>
 
                         <td>${fieldValue(bean: moderatorInstance, field: "description")}</td>
 

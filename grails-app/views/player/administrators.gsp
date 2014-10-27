@@ -31,8 +31,6 @@
 					
 						<g:sortableColumn property="login" title="${message(code: 'administrator.username.label', default: 'Login')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'administrator.password.label', default: 'Password')}" />
-					
 						<g:sortableColumn property="description" title="${message(code: 'administrator.description.label', default: 'Description')}" />
 					
 						<th><g:message code="administrator.score.label" default="Score" /></th>
@@ -48,8 +46,6 @@
                         <td><g:link action="show" id="${administratorInstance.id}">${fieldValue(bean: administratorInstance, field: "name")}</g:link></td>
 
                         <td>${fieldValue(bean: administratorInstance, field: "username")}</td>
-
-                        <td>${fieldValue(bean: administratorInstance, field: "password")}</td>
 
                         <td>${fieldValue(bean: administratorInstance, field: "description")}</td>
 

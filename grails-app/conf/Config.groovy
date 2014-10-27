@@ -126,15 +126,20 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'users.SecUserS
 grails.plugin.springsecurity.authority.className = 'users.SecRole'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-        '/'              : ['permitAll'],
-        '/index'         : ['permitAll'],
-        '/index.gsp'     : ['permitAll'],
-        '/assets/**'     : ['permitAll'],
-        '/**/js/**'      : ['permitAll'],
-        '/**/css/**'     : ['permitAll'],
-        '/**/images/**'  : ['permitAll'],
-        '/**/favicon.ico': ['permitAll'],
-        '/login/**'      : ['permitAll'],
-        '/logout/**'     : ['permitAll']
+        '/'                : ['permitAll'],
+        '/index'           : ['permitAll'],
+        '/index.gsp'       : ['permitAll'],
+        '/player/**'       : ['permitAll'], //Autorisation temporaire pour tous
+        '/problem/**'      : ['permitAll'], //Autorisation temporaire pour tous
+        '/score/**'        : ['permitAll'], //Autorisation temporaire pour tous
+        '/moderator/**'    : ['permitAll'], //Autorisation temporaire pour tous
+        '/administrator/**': ['permitAll'], //Autorisation temporaire pour tous
+        '/assets/**'       : ['permitAll'],
+        '/**/js/**'        : ['permitAll'],
+        '/**/css/**'       : ['permitAll'],
+        '/**/images/**'    : ['permitAll'],
+        '/**/favicon.ico'  : ['permitAll'],
+        '/login/**'        : ['permitAll'],
+        '/logout/**'       : ['permitAll']
 
 ]
