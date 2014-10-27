@@ -12,11 +12,11 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: administratorInstance, field: 'username', 'error')} required">
-	<label for="login">
-		<g:message code="administrator.login.label" default="Login" />
+	<label for="username">
+		<g:message code="administrator.username.label" default="username" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="login" required="" value="${administratorInstance?.login}"/>
+	<g:textField name="username" required="" value="${administratorInstance?.username}"/>
 
 </div>
 

@@ -10,7 +10,7 @@ class Player extends SecUser{
     String mail
 
     static constraints = {
-        name blank: false, nullable: false, unique: true
+        name blank: false, nullable: true
         username nullable: false
         password nullable: false
         description blank: true, nullable: true

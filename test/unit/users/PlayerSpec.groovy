@@ -46,6 +46,7 @@ class PlayerSpec extends Specification {
             "Thomas"|"toto"|"pwd"|"thomas.toto@gmail.com"|null
             "Thomas"|"toto2"|"pwd"|"thomas.toto@gmail.com"|""
             "Thomas"|"toto3"|"pwd"|"thomas.toto@gmail.com"|"non-empty Description"
+            null|"toto3"|"pwd"|"thomas.toto@gmail.com"|"non-empty Description"
     }
 
     @Unroll
@@ -74,7 +75,6 @@ class PlayerSpec extends Specification {
         "Thomas4"|"toto8"|null|"thomas.toto.gmail.com"|""
         "Thomas4"|"toto9"|"pwd"|"thomas.toto.gmail.com"|""
         "Thomas5"|"toto4"|"pwd"|null|""
-        null|"toto5"|"pwd"|null|""
         ""|"toto6"|"pwd"|null|""
 
     }

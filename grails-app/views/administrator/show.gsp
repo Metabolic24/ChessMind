@@ -33,20 +33,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${administratorInstance?.login}">
+				<g:if test="${administratorInstance?.username}">
 				<li class="fieldcontain">
-					<span id="login-label" class="property-label"><g:message code="administrator.login.label" default="Login" /></span>
+					<span id="username-label" class="property-label"><g:message code="administrator.username.label" default="username" /></span>
 					
-						<span class="property-value" aria-labelledby="login-label"><g:fieldValue bean="${administratorInstance}" field="login"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${administratorInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="administrator.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${administratorInstance}" field="password"/></span>
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${administratorInstance}" field="username"/></span>
 					
 				</li>
 				</g:if>

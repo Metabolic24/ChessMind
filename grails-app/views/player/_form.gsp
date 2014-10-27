@@ -5,18 +5,17 @@
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'name', 'error')} required">
 	<label for="name">
 		<g:message code="player.name.label" default="Name" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="" value="${playerInstance?.name}"/>
+	<g:textField name="name" value="${playerInstance?.name}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'username', 'error')} required">
-	<label for="login">
-		<g:message code="player.login.label" default="Login" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="login" required="" value="${playerInstance?.login}"/>
+    <label for="username">
+        <g:message code="player.login.username" default="Username" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="username" required="" value="${playerInstance?.username}"/>
 
 </div>
 

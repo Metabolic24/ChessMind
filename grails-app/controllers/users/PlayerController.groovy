@@ -47,6 +47,47 @@ class PlayerController {
         respond new Player(params)
     }
 
+    def signin() {
+        respond new Player(params)
+    }
+
+    def signinsave(Player playerInstance){
+        if (playerInstance == null) {
+            notFound()
+            return
+        }
+
+        if (!params["confirmPassword"].equals(playerInstance.getPassword())) {
+            request.withFormat {
+                form multipartForm {
+                    flash.error = "Password fields don't match. Enter the same password in both..."
+                    redirect action:'signin', params:
+                            [mail:playerInstance.mail,
+                             username: playerInstance.username]
+                }
+            }
+        }
+        else {
+            playerInstance.score = new Score(score1:0l,score2:0l)
+            playerInstance.validate()
+
+            if (playerInstance.hasErrors()){
+                respond playerInstance.errors, view:'signin'
+                return
+            }
+
+            playerInstance.save flush:true
+
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'default.created.message', args: [message(code: 'player.label', default: 'Player'), playerInstance.id])
+                    redirect playerInstance
+                }
+                '*' { respond playerInstance, [status: CREATED] }
+            }
+        }
+    }
+
     @Transactional
     def save(Player playerInstance) {
         if (playerInstance == null) {
@@ -54,9 +95,11 @@ class PlayerController {
             return
         }
 
-        playerInstance.score = new Score(score1:0l,score2:0l)
-        playerInstance.validate()
-
+        if(playerInstance.score==null) {
+            print("NULL")
+            playerInstance.score = new Score(score1:0l,score2:0l)
+            playerInstance.validate()
+        }
 
         if (playerInstance.hasErrors()){
             respond playerInstance.errors, view:'create'
