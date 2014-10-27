@@ -2,19 +2,17 @@ package users
 
 import score.Score
 
-class Player{
+class Player extends SecUser{
 
     String name
-    String login
-    String password
     String description
     Score score
     String mail
 
     static constraints = {
         name blank: false, nullable: false, unique: true
-        login blank: false, nullable: false
-        password blank: false, nullable: false
+        username nullable: false
+        password nullable: false
         description blank: true, nullable: true
         score nullable: false
         mail email: true, blank: false, nullable: false

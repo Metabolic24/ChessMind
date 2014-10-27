@@ -27,7 +27,7 @@ class PlayerSpec extends Specification {
 
         given:"a valid player"
             player.name = aName
-            player.login = aLogin
+            player.username = aLogin
             player.description = aDescription
             player.password = aPwd
             player.score = score
@@ -53,7 +53,7 @@ class PlayerSpec extends Specification {
 
         given:"an invalid player"
         player.name = aName
-        player.login = aLogin
+        player.username = aLogin
         player.password = aPwd
         player.description = aDescription
         player.score = score

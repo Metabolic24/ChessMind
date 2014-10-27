@@ -11,7 +11,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'login', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'username', 'error')} required">
 	<label for="login">
 		<g:message code="player.login.label" default="Login" />
 		<span class="required-indicator">*</span>
