@@ -33,11 +33,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${moderatorInstance?.login}">
+				<g:if test="${moderatorInstance?.username}">
 				<li class="fieldcontain">
-					<span id="login-label" class="property-label"><g:message code="moderator.login.label" default="Login" /></span>
+					<span id="username-label" class="property-label"><g:message code="moderator.username.label" default="username" /></span>
 					
-						<span class="property-value" aria-labelledby="login-label"><g:fieldValue bean="${moderatorInstance}" field="login"/></span>
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${moderatorInstance}" field="username"/></span>
 					
 				</li>
 				</g:if>

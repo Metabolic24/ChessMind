@@ -33,20 +33,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${playerInstance?.login}">
+				<g:if test="${playerInstance?.username}">
 				<li class="fieldcontain">
-					<span id="login-label" class="property-label"><g:message code="player.login.label" default="Login" /></span>
+					<span id="username-label" class="property-label"><g:message code="player.username.label" default="Username" /></span>
 					
-						<span class="property-value" aria-labelledby="login-label"><g:fieldValue bean="${playerInstance}" field="login"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${playerInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="player.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${playerInstance}" field="password"/></span>
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${playerInstance}" field="username"/></span>
 					
 				</li>
 				</g:if>
@@ -77,18 +68,18 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${playerInstance?.problems}">
-				<li class="fieldcontain">
-					<span id="problems-label" class="property-label"><g:message code="player.problems.label" default="Problems" /></span>
-					
-						<g:each in="${playerInstance.problems}" var="p">
-						<span class="property-value" aria-labelledby="problems-label"><g:link controller="problem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
+
+                <g:if test="${playerInstance?.problems}">
+                    <li class="fieldcontain">
+                        <span id="problems-label" class="property-label"><g:message code="player.problems.label" default="Problems" /></span>
+
+                        <g:each in="${playerInstance.problems}" var="p">
+                            <span class="property-value" aria-labelledby="problems-label"><g:link controller="problem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+                        </g:each>
+
+                    </li>
+                </g:if>
+
 			</ol>
 			<g:form url="[resource:playerInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -11,6 +11,7 @@ class AdministratorController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        //  render 'Secure access only'
         redirect(uri:"/player/index")
     }
 

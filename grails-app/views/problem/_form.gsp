@@ -2,6 +2,15 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'image', 'error')} required">
+	<label for="image">
+		<g:message code="problem.image.label" default="Image" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" id="image" name="image" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="problem.description.label" default="Description" />
@@ -29,15 +38,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'date', 'error')} required">
-	<label for="date">
-		<g:message code="problem.date.label" default="Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="date" precision="day"  value="${problemInstance?.date}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'place', 'error')} ">
 	<label for="place">
 		<g:message code="problem.place.label" default="Place" />
@@ -56,12 +56,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'image', 'error')} required">
-	<label for="image">
-		<g:message code="problem.image.label" default="Image" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'date', 'error')} ">
+	<label for="date">
+		<g:message code="problem.date.label" default="Date" />
+		
 	</label>
-	<input type="file" id="image" name="image" />
+	<g:datePicker name="date" precision="day"  value="${problemInstance?.date}" default="none" noSelection="['': '']" />
 
 </div>
 

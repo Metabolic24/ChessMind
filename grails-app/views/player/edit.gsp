@@ -4,7 +4,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'player.label', default: 'Player')}" />
-        <title><g:message code="default.edit.label" args="['User']" /></title>
+		<title><g:message code="default.edit.label" args="['User']" /></title>
 	</head>
 	<body>
 		<a href="#edit-player" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -30,7 +30,7 @@
 			<g:form url="[resource:playerInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${playerInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="custom"/>
+					<g:render template="form_player_custom" />
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

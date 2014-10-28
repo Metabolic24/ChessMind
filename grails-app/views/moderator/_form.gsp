@@ -11,12 +11,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: moderatorInstance, field: 'login', 'error')} required">
-	<label for="login">
-		<g:message code="moderator.login.label" default="Login" />
+<div class="fieldcontain ${hasErrors(bean: moderatorInstance, field: 'username', 'error')} required">
+	<label for="username">
+		<g:message code="moderator.username.label" default="username" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="login" required="" value="${moderatorInstance?.login}"/>
+	<g:textField name="username" required="" value="${moderatorInstance?.username}"/>
 
 </div>
 

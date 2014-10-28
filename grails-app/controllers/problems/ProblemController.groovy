@@ -103,10 +103,12 @@ class ProblemController {
     }
 
     def viewImage = {
-        def problem = Problem.get(params.id)
+
+        def problem = Problem.get( params.id )
         byte[] img = problem.image
         response.contentType = 'image/png' // or the appropriate image content type
         response.outputStream << img
         response.outputStream.flush()
+
     }
 }

@@ -26,26 +26,27 @@ class PlayerSpec extends Specification {
     void "Constraints test on valid player (login : #aLogin)"() {
 
         given:"a valid player"
-        player.name = aName
-        player.login = aLogin
-        player.description = aDescription
-        player.password = aPwd
-        player.score = score
-        player.mail = aMail
+            player.name = aName
+            player.username = aLogin
+            player.description = aDescription
+            player.password = aPwd
+            player.score = score
+            player.mail = aMail
 
         when: "we trigger the validation of the player"
-        def res = player.validate()
+            def res = player.validate()
 
         then: "the player has no validation error"
-        res
-        !player.hasErrors()
+            res
+            !player.hasErrors()
 
         where:
-        aName|aLogin|aPwd|aMail|aDescription
-        "a"|"b"|"c"|"d@gmail.com"|"e"
-        "Thomas"|"toto"|"pwd"|"thomas.toto@gmail.com"|null
-        "Thomas"|"toto2"|"pwd"|"thomas.toto@gmail.com"|""
-        "Thomas"|"toto3"|"pwd"|"thomas.toto@gmail.com"|"nonempty Description"
+            aName|aLogin|aPwd|aMail|aDescription
+            "a"|"b"|"c"|"d@gmail.com"|"e"
+            "Thomas"|"toto"|"pwd"|"thomas.toto@gmail.com"|null
+            "Thomas"|"toto2"|"pwd"|"thomas.toto@gmail.com"|""
+            "Thomas"|"toto3"|"pwd"|"thomas.toto@gmail.com"|"non-empty Description"
+            null|"toto3"|"pwd"|"thomas.toto@gmail.com"|"non-empty Description"
     }
 
     @Unroll
@@ -53,7 +54,7 @@ class PlayerSpec extends Specification {
 
         given:"an invalid player"
         player.name = aName
-        player.login = aLogin
+        player.username = aLogin
         player.password = aPwd
         player.description = aDescription
         player.score = score
@@ -74,7 +75,6 @@ class PlayerSpec extends Specification {
         "Thomas4"|"toto8"|null|"thomas.toto.gmail.com"|""
         "Thomas4"|"toto9"|"pwd"|"thomas.toto.gmail.com"|""
         "Thomas5"|"toto4"|"pwd"|null|""
-        null|"toto5"|"pwd"|null|""
         ""|"toto6"|"pwd"|null|""
 
     }
