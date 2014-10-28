@@ -61,8 +61,18 @@ grails {
         // escapes all not-encoded output at final stage of outputting
         // filteringCodecForContentType.'text/html' = 'html'
     }
-}
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "chessmind.ivvq@gmail.com"
+        password = "chessmind"
+        props = ["mail.smtp.auth"                  : "true",
+                 "mail.smtp.socketFactory.port"    : "465",
+                 "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback": "false"]
 
+    }
+}
 
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
@@ -129,17 +139,14 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/'                : ['permitAll'],
         '/index'           : ['permitAll'],
         '/index.gsp'       : ['permitAll'],
-        '/player/**'       : ['permitAll'], //Autorisation temporaire pour tous
-        '/problem/**'      : ['permitAll'], //Autorisation temporaire pour tous
-        '/score/**'        : ['permitAll'], //Autorisation temporaire pour tous
-        '/moderator/**'    : ['permitAll'], //Autorisation temporaire pour tous
-        '/administrator/**': ['permitAll'], //Autorisation temporaire pour tous
         '/assets/**'       : ['permitAll'],
         '/**/js/**'        : ['permitAll'],
         '/**/css/**'       : ['permitAll'],
         '/**/images/**'    : ['permitAll'],
         '/**/favicon.ico'  : ['permitAll'],
         '/login/**'        : ['permitAll'],
-        '/logout/**'       : ['permitAll']
-
+        '/logout/**'       : ['permitAll'],
+        '/**'              : ['permitAll'] //Autorisation Temporaire pour tous
 ]
+
+grails.plugin.springsecurity.ui.register.emailSubject = 'Validation of ChessMind account'

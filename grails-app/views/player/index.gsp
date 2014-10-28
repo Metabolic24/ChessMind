@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:link></li>
-                <li><g:link class="signin" action="signin"><g:message code="default.new.label" args="['User']" /></g:link></li>
+                <li><g:link class="create" action="signin">Sign In</g:link></li>
                 <li><g:link class="list" action="players"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="list" action="moderators"><g:message code="default.list.label" args="['Moderator']" /></g:link></li>
                 <li><g:link class="list" action="administrators"><g:message code="default.list.label" args="['Administrator']" /></g:link></li>

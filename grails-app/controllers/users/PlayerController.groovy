@@ -52,6 +52,7 @@ class PlayerController {
     }
 
     def signinsave(Player playerInstance){
+
         if (playerInstance == null) {
             notFound()
             return
@@ -68,7 +69,8 @@ class PlayerController {
             }
         }
         else {
-            playerInstance.score = new Score(score1:0l,score2:0l)
+            redirect(uri: "/player/index")
+            /*playerInstance.score = new Score(score1:0l,score2:0l)
             playerInstance.validate()
 
             if (playerInstance.hasErrors()){
@@ -84,7 +86,7 @@ class PlayerController {
                     redirect playerInstance
                 }
                 '*' { respond playerInstance, [status: CREATED] }
-            }
+            }*/
         }
     }
 

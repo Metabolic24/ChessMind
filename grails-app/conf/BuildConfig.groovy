@@ -63,12 +63,17 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.7'
         compile ":codenarc:0.22"
         compile ":spring-security-core:2.0-RC4"
+        compile ":spring-security-ui:1.0-RC2"
+        /*compile ":mail:1.0.7"
+        compile ':platform-core:1.0.M1'*/
+        compile ":weak-ssl:1.3"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.16" // or ":hibernate4:4.3.5.4"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
         runtime ":resources:1.2.8"
+        //runtime ":email-confirmation:2.0.8"
 
         test ':code-coverage:1.2.7'
 
