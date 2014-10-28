@@ -23,8 +23,8 @@
 			<table>
 			<thead>
 					<tr>
-					
-						<g:sortableColumn property="image" title="${message(code: 'problem.image.label', default: 'Image')}" />
+
+						<g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'Id')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'problem.description.label', default: 'Description')}" />
 					
@@ -42,7 +42,7 @@
 				<g:each in="${problemInstanceList}" status="i" var="problemInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "image")}</g:link></td>
+						<td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 					
 						<td>${fieldValue(bean: problemInstance, field: "description")}</td>
 					
