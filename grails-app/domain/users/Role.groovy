@@ -1,6 +1,6 @@
 package users
 
-class SecRole {
+class Role {
 
 	String authority
 

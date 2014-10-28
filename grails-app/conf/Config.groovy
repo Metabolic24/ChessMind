@@ -130,23 +130,21 @@ log4j = {
             'net.sf.ehcache.hibernate'
 }
 
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'users.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'users.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'users.SecRole'
+grails.plugin.springsecurity.ui.register.emailSubject = 'Validation of ChessMind account'
 
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'users.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'users.UserRole'
+grails.plugin.springsecurity.authority.className = 'users.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-        '/'                : ['permitAll'],
-        '/index'           : ['permitAll'],
-        '/index.gsp'       : ['permitAll'],
-        '/assets/**'       : ['permitAll'],
-        '/**/js/**'        : ['permitAll'],
-        '/**/css/**'       : ['permitAll'],
-        '/**/images/**'    : ['permitAll'],
-        '/**/favicon.ico'  : ['permitAll'],
-        '/login/**'        : ['permitAll'],
-        '/logout/**'       : ['permitAll'],
-        '/**'              : ['permitAll'] //Autorisation Temporaire pour tous
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+    '/**':                            ['permitAll']
 ]
 
-grails.plugin.springsecurity.ui.register.emailSubject = 'Validation of ChessMind account'

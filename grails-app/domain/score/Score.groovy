@@ -1,6 +1,6 @@
 package score
 
-import users.Player
+import users.User
 
 class Score {
 
@@ -12,5 +12,5 @@ class Score {
         score2 min: 0.longValue()
     }
 
-    static belongsTo = [player:Player]
+    static belongsTo = [user:User]
 }
