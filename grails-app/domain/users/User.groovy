@@ -49,6 +49,17 @@ class User {
         }
     }
 
+    static List<User> filterByAuthority(String authority,Map params) {
+        def list = User.list(params)
+        for (User user : list) {
+            if(!user.getAuthorities().contains(Role.findByAuthority(authority))){
+                list.remove(user)
+            }
+            if(list==null) break;
+        }
+        list
+    }
+
     protected void encodePassword() {
         password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
     }

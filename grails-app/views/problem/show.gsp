@@ -23,6 +23,13 @@
 			</g:if>
 			<ol class="property-list problem">
 			
+				<g:if test="${problemInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label"><g:message code="problem.image.label" default="Image" /></span>
+                    <img src="${createLink(controller:'problem', action:'viewImage', id: problemInstance.id)}"/>
+				</li>
+				</g:if>
+			
 				<g:if test="${problemInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="problem.description.label" default="Description" /></span>
@@ -50,15 +57,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${problemInstance?.date}">
-				<li class="fieldcontain">
-					<span id="date-label" class="property-label"><g:message code="problem.date.label" default="Date" /></span>
-					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${problemInstance?.date}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${problemInstance?.place}">
 				<li class="fieldcontain">
 					<span id="place-label" class="property-label"><g:message code="problem.place.label" default="Place" /></span>
@@ -77,10 +75,21 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${problemInstance?.image}">
+				<g:if test="${problemInstance?.date}">
 				<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="problem.image.label" default="Image" /></span>
-                    <img src="${createLink(controller:'problem', action:'viewImage', id: problemInstance.id)}"/>
+					<span id="date-label" class="property-label"><g:message code="problem.date.label" default="Date" /></span>
+					
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${problemInstance?.date}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${problemInstance?.player}">
+				<li class="fieldcontain">
+					<span id="player-label" class="property-label"><g:message code="problem.player.label" default="Player" /></span>
+					
+						<span class="property-value" aria-labelledby="player-label"><g:link controller="player" action="show" id="${problemInstance?.player?.id}">${problemInstance?.player?.encodeAsHTML()}</g:link></span>
+					
 				</li>
 				</g:if>
 			

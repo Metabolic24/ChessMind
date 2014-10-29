@@ -1,8 +1,7 @@
-package users
+package score
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
-import score.Score
 import spock.lang.Specification
 import spock.lang.Unroll
 

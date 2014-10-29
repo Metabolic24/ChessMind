@@ -20,6 +20,7 @@ class ProblemControllerSpec extends Specification {
         params["place"] = ''
         params["tournament"] = ''
         params["solved"] = false
+        params["player"] = Mock(Player)
     }
 
     void "Test the index action returns the correct model"() {

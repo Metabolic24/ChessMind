@@ -4,7 +4,6 @@ package score
 
 import grails.test.mixin.*
 import spock.lang.*
-import users.Player
 
 @TestFor(ScoreController)
 @Mock([Player,Score])

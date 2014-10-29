@@ -29,8 +29,8 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'player.name.label', default: 'Name')}" />
-					
-						<g:sortableColumn property="login" title="${message(code: 'player.username.label', default: 'Login')}" />
+
+						<g:sortableColumn property="username" title="${message(code: 'player.username.label', default: 'Username')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'player.description.label', default: 'Description')}" />
 					
@@ -41,7 +41,7 @@
                         <th>Moderator</th>
 
                         <th>Administrator</th>
-					
+
 					</tr>
 				</thead>
 				<tbody>

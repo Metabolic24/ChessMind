@@ -27,4 +27,19 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
         redirect action: 'edit', id: user.id
     }
 
+    //TODO Verifier que la pagination fonctionne
+    //TODO Voir si on ne peut pas remplacer la boucle par une closure
+    def administrators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def list = User.filterByAuthority('ROLE_ADMIN',params)
+
+        respond list, model:[adminInstanceCount: list?.size()]
+    }
+
+    def moderators(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def list = User.filterByAuthority('ROLE_MODERATOR',params)
+
+        respond list, model:[moderatorInstanceCount: list?.size()]
+    }
 }
