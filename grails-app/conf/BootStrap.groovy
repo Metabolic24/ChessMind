@@ -11,6 +11,7 @@ class BootStrap {
     def springSecurityService
 
     def init = { servletContext ->
+
         /*new Player(name: "toto", username: "toto", password: "toto", score: new Score(score1: 0l, score2: 0l), mail: "m@hotmail.fr").save(failOnError: true)
         new Moderator(name: "toto2", username: "aaaa", password: "bbbbb", score: new Score(score1: 0l, score2: 0l), mail: "m@hotmail.fr").save(failOnError: true)
         new Administrator(name: "toto3", username: "cccc", password: "bbbbb", score: new Score(score1: 0l, score2: 0l), mail: "m@hotmail.fr").save(failOnError: true)*/
@@ -33,6 +34,7 @@ class BootStrap {
         assert SecUser.count() == 1
         assert SecRole.count() == 2
         assert SecUserSecRole.count() == 1
+
     }
     def destroy = {
     }

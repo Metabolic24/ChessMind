@@ -3,6 +3,7 @@ package problems
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll
+import users.Player
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -11,9 +12,11 @@ import spock.lang.Unroll
 class ProblemSpec extends Specification {
 
     Problem problem
+    Player player
 
     def setup() {
         problem = new Problem()
+        player = Mock(Player)
     }
 
     def cleanup() {
@@ -32,6 +35,7 @@ class ProblemSpec extends Specification {
         problem.place = aPlace
         problem.tournament = aTournament
         problem.solved = isSolved
+        problem.player = player
 
         when: "we trigger the validation of the problem"
         def res = problem.validate()
@@ -46,16 +50,15 @@ class ProblemSpec extends Specification {
         2    | [0, 1]  | ""              | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
         3    | [0, 1]  | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
         4    | [0, 1]  | "A description" | "A black player" | ""               | new Date() | "A place" | "A tournament" | false
-        //[0, 1]  | "A description" | "A black player" | "A white player" | null       | "A place" | "A tournament" | false
-        5    | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | "" | "A tournament" | false
-        6    | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | "A place" | "" | false
-        7    | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | true
-        8    | [0, 1] | null | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
-        9    | [0, 1] | "A description" | null | "A white player" | new Date() | "A place" | "A tournament" | false
-        10   | [0, 1] | "A description" | "A black player" | null | new Date() | "A place" | "A tournament" | false
-        //11   | [0, 1] | "A description" | "A black player" | "A white player" | null | "A place" | "A tournament" | false
-        12   | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | null | "A tournament" | false
-        13   | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | "A place" | null | false
+        5    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | ""        | "A tournament" | false
+        6    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | ""             | false
+        7    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | true
+        8    | [0, 1]  | null            | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
+        9    | [0, 1]  | "A description" | null             | "A white player" | new Date() | "A place" | "A tournament" | false
+        10   | [0, 1]  | "A description" | "A black player" | null             | new Date() | "A place" | "A tournament" | false
+        11   | [0, 1]  | "A description" | "A black player" | "A white player" | null       | "A place" | "A tournament" | false
+        12   | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | null      | "A tournament" | false
+        13   | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | null           | false
 
     }
 
@@ -72,6 +75,7 @@ class ProblemSpec extends Specification {
         problem.place = aPlace
         problem.tournament = aTournament
         problem.solved = isSolved
+        problem.player = player
 
         when: "we trigger the validation of the problem"
         def res = problem.validate()
@@ -82,9 +86,8 @@ class ProblemSpec extends Specification {
 
         // TODO : Faire marcher le fait d'être obligé de mettre une image
         where:
-        anId | anImage           | aDescription    | aBlackPlayer | aWhitePlayer     | aDate      | aPlace    | aTournament    | isSolved
-        1    | null              | "A description" | ""           | "A white player" | new Date() | "A place" | "A tournament" | false
-        2    | new byte[3145729] | "A description" | ""           | "A white player" | new Date() | "A place" | "A tournament" | false
-        //14   | [0, 1] | "A description" | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | null
+        anId | anImage           | aDescription    | aBlackPlayer     | aWhitePlayer     | aDate      | aPlace    | aTournament    | isSolved
+        1    | null              | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
+        2    | new byte[3145729] | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
     }
 }

@@ -23,15 +23,14 @@
 			<table>
 			<thead>
 					<tr>
-                        <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
 
+						<g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'Id')}" />
+					
 						<g:sortableColumn property="description" title="${message(code: 'problem.description.label', default: 'Description')}" />
 					
 						<g:sortableColumn property="blackPlayer" title="${message(code: 'problem.blackPlayer.label', default: 'Black Player')}" />
 					
 						<g:sortableColumn property="whitePlayer" title="${message(code: 'problem.whitePlayer.label', default: 'White Player')}" />
-					
-						<g:sortableColumn property="date" title="${message(code: 'problem.date.label', default: 'Date')}" />
 					
 						<g:sortableColumn property="place" title="${message(code: 'problem.place.label', default: 'Place')}" />
 					
@@ -44,14 +43,12 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
-
-                        <td>${fieldValue(bean: problemInstance, field: "description")}</td>
-
+					
+						<td>${fieldValue(bean: problemInstance, field: "description")}</td>
+					
 						<td>${fieldValue(bean: problemInstance, field: "blackPlayer")}</td>
 					
 						<td>${fieldValue(bean: problemInstance, field: "whitePlayer")}</td>
-					
-						<td><g:formatDate date="${problemInstance.date}" /></td>
 					
 						<td>${fieldValue(bean: problemInstance, field: "place")}</td>
 					

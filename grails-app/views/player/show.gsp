@@ -68,7 +68,18 @@
 					
 				</li>
 				</g:if>
-			
+
+                <g:if test="${playerInstance?.problems}">
+                    <li class="fieldcontain">
+                        <span id="problems-label" class="property-label"><g:message code="player.problems.label" default="Problems" /></span>
+
+                        <g:each in="${playerInstance.problems}" var="p">
+                            <span class="property-value" aria-labelledby="problems-label"><g:link controller="problem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+                        </g:each>
+
+                    </li>
+                </g:if>
+
 			</ol>
 			<g:form url="[resource:playerInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
