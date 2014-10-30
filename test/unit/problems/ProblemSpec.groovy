@@ -3,6 +3,7 @@ package problems
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll
+import users.User
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -11,11 +12,11 @@ import spock.lang.Unroll
 class ProblemSpec extends Specification {
 
     Problem problem
-    Player player
+    User player
 
     def setup() {
         problem = new Problem()
-        player = Mock(Player)
+        player = Mock(User)
     }
 
     def cleanup() {

@@ -4,9 +4,10 @@ package score
 
 import grails.test.mixin.*
 import spock.lang.*
+import users.User
 
 @TestFor(ScoreController)
-@Mock([Player,Score])
+@Mock([User,Score])
 class ScoreControllerSpec extends Specification {
 
     def populateValidParams(params) {
