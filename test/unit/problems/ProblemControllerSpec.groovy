@@ -155,4 +155,13 @@ class ProblemControllerSpec extends Specification {
             response.redirectedUrl == '/problem/index'
             flash.message != null
     }
+    void "Test update valide"() {
+
+        when:"The valide is executed"
+        def problem = new Problem(params).save(flush: true)
+        controller.validate(problem)
+
+        then:"Valide is true"
+        problem.valide==true
+    }
 }

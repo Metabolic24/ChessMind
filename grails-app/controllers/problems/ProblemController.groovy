@@ -95,7 +95,15 @@ class ProblemController {
             '*'{ render status: NO_CONTENT }
         }
     }
+    def validate(Problem problemInstance) {
 
+        problemInstance.setValide(true)
+        problemInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
+
+
+
+    }
     protected void notFound() {
         request.withFormat {
             form multipartForm {

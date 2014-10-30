@@ -17,6 +17,7 @@ class Problem {
 
     Date date
     boolean solved //Pas de nullable: false car boolean est un type primitif (true|false)
+    boolean valide
 
     /*Attribute Constraints*/
 
@@ -29,6 +30,7 @@ class Problem {
         place blank : true, nullable : true
         tournament blank : true, nullable : true
         date nullable: true, date: true
+
     }
 
     /*GORM constraints*/

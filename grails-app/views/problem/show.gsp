@@ -137,6 +137,17 @@
             </li>
         </g:if>
 
+        <li class="fieldcontain">
+
+            <span class="property-value" aria-labelledby="solved-label">
+                <g:if test="${problemInstance?.valide}">
+                    Valide
+                </g:if>
+
+            </span>
+
+        </li>
+
     </ol>
     <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
@@ -147,6 +158,7 @@
             <g:actionSubmit class="delete" action="delete"
                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+            <g:actionSubmit value="Validate" action="validate"/>
         </fieldset>
     </g:form>
 </div>
