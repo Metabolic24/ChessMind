@@ -6,41 +6,41 @@ class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1
 
-    User secUser
-    Role secRole
+    User user
+    Role role
 
     boolean equals(other) {
         if (!(other instanceof UserRole)) {
             return false
         }
 
-        other.secUser?.id == secUser?.id &&
-                other.secRole?.id == secRole?.id
+        other.user?.id == user?.id &&
+                other.role?.id == role?.id
     }
 
     int hashCode() {
         def builder = new HashCodeBuilder()
-        if (secUser) builder.append(secUser.id)
-        if (secRole) builder.append(secRole.id)
+        if (user) builder.append(user.id)
+        if (role) builder.append(role.id)
         builder.toHashCode()
     }
 
-    static UserRole get(long secUserId, long secRoleId) {
+    static UserRole get(long userId, long roleId) {
         UserRole.where {
-            secUser == User.load(secUserId) &&
-                    secRole == Role.load(secRoleId)
+            user == User.load(userId) &&
+                    role == Role.load(roleId)
         }.get()
     }
 
-    static boolean exists(long secUserId, long secRoleId) {
+    static boolean exists(long userId, long roleId) {
         UserRole.where {
-            secUser == User.load(secUserId) &&
-                    secRole == Role.load(secRoleId)
+            user == User.load(userId) &&
+                    role == Role.load(roleId)
         }.count() > 0
     }
 
-    static UserRole create(User secUser, Role secRole, boolean flush = false) {
-        def instance = new UserRole(secUser: secUser, secRole: secRole)
+    static UserRole create(User user, Role role, boolean flush = false) {
+        def instance = new UserRole(user: user, role: role)
         instance.save(flush: flush, insert: true)
         instance
     }
@@ -49,8 +49,8 @@ class UserRole implements Serializable {
         if (u == null || r == null) return false
 
         int rowCount = UserRole.where {
-            secUser == User.load(u.id) &&
-                    secRole == Role.load(r.id)
+            user == User.load(u.id) &&
+                    role == Role.load(r.id)
         }.deleteAll()
 
         if (flush) {
@@ -64,7 +64,7 @@ class UserRole implements Serializable {
         if (u == null) return
 
         UserRole.where {
-            secUser == User.load(u.id)
+            user == User.load(u.id)
         }.deleteAll()
 
         if (flush) {
@@ -76,7 +76,7 @@ class UserRole implements Serializable {
         if (r == null) return
 
         UserRole.where {
-            secRole == Role.load(r.id)
+            role == Role.load(r.id)
         }.deleteAll()
 
         if (flush) {
@@ -85,11 +85,11 @@ class UserRole implements Serializable {
     }
 
     static constraints = {
-        secRole validator: { Role r, UserRole ur ->
-            if (ur.secUser == null) return
+        role validator: { Role r, UserRole ur ->
+            if (ur.user == null) return
             boolean existing = false
             UserRole.withNewSession {
-                existing = UserRole.exists(ur.secUser.id, r.id)
+                existing = UserRole.exists(ur.user.id, r.id)
             }
             if (existing) {
                 return 'userRole.exists'
@@ -98,7 +98,7 @@ class UserRole implements Serializable {
     }
 
     static mapping = {
-        id composite: ['secRole', 'secUser']
+        id composite: ['role', 'user']
         version false
     }
 }

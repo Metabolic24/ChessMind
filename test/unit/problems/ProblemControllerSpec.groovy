@@ -4,6 +4,7 @@ package problems
 
 import grails.test.mixin.*
 import spock.lang.*
+import users.User
 
 @TestFor(ProblemController)
 @Mock(Problem)
@@ -20,7 +21,7 @@ class ProblemControllerSpec extends Specification {
         params["place"] = ''
         params["tournament"] = ''
         params["solved"] = false
-        params["player"] = Mock(Player)
+        params["player"] = Mock(User)
     }
 
     void "Test the index action returns the correct model"() {
