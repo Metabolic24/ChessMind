@@ -23,6 +23,10 @@ class ProblemController {
         respond new Problem(params)
     }
 
+    def answer(Problem problemInstance) {
+        redirect(uri:"/solution/create")
+    }
+
     @Transactional
     def save(Problem problemInstance) {
         if (problemInstance == null) {

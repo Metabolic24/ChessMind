@@ -33,5 +33,7 @@ class Problem {
 
     /*GORM constraints*/
 
+    static hasMany = [solutions : Solution]
+
     static belongsTo = [player : User]
 }
