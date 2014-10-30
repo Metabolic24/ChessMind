@@ -4,16 +4,17 @@ package score
 
 import grails.test.mixin.*
 import spock.lang.*
+import users.User
 
 @TestFor(ScoreController)
-@Mock([Player,Score])
+@Mock([User,Score])
 class ScoreControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
         params["score1"]=2l
         params["score2"]=3l
-        params["player.id"]=1
+        params["user.id"]=1
     }
 
     void "Test the index action returns the correct model"() {

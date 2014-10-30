@@ -4,6 +4,7 @@ import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
 import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
+import grails.validation.Validateable
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
 

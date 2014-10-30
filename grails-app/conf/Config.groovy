@@ -147,4 +147,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll'],
     '/**':                            ['permitAll']
 ]
+// Permet d'autoriser le lien logout, sinon ne marche pas
+grails.plugin.springsecurity.logout.postOnly = false
+
 
