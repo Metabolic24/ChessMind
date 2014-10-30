@@ -51,13 +51,13 @@ class User {
 
     static List<User> filterByAuthority(String authority,Map params) {
         def list = User.list(params)
+        ArrayList<User> result = new ArrayList<>()
         for (User user : list) {
-            if(!user.getAuthorities().contains(Role.findByAuthority(authority))){
-                list.remove(user)
+            if(user.getAuthorities().contains(Role.findByAuthority(authority))){
+                result.add(user)
             }
-            if(list==null) break;
         }
-        list
+        result
     }
 
     protected void encodePassword() {
