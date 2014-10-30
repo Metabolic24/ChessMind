@@ -191,7 +191,12 @@
                 <nobr>
                     <div id='loginLinkContainer'>
                         <sec:ifLoggedIn>
-                            Logged in as <sec:username/> (<g:link controller='logout'>Logout</g:link>)
+                            Logged in as <sec:username/>
+                        (<form name="logout" method="POST" action="${createLink(controller:'logout') }">
+                            <input type="submit" value="Logout">
+                        </form>)
+                            %{--(<g:link controller='logout'>Logout</g:link>)--}%
+
                         </sec:ifLoggedIn>
                         <sec:ifNotLoggedIn>
                             <a href='#' id='loginLink'>Login</a>
