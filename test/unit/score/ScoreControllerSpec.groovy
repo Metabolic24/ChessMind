@@ -14,7 +14,7 @@ class ScoreControllerSpec extends Specification {
         assert params != null
         params["score1"]=2l
         params["score2"]=3l
-        params["player.id"]=1
+        params["user.id"]=1
     }
 
     void "Test the index action returns the correct model"() {

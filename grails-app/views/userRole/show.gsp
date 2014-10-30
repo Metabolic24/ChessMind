@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list userRole">
 			
-				<g:if test="${userRoleInstance?.secRole}">
+				<g:if test="${userRoleInstance?.role}">
 				<li class="fieldcontain">
-					<span id="secRole-label" class="property-label"><g:message code="userRole.secRole.label" default="Sec Role" /></span>
+					<span id="role-label" class="property-label"><g:message code="userRole.role.label" default="Sec Role" /></span>
 					
-						<span class="property-value" aria-labelledby="secRole-label"><g:link controller="role" action="show" id="${userRoleInstance?.secRole?.id}">${userRoleInstance?.secRole?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="role-label"><g:link controller="role" action="show" id="${userRoleInstance?.role?.id}">${userRoleInstance?.role?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${userRoleInstance?.secUser}">
+				<g:if test="${userRoleInstance?.user}">
 				<li class="fieldcontain">
-					<span id="secUser-label" class="property-label"><g:message code="userRole.secUser.label" default="Sec User" /></span>
+					<span id="user-label" class="property-label"><g:message code="userRole.user.label" default="Sec User" /></span>
 					
-						<span class="property-value" aria-labelledby="secUser-label"><g:link controller="user" action="show" id="${userRoleInstance?.secUser?.id}">${userRoleInstance?.secUser?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${userRoleInstance?.user?.id}">${userRoleInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

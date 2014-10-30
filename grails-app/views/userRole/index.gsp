@@ -24,9 +24,9 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="userRole.secRole.label" default="Sec Role" /></th>
+						<th><g:message code="userRole.role.label" default="Sec Role" /></th>
 					
-						<th><g:message code="userRole.secUser.label" default="Sec User" /></th>
+						<th><g:message code="userRole.user.label" default="Sec User" /></th>
 					
 					</tr>
 				</thead>
@@ -34,9 +34,9 @@
 				<g:each in="${userRoleInstanceList}" status="i" var="userRoleInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${userRoleInstance.id}">${fieldValue(bean: userRoleInstance, field: "secRole")}</g:link></td>
+						<td><g:link action="show" id="${userRoleInstance.id}">${fieldValue(bean: userRoleInstance, field: "role")}</g:link></td>
 					
-						<td>${fieldValue(bean: userRoleInstance, field: "secUser")}</td>
+						<td>${fieldValue(bean: userRoleInstance, field: "user")}</td>
 					
 					</tr>
 				</g:each>
