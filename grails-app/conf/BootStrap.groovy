@@ -1,6 +1,3 @@
-import users.Administrator
-import users.Moderator
-
 import score.Score
 import users.Role
 import users.User
