@@ -1,5 +1,7 @@
 package problems
 
+import users.User
+
 
 class Problem {
 
@@ -31,5 +33,5 @@ class Problem {
 
     /*GORM constraints*/
 
-    static belongsTo = [player : Player]
+    static belongsTo = [player : User]
 }
