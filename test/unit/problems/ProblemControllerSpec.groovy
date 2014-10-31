@@ -156,12 +156,14 @@ class ProblemControllerSpec extends Specification {
             flash.message != null
     }
     void "Test update valide"() {
+        given: "A valid problem"
+            populateValidParams(params)
+            def problem = new Problem(params).save(failOnError: true, flush: true)
 
         when:"The valide is executed"
-        def problem = new Problem(params).save(flush: true)
-        controller.validate(problem)
+            controller.validate(problem)
 
-        then:"Valide is true"
-        problem.valide==true
+        then:"Valide attribute is true"
+            problem.valide==true
     }
 }

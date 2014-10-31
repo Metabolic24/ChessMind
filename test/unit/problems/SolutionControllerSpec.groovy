@@ -4,6 +4,7 @@ package problems
 
 import grails.test.mixin.*
 import spock.lang.*
+import users.User
 
 @TestFor(SolutionController)
 @Mock(Solution)
@@ -11,8 +12,9 @@ class SolutionControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params['answer'] = "a1"
+        params['problem.id'] = 1
+        params['player'] = Mock(User)
     }
 
     void "Test the index action returns the correct model"() {

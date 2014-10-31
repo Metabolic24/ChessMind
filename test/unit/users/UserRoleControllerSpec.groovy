@@ -6,6 +6,7 @@ import spock.lang.*
 
 @TestFor(UserRoleController)
 @Mock(UserRole)
+@Mock([User, Role])
 class UserRoleControllerSpec extends Specification {
 
     def populateValidParams(params) {
