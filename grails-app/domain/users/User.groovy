@@ -1,5 +1,6 @@
 package users
 
+import problems.Problem
 import score.Score
 
 class User {
@@ -34,6 +35,9 @@ class User {
     static mapping = {
         password column: '`password`'
     }
+
+    /* GORM CONSTRAINTs */
+    static hasMany = [problems:Problem]
 
     Set<Role> getAuthorities() {
         UserRole.findAllByUser(this).collect { it.role }

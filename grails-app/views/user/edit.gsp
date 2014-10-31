@@ -44,6 +44,11 @@ if (isOpenId) {
 
 			<s2ui:passwordFieldRow name='password' labelCode='user.password.label' bean="${user}"
                                 labelCodeDefault='Password' value="${user?.password}"/>
+            <s2ui:textFieldRow name='name' labelCode='user.name.label' bean="${user}"
+                               labelCodeDefault='Name' value="${user?.name}"/>
+            <s2ui:textFieldRow name='description' labelCode='user.description.label' bean="${user}"
+                               labelCodeDefault='Description' value="${user?.description}"/>
+
 
             <s2ui:textFieldRow name='email' labelCode='user.email.label' bean="${user}"
                                labelCodeDefault='Email' value="${user?.email}"/>

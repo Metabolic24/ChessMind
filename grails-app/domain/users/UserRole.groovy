@@ -85,6 +85,7 @@ class UserRole implements Serializable {
     }
 
     static constraints = {
+
         role validator: { Role r, UserRole ur ->
             if (ur.user == null) return
             boolean existing = false
