@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'player.label', default: 'Player')}" />
+		<g:set var="entityName" value="${message(code: 'user.label', default: 'Player')}" />
 		<title><g:message code="default.list.label" args="['User']" /></title>
 	</head>
 	<body>
@@ -28,15 +28,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'player.name.label', default: 'Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" />
 
-						<g:sortableColumn property="username" title="${message(code: 'player.username.label', default: 'Username')}" />
+						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="description" title="${message(code: 'player.description.label', default: 'Description')}" />
+						<g:sortableColumn property="description" title="${message(code: 'user.description.label', default: 'Description')}" />
 					
 						<th><g:message code="player.score.label" default="Score" /></th>
 
-						<g:sortableColumn property="mail" title="${message(code: 'player.mail.label', default: 'Mail')}" />
+						<g:sortableColumn property="mail" title="${message(code: 'user.mail.label', default: 'Mail')}" />
 
                         <th>Moderator</th>
 

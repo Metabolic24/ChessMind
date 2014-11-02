@@ -34,7 +34,7 @@ class ProblemSpec extends Specification {
         problem.date = aDate
         problem.place = aPlace
         problem.tournament = aTournament
-        problem.solved = isSolved
+        problem.solved = false
         problem.player = player
 
         when: "we trigger the validation of the problem"
@@ -45,20 +45,20 @@ class ProblemSpec extends Specification {
         !problem.hasErrors()
 
         where:
-        anId | anImage | aDescription    | aBlackPlayer     | aWhitePlayer     | aDate      | aPlace    | aTournament    | isSolved
-        1    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
-        2    | [0, 1]  | ""              | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
-        3    | [0, 1]  | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
-        4    | [0, 1]  | "A description" | "A black player" | ""               | new Date() | "A place" | "A tournament" | false
-        5    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | ""        | "A tournament" | false
-        6    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | ""             | false
-        7    | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | true
-        8    | [0, 1]  | null            | "A black player" | "A white player" | new Date() | "A place" | "A tournament" | false
-        9    | [0, 1]  | "A description" | null             | "A white player" | new Date() | "A place" | "A tournament" | false
-        10   | [0, 1]  | "A description" | "A black player" | null             | new Date() | "A place" | "A tournament" | false
-        11   | [0, 1]  | "A description" | "A black player" | "A white player" | null       | "A place" | "A tournament" | false
-        12   | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | null      | "A tournament" | false
-        13   | [0, 1]  | "A description" | "A black player" | "A white player" | new Date() | "A place" | null           | false
+        anId | anImage | aDescription    | aBlackPlayer     | aWhitePlayer     | aDate      | aPlace    | aTournament
+        1    | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | "A place" | "A tournament"
+        2    | [0, 1]  | ""              | "A black user" | "A white user" | new Date() | "A place" | "A tournament"
+        3    | [0, 1]  | "A description" | ""               | "A white user" | new Date() | "A place" | "A tournament"
+        4    | [0, 1]  | "A description" | "A black user" | ""               | new Date() | "A place" | "A tournament"
+        5    | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | ""        | "A tournament"
+        6    | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | "A place" | ""
+        7    | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | "A place" | "A tournament"
+        8    | [0, 1]  | null            | "A black user" | "A white user" | new Date() | "A place" | "A tournament"
+        9    | [0, 1]  | "A description" | null             | "A white user" | new Date() | "A place" | "A tournament"
+        10   | [0, 1]  | "A description" | "A black user" | null             | new Date() | "A place" | "A tournament"
+        11   | [0, 1]  | "A description" | "A black user" | "A white user" | null       | "A place" | "A tournament"
+        12   | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | null      | "A tournament"
+        13   | [0, 1]  | "A description" | "A black user" | "A white user" | new Date() | "A place" | null
 
     }
 
@@ -68,13 +68,13 @@ class ProblemSpec extends Specification {
         given: "an invalid problem"
         problem.id = anId
         problem.image = anImage
-        problem.description = aDescription
-        problem.blackPlayer = aBlackPlayer
-        problem.whitePlayer = aWhitePlayer
-        problem.date = aDate
-        problem.place = aPlace
-        problem.tournament = aTournament
-        problem.solved = isSolved
+        problem.description = "A description"
+        problem.blackPlayer = "A black user"
+        problem.whitePlayer = "A white user"
+        problem.date = new Date()
+        problem.place = "A place"
+        problem.tournament = "A tournament"
+        problem.solved = false
         problem.player = player
 
         when: "we trigger the validation of the problem"
@@ -86,8 +86,8 @@ class ProblemSpec extends Specification {
 
         // TODO : Faire marcher le fait d'être obligé de mettre une image
         where:
-        anId | anImage           | aDescription    | aBlackPlayer     | aWhitePlayer     | aDate      | aPlace    | aTournament    | isSolved
-        1    | null              | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
-        2    | new byte[3145729] | "A description" | ""               | "A white player" | new Date() | "A place" | "A tournament" | false
+        anId | anImage
+        1    | null
+        2    | new byte[3145729]
     }
 }

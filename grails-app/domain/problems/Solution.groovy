@@ -4,9 +4,10 @@ import users.User
 
 class Solution {
 
-    User player;
+    User user;
     String answer;
 
+    static hasMany = [comments:Comment]
     static belongsTo = [problem:Problem]
 
     static constraints = {

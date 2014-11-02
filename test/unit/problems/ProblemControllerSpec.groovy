@@ -12,7 +12,6 @@ class ProblemControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        //params["name"] = 'someValidName'
         params["image"] = [0, 1]
         params["description"] = ''
         params["blackPlayer"] = ''
@@ -21,7 +20,7 @@ class ProblemControllerSpec extends Specification {
         params["place"] = ''
         params["tournament"] = ''
         params["solved"] = false
-        params["player"] = Mock(User)
+        params["user"] = Mock(User)
     }
 
     void "Test the index action returns the correct model"() {

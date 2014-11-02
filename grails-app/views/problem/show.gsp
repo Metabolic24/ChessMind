@@ -121,6 +121,14 @@
                     <span class="property-value" aria-labelledby="solutions-label"><g:link controller="solution"
                                                                                            action="show"
                                                                                            id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+                    <g:each in="${s.comments}" var="c">
+                        <span class="property-value" aria-labelledby="solutions-label">${c.text}</span>
+                    </g:each>
+                    <g:form name="commentForm" url="[action:'create',controller:'comment']" action="create">
+                        <g:textArea name="comment" value="${comment}" rows="5" columns="30"/>
+                        <g:hiddenField name="solutionId" value="${s.id}" />
+                        <g:actionSubmit action="create" value="Commenter"/>
+                    </g:form>
                 </g:each>
 
             </li>

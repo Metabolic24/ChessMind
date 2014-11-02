@@ -72,7 +72,7 @@
     <li><g:link controller="problem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="problem" action="create" params="['player.id': playerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'problem.label', default: 'Problem')])}</g:link>
+<g:link controller="problem" action="create" params="['user.id': playerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'problem.label', default: 'Problem')])}</g:link>
 </li>
 </ul>
 

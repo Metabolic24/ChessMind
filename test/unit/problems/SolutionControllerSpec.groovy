@@ -14,7 +14,7 @@ class SolutionControllerSpec extends Specification {
         assert params != null
         params['answer'] = "a1"
         params['problem.id'] = 1
-        params['player'] = Mock(User)
+        params['user'] = Mock(User)
     }
 
     void "Test the index action returns the correct model"() {

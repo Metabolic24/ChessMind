@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${solutionInstance?.player}">
+				<g:if test="${solutionInstance?.user}">
 				<li class="fieldcontain">
-					<span id="player-label" class="property-label"><g:message code="solution.player.label" default="Player" /></span>
+					<span id="user-label" class="property-label"><g:message code="solution.user.label" default="User" /></span>
 					
-						<span class="property-value" aria-labelledby="player-label"><g:link controller="user" action="show" id="${solutionInstance?.player?.id}">${solutionInstance?.player?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${solutionInstance?.user?.id}">${solutionInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

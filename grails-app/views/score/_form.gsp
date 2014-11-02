@@ -20,7 +20,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: scoreInstance, field: 'player', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: scoreInstance, field: 'user', 'error')} required">
 	<label for="player">
 		<g:message code="score.player.label" default="Player" />
 		<span class="required-indicator">*</span>
