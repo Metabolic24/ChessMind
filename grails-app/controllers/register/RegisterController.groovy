@@ -6,9 +6,10 @@ import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 import grails.validation.Validateable
 
+@Validateable
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
 
-    def register(RegisterCommand command) {
+    def register( RegisterCommand command) {
 
         if (command.hasErrors()) {
             render view: 'index', model: [command: command]

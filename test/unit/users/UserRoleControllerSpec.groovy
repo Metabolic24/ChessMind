@@ -8,7 +8,6 @@ import spock.lang.*
 
 @TestFor(UserRoleController)
 @Mock(UserRole)
-@Mock([User, Role])
 class UserRoleControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -19,6 +18,8 @@ class UserRoleControllerSpec extends Specification {
         //params['role'] = new Role(authority: 'A')
         params['user'] = Mock(User)
         params['role'] = Mock(Role)
+        params['user.id'] = 1
+        params['role.id'] = 1
         //params['id'] = [role: Mock(Role),user: Mock(User)]
         //params['userRole.id.user'] = Mock(User).save()
         //params['userRole.id.role'] = Mock(Role).save()
