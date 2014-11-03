@@ -40,15 +40,15 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
-            <g:sortableColumn property="valide" title="${message(code: 'problem.valide.label', default: 'Validé')}" />
+            <g:sortableColumn property="valide" title="${message(code: 'problem.valide.label', default: 'A été validé')}" />
+
+            <g:sortableColumn property="suppression" title="${message(code: 'problem.suppression.label', default: 'Suppression')}" />
 
         </tr>
         </thead>
         <tbody>
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                <g:if test="${problemInstance.valide}">
 
                     <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
@@ -66,9 +66,17 @@
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "valide")}</td>
+                    <td>
+                        <g:if test="${problemInstance?.valide == true}">
+                            X
+                        </g:if>
+                    </td>
 
-                </g:if>
+                    <td>
+                        <g:if test="${problemInstance?.valide == false}">
+                            <g:actionSubmit value="Supprimer" />
+                        </g:if>
+                    </td>
             </tr>
         </g:each>
         </tbody>
