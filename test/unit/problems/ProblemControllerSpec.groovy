@@ -12,7 +12,6 @@ class ProblemControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        //params["name"] = 'someValidName'
         params["image"] = [0, 1]
         params["description"] = ''
         params["blackPlayer"] = ''
@@ -21,7 +20,7 @@ class ProblemControllerSpec extends Specification {
         params["place"] = ''
         params["tournament"] = ''
         params["solved"] = false
-        params["player"] = Mock(User)
+        params["user"] = Mock(User)
     }
 
     void "Test the index action returns the correct model"() {
@@ -156,12 +155,14 @@ class ProblemControllerSpec extends Specification {
             flash.message != null
     }
     void "Test update valide"() {
+        given: "A valid problem"
+            populateValidParams(params)
+            def problem = new Problem(params).save(failOnError: true, flush: true)
 
         when:"The valide is executed"
-        def problem = new Problem(params).save(flush: true)
-        controller.validate(problem)
+            controller.validate(problem)
 
-        then:"Valide is true"
-        problem.valide==true
+        then:"Valide attribute is true"
+            problem.valide==true
     }
 }

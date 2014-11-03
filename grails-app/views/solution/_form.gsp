@@ -11,12 +11,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: solutionInstance, field: 'player', 'error')} required">
-	<label for="player">
-		<g:message code="solution.player.label" default="Player" />
+<div class="fieldcontain ${hasErrors(bean: solutionInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="solution.user.label" default="User" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="player" name="player.id" from="${users.User.list()}" optionKey="id" required="" value="${solutionInstance?.player?.id}" class="many-to-one"/>
+	<g:select id="user" name="user.id" from="${users.User.list()}" optionKey="id" required="" value="${solutionInstance?.user?.id}" class="many-to-one"/>
 
 </div>
 

@@ -1,3 +1,4 @@
+import problems.Problem
 import score.Score
 import users.Role
 import users.User
@@ -28,6 +29,10 @@ class BootStrap {
         if (!adminUser.authorities.contains(adminRole)) {
             UserRole.create adminUser, adminRole, true
         }
+
+        def problemTest = new Problem(player: adminUser, image:[0,1]).save(failOnError: true, flush: true)
+
+
 
         assert User.count() == 1
         assert Role.count() == 3

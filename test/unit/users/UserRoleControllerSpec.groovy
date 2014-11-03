@@ -18,7 +18,6 @@ class UserRoleControllerSpec extends Specification {
         params['role'] = new Role(authority: 'A')
         params['user.id'] = 40
         params['role.id'] = 42
-
     }
 
     void "Test the index action returns the correct model"() {

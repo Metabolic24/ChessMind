@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'player.label', default: 'Player')}" />
+		<g:set var="entityName" value="${message(code: 'user.label', default: 'Player')}" />
         <g:set var="playerList" value="${users.Player.list().findAll {player -> !player.isAdministrator() && !player.isModerator()}}" />
 
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -28,15 +28,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'player.name.label', default: 'Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="login" title="${message(code: 'player.username.label', default: 'Login')}" />
+						<g:sortableColumn property="login" title="${message(code: 'user.username.label', default: 'Login')}" />
 					
-						<g:sortableColumn property="description" title="${message(code: 'player.description.label', default: 'Description')}" />
+						<g:sortableColumn property="description" title="${message(code: 'user.description.label', default: 'Description')}" />
 					
 						<th><g:message code="player.score.label" default="Score" /></th>
 					
-						<g:sortableColumn property="mail" title="${message(code: 'player.mail.label', default: 'Mail')}" />
+						<g:sortableColumn property="mail" title="${message(code: 'user.mail.label', default: 'Mail')}" />
 					
 					</tr>
 				</thead>
