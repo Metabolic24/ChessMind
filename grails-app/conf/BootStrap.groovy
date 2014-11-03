@@ -40,6 +40,7 @@ class BootStrap {
 
         def problemTest = new Problem(player: adminUser, image:[0,1], valide:true).save(failOnError: true, flush: true)
         def problemTest2 = new Problem(player: user, image:[0,1], valide:true).save(failOnError: true, flush: true)
+        def problemTest3 = new Problem(player: user, image:[0,1], valide:false).save(failOnError: true, flush: true)
 
 
 
