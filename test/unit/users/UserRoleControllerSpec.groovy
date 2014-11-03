@@ -12,16 +12,13 @@ class UserRoleControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        //params['user'] = new User(username: "", password: "", email:"",enabled:true,accountExpired:true,
-                //accountLocked:false,passwordExpired:false,score:new Score(score1:0l,score2:0l),name:"",
-                //description:"")
-        //params['role'] = new Role(authority: 'A')
-        params['user'] = Mock(User)
-        params['role'] = Mock(Role)
-        //params['id'] = [role: Mock(Role),user: Mock(User)]
-        //params['userRole.id.user'] = Mock(User).save()
-        //params['userRole.id.role'] = Mock(Role).save()
-        //this.id
+        params['user'] = new User(username: "loic", password: "aaa", email:"a@a.net",enabled:true,accountExpired:true,
+                accountLocked:false,passwordExpired:false,score:new Score(score1:0l,score2:0l),name:"loic",
+                description:"coucou !")
+        params['role'] = new Role(authority: 'A')
+        params['user.id'] = 40
+        params['role.id'] = 42
+
     }
 
     void "Test the index action returns the correct model"() {
