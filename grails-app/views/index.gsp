@@ -112,7 +112,7 @@
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
-                    <li class="controller"><g:link controller="Problem">Contrôleur principal</g:link></li>
+                    <li class="controller"><g:link controller="problem">Contrôleur principal</g:link></li>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>

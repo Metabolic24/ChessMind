@@ -26,15 +26,24 @@ class BootStrap {
                 password: "admin",
                 enabled: true).save(failOnError: true, flush:true)
 
+        def user = User.findByUsername('user') ?: new User(
+                name: "tata",
+                username: 'user',
+                score: new Score(score1: 0l, score2: 0l),
+                email: "u@hotmail.fr",
+                password: "user",
+                enabled: true).save(failOnError: true, flush:true)
+
         if (!adminUser.authorities.contains(adminRole)) {
             UserRole.create adminUser, adminRole, true
         }
 
-        def problemTest = new Problem(player: adminUser, image:[0,1]).save(failOnError: true, flush: true)
+        def problemTest = new Problem(player: adminUser, image:[0,1], valide:true).save(failOnError: true, flush: true)
+        def problemTest2 = new Problem(player: user, image:[0,1], valide:true).save(failOnError: true, flush: true)
 
 
 
-        assert User.count() == 1
+        assert User.count() == 2
         assert Role.count() == 3
         assert UserRole.count() == 1
     }

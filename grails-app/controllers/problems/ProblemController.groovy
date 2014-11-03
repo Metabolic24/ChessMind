@@ -1,6 +1,7 @@
 package problems
 
-
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.web.context.request.RequestContextHolder
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -21,6 +22,10 @@ class ProblemController {
 
     def create() {
         respond new Problem(params)
+    }
+
+    def my_problems(Problem problemInstance) {
+        respond Problem.list(params).findAll { p -> p.player.username == SecurityContextHolder.getContext().getAuthentication().name }, model:[problemInstanceCount: Problem.count()]
     }
 
     def answer(Problem problemInstance) {

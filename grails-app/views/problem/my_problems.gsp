@@ -13,7 +13,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
+        <li><g:link class="my_problems" action="my_problems"><g:message code="My problems" args="[entityName]" /></g:link></li>
     </ul>
 </div>
 <div id="list-problem" class="content scaffold-list" role="main">
@@ -40,6 +40,8 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
+            <g:sortableColumn property="valide" title="${message(code: 'problem.valide.label', default: 'Validé')}" />
+
         </tr>
         </thead>
         <tbody>
@@ -63,6 +65,8 @@
                     <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
+
+                    <td>${fieldValue(bean: problemInstance, field: "valide")}</td>
 
                 </g:if>
             </tr>
