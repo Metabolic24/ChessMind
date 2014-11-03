@@ -37,6 +37,8 @@
 
             <g:sortableColumn property="tournament" title="${message(code: 'problem.tournament.label', default: 'Tournament')}" />
 
+            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
+
         </tr>
         </thead>
         <tbody>
@@ -56,6 +58,8 @@
                 <td>${fieldValue(bean: problemInstance, field: "place")}</td>
 
                 <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
+
+                <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
             </tr>
         </g:each>

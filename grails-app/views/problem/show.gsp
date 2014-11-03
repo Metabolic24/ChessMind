@@ -103,11 +103,11 @@
 
         <g:if test="${problemInstance?.player}">
             <li class="fieldcontain">
-                <span id="player-label" class="property-label"><g:message code="problem.player.label"
+                <span id="player-label" class="property-label"><g:message code="problem.player.username.label"
                                                                           default="Player"/></span>
 
                 <span class="property-value" aria-labelledby="player-label"><g:link controller="user" action="show"
-                                                                                    id="${problemInstance?.player?.id}">${problemInstance?.player?.encodeAsHTML()}</g:link></span>
+                                                                                    id="${problemInstance?.player?.id}">${problemInstance?.player?.username?.encodeAsHTML()}</g:link></span>
 
             </li>
         </g:if>
