@@ -42,6 +42,8 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
+            <th>Diagramme</th>
+
         </tr>
         </thead>
         <tbody>
@@ -65,6 +67,14 @@
                     <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
+
+                    <td>
+                        <li class="fieldcontain">
+                            <span id="image-label" class="property-label"><g:message code="problem.image.label"
+                                                                                     default="Image"/></span>
+                            <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                        </li>
+                    </td>
 
                 </g:if>
             </tr>

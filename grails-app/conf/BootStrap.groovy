@@ -1,3 +1,4 @@
+import org.apache.commons.io.IOUtils
 import problems.Problem
 import score.Score
 import users.Role
@@ -38,9 +39,13 @@ class BootStrap {
             UserRole.create adminUser, adminRole, true
         }
 
-        def problemTest = new Problem(player: adminUser, image:[0,1], valide:true).save(failOnError: true, flush: true)
-        def problemTest2 = new Problem(player: user, image:[0,1], valide:true).save(failOnError: true, flush: true)
-        def problemTest3 = new Problem(player: user, image:[0,1], valide:false).save(failOnError: true, flush: true)
+        byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
+        byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
+        byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
+
+        def problemTest = new Problem(player: adminUser, image:image, valide:true).save(failOnError: true, flush: true)
+        def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)
+        def problemTest3 = new Problem(player: user, image:image3, valide:false).save(failOnError: true, flush: true)
 
 
 
