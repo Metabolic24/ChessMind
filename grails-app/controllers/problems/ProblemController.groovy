@@ -28,6 +28,10 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.player.username == SecurityContextHolder.getContext().getAuthentication().name }, model:[problemInstanceCount: Problem.count()]
     }
 
+    def valid_problems(Integer max) {
+        respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
+    }
+
     def answer(Problem problemInstance) {
         redirect(uri:"/solution/create")
     }

@@ -19,7 +19,6 @@
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
-
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
     </ul>
 </div>
@@ -53,6 +52,8 @@
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
+                <g:if test="${problemInstance.valide}">
+
                     <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
                     <td>${fieldValue(bean: problemInstance, field: "description")}</td>
@@ -69,6 +70,7 @@
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
+                </g:if>
             </tr>
         </g:each>
         </tbody>
