@@ -39,9 +39,9 @@ class BootStrap {
             UserRole.create adminUser, adminRole, true
         }
 
-        byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
-        byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
-        byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/diagram.png"))
+        byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate1.jpg"))
+        byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate2.jpg"))
+        byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate3.jpg"))
 
         def problemTest = new Problem(player: adminUser, image:image, valide:true).save(failOnError: true, flush: true)
         def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)

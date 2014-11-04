@@ -42,6 +42,8 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
+            <th>Diagramme</th>
+
             <g:sortableColumn property="valide" title="${message(code: 'problem.valide.label', default: 'A été validé')}" />
 
             <th>Suppression</th>
@@ -67,6 +69,12 @@
                     <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
+
+                    <td>
+                        <li class="fieldcontain">
+                            <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                        </li>
+                    </td>
 
                     <td>
                         <g:if test="${problemInstance?.valide == true}">

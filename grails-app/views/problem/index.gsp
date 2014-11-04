@@ -47,6 +47,8 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
+            <th>Diagramme</th>
+
             <sec:ifAnyGranted roles='ROLE_ADMIN'>
                 <th>Edition</th>
             </sec:ifAnyGranted>
@@ -73,6 +75,11 @@
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
+                    <td>
+                        <li class="fieldcontain">
+                            <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                        </li>
+                    </td>
 
                     <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                         <td>

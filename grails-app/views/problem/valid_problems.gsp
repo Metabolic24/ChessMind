@@ -70,8 +70,6 @@
 
                     <td>
                         <li class="fieldcontain">
-                            <span id="image-label" class="property-label"><g:message code="problem.image.label"
-                                                                                     default="Image"/></span>
                             <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
                         </li>
                     </td>
