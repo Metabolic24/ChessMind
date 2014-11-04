@@ -14,7 +14,8 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" /></g:link></li>
+        <%-- <li><g:link class="create" action="create"><g:message code="default.new.label" /></g:link></li> --%>
+        <li><g:link class="create" action="create">New Problem</g:link></li>
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
