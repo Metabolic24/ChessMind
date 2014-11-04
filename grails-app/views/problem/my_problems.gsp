@@ -13,6 +13,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+        <li><g:link action="index"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
         <li><g:link class="my_problems" action="my_problems"><g:message code="My problems" args="[entityName]" /></g:link></li>
     </ul>
 </div>
@@ -42,7 +43,7 @@
 
             <g:sortableColumn property="valide" title="${message(code: 'problem.valide.label', default: 'A été validé')}" />
 
-            <g:sortableColumn property="suppression" title="${message(code: 'problem.suppression.label', default: 'Suppression')}" />
+            <th>Suppression</th>
 
         </tr>
         </thead>
