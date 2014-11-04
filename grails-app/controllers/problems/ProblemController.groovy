@@ -1,5 +1,6 @@
 package problems
 
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.context.request.RequestContextHolder
 
@@ -30,6 +31,11 @@ class ProblemController {
 
     def valid_problems(Integer max) {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
+    def invalid_problems(Integer max) {
+        respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
     def answer(Problem problemInstance) {

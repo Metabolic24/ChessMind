@@ -47,6 +47,8 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
+            <th>edition</th>
+
         </tr>
         </thead>
         <tbody>
@@ -69,6 +71,12 @@
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
+                    <td>
+                         <g:form url="[resource: problemInstance, action: 'edit']">
+                             <g:actionSubmit class="edit" action="edit"
+                                             value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                         </g:form>
+                    </td>
             </tr>
         </g:each>
         </tbody>
