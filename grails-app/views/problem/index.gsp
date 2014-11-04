@@ -47,7 +47,9 @@
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
-            <th>edition</th>
+            <sec:ifAnyGranted roles='ROLE_ADMIN'>
+                <th>Edition</th>
+            </sec:ifAnyGranted>
 
         </tr>
         </thead>
@@ -71,12 +73,15 @@
 
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
-                    <td>
-                         <g:form url="[resource: problemInstance, action: 'edit']">
-                             <g:actionSubmit class="edit" action="edit"
-                                             value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                         </g:form>
-                    </td>
+
+                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                        <td>
+                            <g:form url="[resource: problemInstance, action: 'edit']">
+                                <g:actionSubmit class="edit" action="edit"
+                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                            </g:form>
+                        </td>
+                    </sec:ifAnyGranted>
             </tr>
         </g:each>
         </tbody>

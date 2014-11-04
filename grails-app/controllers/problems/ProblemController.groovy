@@ -10,6 +10,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ProblemController {
 
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -33,7 +34,6 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
-    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def invalid_problems(Integer max) {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
