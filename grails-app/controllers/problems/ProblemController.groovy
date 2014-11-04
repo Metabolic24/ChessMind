@@ -30,11 +30,11 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.player.username == SecurityContextHolder.getContext().getAuthentication().name }, model:[problemInstanceCount: Problem.count()]
     }
 
-    def valid_problems(Integer max) {
+    def valid_problems() {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
-    def invalid_problems(Integer max) {
+    def invalid_problems() {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
