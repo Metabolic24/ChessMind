@@ -49,10 +49,10 @@
 
             <th>Diagramme</th>
 
-            <sec:ifAnyGranted roles='ROLE_ADMIN'>
+            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <th>Edition</th>
+                <th>Suppression</th>
             </sec:ifAnyGranted>
-
         </tr>
         </thead>
         <tbody>
@@ -87,6 +87,16 @@
                                 <g:actionSubmit class="edit" action="edit"
                                                 value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
                             </g:form>
+                        </td>
+
+                        <td>
+                        <g:if test="${problemInstance?.valide == false}">
+                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+                                <g:actionSubmit class="delete" action="delete"
+                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                            </g:form>
+                        </g:if>
                         </td>
                     </sec:ifAnyGranted>
             </tr>
