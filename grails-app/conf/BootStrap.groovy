@@ -39,6 +39,10 @@ class BootStrap {
             UserRole.create adminUser, adminRole, true
         }
 
+        if (!user.authorities.contains(userRole)) {
+            UserRole.create user, userRole, true
+        }
+
         byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate1.jpg"))
         byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate2.jpg"))
         byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate3.jpg"))
@@ -51,7 +55,7 @@ class BootStrap {
 
         assert User.count() == 2
         assert Role.count() == 3
-        assert UserRole.count() == 1
+        assert UserRole.count() == 2
     }
     def destroy = {
     }

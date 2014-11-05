@@ -18,14 +18,17 @@ class ProblemController {
         respond Problem.list(params), model:[problemInstanceCount: Problem.count()]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def show(Problem problemInstance) {
         respond problemInstance
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def create() {
         respond new Problem(params)
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def my_problems(Problem problemInstance) {
         respond Problem.list(params).findAll { p -> p.player.username == SecurityContextHolder.getContext().getAuthentication().name }, model:[problemInstanceCount: Problem.count()]
     }
@@ -34,15 +37,18 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def problems_to_validate() {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def answer(Problem problemInstance) {
         redirect(uri:"/solution/create")
     }
 
     @Transactional
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def save(Problem problemInstance) {
         if (problemInstance == null) {
             notFound()
@@ -65,11 +71,13 @@ class ProblemController {
         }
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def edit(Problem problemInstance) {
         respond problemInstance
     }
 
     @Transactional
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def update(Problem problemInstance) {
         if (problemInstance == null) {
             notFound()
@@ -92,6 +100,7 @@ class ProblemController {
         }
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     @Transactional
     def delete(Problem problemInstance) {
 
@@ -110,12 +119,15 @@ class ProblemController {
             '*'{ render status: NO_CONTENT }
         }
     }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validate(Problem problemInstance) {
         problemInstance.setValide(true)
         problemInstance.save failOnError: true, flush: true
         redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validateFromList(Problem problemInstance) {
         problemInstance.setValide(true)
         problemInstance.save failOnError: true, flush: true

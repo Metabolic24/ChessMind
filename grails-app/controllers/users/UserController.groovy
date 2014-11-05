@@ -1,8 +1,10 @@
 package users
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
 import score.Score
 
+@Secured(['ROLE_ADMIN'])
 class UserController extends grails.plugin.springsecurity.ui.UserController {
 
     def save() {
