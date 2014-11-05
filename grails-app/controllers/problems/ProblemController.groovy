@@ -34,7 +34,7 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
-    def invalid_problems() {
+    def problems_to_validate() {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
@@ -114,6 +114,12 @@ class ProblemController {
         problemInstance.setValide(true)
         problemInstance.save failOnError: true, flush: true
         redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
+    }
+
+    def validateFromList(Problem problemInstance) {
+        problemInstance.setValide(true)
+        problemInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/index",method:"PUT"
     }
 
     protected void notFound() {

@@ -13,20 +13,16 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-
-        <%-- For administrators and moderators, having more menus to administrate the website --%>
-
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
             <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             <li><g:link action="problems_to_validate"><g:message code="Problems to validate" args="[entityName]" /></g:link></li>
         </sec:ifAnyGranted>
-
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
     </ul>
 </div>
 <div id="list-problem" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+    <h1>To Validate <g:message code="default.list.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -51,15 +47,19 @@
 
             <th>Diagramme</th>
 
-            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                <th>Edition</th>
-                <th>Suppression</th>
-            </sec:ifAnyGranted>
+            <th>Suppression</th>
+
+            <th>Edition</th>
+
+            <th>Validation</th>
+
         </tr>
         </thead>
         <tbody>
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                <g:if test="${!problemInstance.valide}">
 
                     <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
@@ -83,24 +83,38 @@
                         </li>
                     </td>
 
-                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'edit']">
-                                <g:actionSubmit class="edit" action="edit"
-                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                            </g:form>
-                        </td>
-
-                        <td>
-                        <g:if test="${problemInstance?.valide == false}">
+                    <td>
                             <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
                                 <g:actionSubmit class="delete" action="delete"
                                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                             </g:form>
-                        </g:if>
-                        </td>
-                    </sec:ifAnyGranted>
+                    </td>
+
+                    <td>
+                        <g:form url="[resource: problemInstance, action: 'edit']">
+                            <g:actionSubmit class="edit" action="edit"
+                                            value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                        </g:form>
+                    </td>
+
+                    <%-- TODO : Validation
+                    <td>
+                        <g:form url="[resource: problemInstance, action: 'edit']">
+                            <g:actionSubmit class="edit" action="edit"
+                                            value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                        </g:form>
+                    </td>
+                    --%>
+
+                    <td>
+                        <g:form url="[resource: problemInstance, action: 'validateFromList']">
+                            <g:actionSubmit class="Problem" action="validateFromList"
+                                            value="${message(code: 'Validate', default: 'Validate')}"/>
+                        </g:form>
+                    </td>
+
+                </g:if>
             </tr>
         </g:each>
         </tbody>
