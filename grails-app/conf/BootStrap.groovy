@@ -1,5 +1,7 @@
 import org.apache.commons.io.IOUtils
+import problems.Comment
 import problems.Problem
+import problems.Solution
 import score.Score
 import users.Role
 import users.User
@@ -51,7 +53,12 @@ class BootStrap {
         def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)
         def problemTest3 = new Problem(player: user, image:image3, valide:false).save(failOnError: true, flush: true)
 
+        def solution1 = new Solution(user: adminUser, answer : "Ca1", problem: problemTest).save(failOnError: true, flush: true)
+        def solution2 = new Solution(user: user, answer : "Ca2", problem: problemTest2).save(failOnError: true, flush: true)
+        def solution3 = new Solution(user: user, answer : "Ca3", problem: problemTest3).save(failOnError: true, flush: true)
 
+        def comment1 = new Comment(text : "C'est une bonne solution", user : adminUser, solution: solution1).save(failOnError: true, flush: true)
+        def comment2 = new Comment(text : "C'est une mauvaise solution", user : user, solution: solution2).save(failOnError: true, flush: true)
 
         assert User.count() == 2
         assert Role.count() == 3

@@ -22,4 +22,43 @@ class CommentController {
             '*' { respond commentInstance, [status: CREATED] }
         }
     }
+
+
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Comment.list(params), model:[commentInstanceCount: Comment.count()]
+    }
+
+    def show(Comment commentInstance) {
+        respond commentInstance
+    }
+
+    def edit(Comment commentInstance) {
+        respond Comment.findById(params.commentid)
+    }
+
+    @Transactional
+    def update(Comment commentInstance) {
+        if (commentInstance == null) {
+            notFound()
+            return
+        }
+
+        if (commentInstance.hasErrors()) {
+            respond commentInstance.errors, view:'/comment/edit'
+            return
+        }
+
+        commentInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
+                redirect commentInstance
+            }
+            '*'{ respond commentInstance, [status: OK] }
+        }
+    }
+
+
 }
