@@ -4,8 +4,18 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.context.request.RequestContextHolder
 
+import javax.swing.ImageIcon
+import java.awt.Graphics2D
+import java.awt.Image
+import java.awt.RenderingHints
+
+import static java.awt.RenderingHints.*
+import java.awt.image.BufferedImage
+import javax.imageio.ImageIO
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import java.io.InputStream
 
 @Transactional(readOnly = true)
 class ProblemController {
@@ -146,11 +156,29 @@ class ProblemController {
 
     def viewImage = {
 
-        def problem = Problem.get( params.id )
+        def problem = Problem.get(params.id)
         byte[] img = problem.image
-        // response.contentType = 'image/png' // or the appropriate image content type
+
+        InputStream input = new ByteArrayInputStream(img);
+        BufferedImage bImageFromConvert = ImageIO.read(input);
+
+        int width = 300
+        int height = width
+
+        // Operations on image to resize
+        BufferedImage resized = new BufferedImage(width, height, bImageFromConvert.getType())
+        Graphics2D g = resized.createGraphics()
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
+        g.drawImage(bImageFromConvert, 0, 0, width, height, 0, 0, bImageFromConvert.getWidth(), bImageFromConvert.getHeight(), null)
+        g.dispose()
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream()
+
+        ImageIO.write(resized, 'jpg', baos)
+        response.outputStream << baos.toByteArray()
+        baos.close()
+
         response.outputStream << img
         response.outputStream.flush()
-
     }
 }
