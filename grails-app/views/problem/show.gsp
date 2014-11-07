@@ -1,4 +1,5 @@
-<%@ page import="problems.Comment; problems.Problem" %>
+<%@ page import="problems.Comment; problems.Problem; org.springframework.security.core.context.SecurityContextHolder" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,11 +129,14 @@
                                                                                            id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
                     <g:each in="${s.comments}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
-                        <g:form name="commentForm" url="[resource:c, action:'edit',controller:'comment']" action="edit" >
-                            ${c.text}
-                            <g:hiddenField name="commentid"  value="${c.id}"/>
+                            <g:form name="commentEditForm" url="[resource:c,controller:'comment']" >
+                                -> ${c.text} - ${c.user.username}
+                        <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                             <g:actionSubmit action="edit" value="Editer"/>
+                            <g:actionSubmit action="supprimer" value="Supprimer"/>
+                        </g:if>
                         </g:form>
+
                         </span>
 
                     </g:each>

@@ -57,8 +57,10 @@ class BootStrap {
         def solution2 = new Solution(user: user, answer : "Ca2", problem: problemTest2).save(failOnError: true, flush: true)
         def solution3 = new Solution(user: user, answer : "Ca3", problem: problemTest3).save(failOnError: true, flush: true)
 
-        def comment1 = new Comment(text : "C'est une bonne solution", user : adminUser, solution: solution1).save(failOnError: true, flush: true)
-        def comment2 = new Comment(text : "C'est une mauvaise solution", user : user, solution: solution2).save(failOnError: true, flush: true)
+        def comment1 = new Comment(text : "C'est une bonne solution 1", user : adminUser, solution: solution1).save(failOnError: true, flush: true)
+        def comment2 = new Comment(text : "C'est une mauvaise solution 2", user : adminUser, solution: solution2).save(failOnError: true, flush: true)
+        def comment3 = new Comment(text : "C'est une bonne solution 3", user : user, solution: solution1).save(failOnError: true, flush: true)
+        def comment4 = new Comment(text : "C'est une mauvaise solution 4", user : user, solution: solution2).save(failOnError: true, flush: true)
 
         assert User.count() == 2
         assert Role.count() == 3

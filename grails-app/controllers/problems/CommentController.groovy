@@ -35,7 +35,7 @@ class CommentController {
     }
 
     def edit(Comment commentInstance) {
-        respond commentInstance//Comment.findById(params.commentid)
+        respond commentInstance
     }
 
     @Transactional
@@ -50,14 +50,38 @@ class CommentController {
             return
         }
 
+        def commentProblem = commentInstance.solution.problem
+
         commentInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect commentInstance
+                redirect commentProblem
+
             }
             '*'{ respond commentInstance, [status: OK] }
+        }
+    }
+
+    @Transactional
+    def supprimer(Comment commentInstance) {
+
+        if (commentInstance == null) {
+            notFound()
+            return
+        }
+        def commentProblem = commentInstance.solution.problem
+
+        commentInstance.delete flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
+                redirect commentProblem
+
+            }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
