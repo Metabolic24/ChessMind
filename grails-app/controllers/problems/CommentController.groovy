@@ -2,7 +2,6 @@ package problems
 
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
-import users.User
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -14,11 +13,7 @@ class CommentController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def create() {
-        Comment commentInstance = new Comment(
-                text : params.comment,
-                user : User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),
-                solution : Solution.findById(params.solutionId))
-                .save(failOnError: true, flush:true)
+        Comment commentInstance = new Comment(text:params.comment,user:users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),solution:Solution.findById(params.solutionId)).save(failOnError: true, flush:true)
 
         request.withFormat {
             form multipartForm {
@@ -40,7 +35,7 @@ class CommentController {
     }
 
     def edit(Comment commentInstance) {
-        respond commentInstance//Comment.findById(params.commentid)
+        respond commentInstance
     }
 
     @Transactional
@@ -55,12 +50,15 @@ class CommentController {
             return
         }
 
+        def commentProblem = commentInstance.solution.problem
+
         commentInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect commentInstance
+                redirect commentProblem
+
             }
             '*'{ respond commentInstance, [status: OK] }
         }

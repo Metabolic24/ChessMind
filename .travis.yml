@@ -14,3 +14,8 @@ before_script:
 
 script: ./grailsw refresh-dependencies
      && ./grailsw test-app -- stacktrace
+
+deploy:
+  provider: heroku
+  app: chessmind
+  api_key: "705b95af-8660-4935-ad4e-acb9991943c5"
