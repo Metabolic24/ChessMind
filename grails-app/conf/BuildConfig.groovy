@@ -78,8 +78,6 @@ grails.project.dependency.resolution = {
             enabledByDefault = true
             html = true
             xml = true
-
-            exclusions = ['**/*Example*']
         }
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
