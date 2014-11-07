@@ -147,41 +147,44 @@
             </li>
         </g:if>
 
-        <g:if test="${problemInstance?.solved}">
-            <li class="fieldcontain">
-                <span id="solved-label" class="property-label"><g:message code="problem.solved.label"
-                                                                          default="Solved"/></span>
+        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
 
-                <span class="property-value" aria-labelledby="solved-label"><g:formatBoolean
-                        boolean="${problemInstance?.solved}"/></span>
+            <g:if test="${problemInstance?.solved}">
+                <li class="fieldcontain">
+                    <span id="solved-label" class="property-label"><g:message code="problem.solved.label"
+                                                                              default="Solved"/></span>
+
+                    <span class="property-value" aria-labelledby="solved-label"><g:formatBoolean
+                            boolean="${problemInstance?.solved}"/></span>
+
+                </li>
+            </g:if>
+
+            <li class="fieldcontain">
+
+                <span class="property-value" aria-labelledby="solved-label">
+                    <g:if test="${problemInstance?.valide}">
+                        Valide
+                    </g:if>
+
+                </span>
 
             </li>
-        </g:if>
 
-        <li class="fieldcontain">
-
-            <span class="property-value" aria-labelledby="solved-label">
-                <g:if test="${problemInstance?.valide}">
-                    Valide
-                </g:if>
-
-            </span>
-
-        </li>
-
-    </ol>
-    <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-        <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${problemInstance}"><g:message code="default.button.edit.label"
-                                                                                        default="Edit"/></g:link>
-            <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
-                    code="default.button.answer.label" default="Answer"/></g:link>
-            <g:actionSubmit class="delete" action="delete"
-                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-            <g:actionSubmit value="Validate" action="validate"/>
-        </fieldset>
-    </g:form>
+        </ol>
+        <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+            <fieldset class="buttons">
+                <g:link class="edit" action="edit" resource="${problemInstance}"><g:message code="default.button.edit.label"
+                                                                                            default="Edit"/></g:link>
+                <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                        code="default.button.answer.label" default="Answer"/></g:link>
+                <g:actionSubmit class="delete" action="delete"
+                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                <g:actionSubmit value="Validate" action="validate"/>
+            </fieldset>
+        </g:form>
+    </sec:ifAnyGranted>
 </div>
 </body>
 </html>
