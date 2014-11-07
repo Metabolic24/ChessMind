@@ -2,6 +2,7 @@ package problems
 
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
+import users.User
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -15,7 +16,7 @@ class CommentController {
     def create() {
         Comment commentInstance = new Comment(
                 text : params.comment,
-                user : users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),
+                user : User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),
                 solution : Solution.findById(params.solutionId))
                 .save(failOnError: true, flush:true)
 
