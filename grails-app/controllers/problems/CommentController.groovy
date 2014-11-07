@@ -64,26 +64,27 @@ class CommentController {
         }
     }
 
+
+    @Secured(['ROLE_ADMIN'])
     @Transactional
-    def supprimer(Comment commentInstance) {
+    def delete(Comment commentInstance) {
 
         if (commentInstance == null) {
             notFound()
             return
         }
-        def commentProblem = commentInstance.solution.problem
 
         commentInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect commentProblem
-
+                redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
     }
+
 
     protected void notFound() {
         request.withFormat {

@@ -29,6 +29,14 @@ class BootStrap {
                 password: "admin",
                 enabled: true).save(failOnError: true, flush:true)
 
+        def moderator = User.findByUsername('moderator') ?: new User(
+                name: "titi",
+                username: 'moderator',
+                score: new Score(score1: 0l, score2: 0l),
+                email: "mo@hotmail.fr",
+                password: "moderator",
+                enabled: true).save(failOnError: true, flush:true)
+
         def user = User.findByUsername('user') ?: new User(
                 name: "tata",
                 username: 'user',
@@ -43,6 +51,10 @@ class BootStrap {
 
         if (!user.authorities.contains(userRole)) {
             UserRole.create user, userRole, true
+        }
+
+        if (!moderator.authorities.contains(moderatorRole)) {
+            UserRole.create user, moderatorRole, true
         }
 
         byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate1.jpg"))
@@ -62,9 +74,9 @@ class BootStrap {
         def comment3 = new Comment(text : "C'est une bonne solution 3", user : user, solution: solution1).save(failOnError: true, flush: true)
         def comment4 = new Comment(text : "C'est une mauvaise solution 4", user : user, solution: solution2).save(failOnError: true, flush: true)
 
-        assert User.count() == 2
+        assert User.count() == 3
         assert Role.count() == 3
-        assert UserRole.count() == 2
+        assert UserRole.count() == 3
     }
     def destroy = {
     }

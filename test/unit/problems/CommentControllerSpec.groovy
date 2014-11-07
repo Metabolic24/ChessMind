@@ -32,6 +32,9 @@ class CommentControllerSpec extends Specification {
 
     void "Test the create action returns the correct model"() {
         given: "A logged user"
+        User.metaClass.static.findByUsername = { personne -> Mock(User) }
+        Solution.metaClass.static.findById = { id -> Mock(Solution) }
+
         Authentication a = Mock(Authentication)
         a.getName() >> "admin"
         SecurityContextHolder.setContext(new SecurityContext() {
@@ -45,6 +48,8 @@ class CommentControllerSpec extends Specification {
 
             }
         })
+
+        params.comment = "test"
 
         when: "The create action is executed"
         controller.create()
