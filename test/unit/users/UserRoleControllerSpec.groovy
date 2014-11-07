@@ -15,9 +15,9 @@ class UserRoleControllerSpec extends Specification {
         params['user'] = new User(username: "loic", password: "aaa", email:"a@a.net",enabled:true,accountExpired:true,
                 accountLocked:false,passwordExpired:false,score:new Score(score1:0l,score2:0l),name:"loic",
                 description:"coucou !")
-        params['role'] = new Role(authority: 'A')
-        params['user.id'] = 40
-        params['role.id'] = 42
+        params['role'] = new Role(authority: 'ROLE_USER')
+        params['user.id'] = 1
+        params['role.id'] = 2
     }
 
     void "Test the index action returns the correct model"() {
