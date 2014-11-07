@@ -1,23 +1,36 @@
 package users
 
-
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.*
 import problems.Problem
 import score.Score
 import spock.lang.*
 
 @TestFor(UserRoleController)
-@Mock(UserRole)
+@Mock([UserRole,User,Role])
 class UserRoleControllerSpec extends Specification {
+
+    User user
+    Role role
+    SpringSecurityService springSecurityService = Mock(SpringSecurityService)
+
+    def setup() {
+        user = new User(firstName: "franck", lastName: "s", username: "fsil", email: "mail@mail.com", password: "password")
+        user.springSecurityService = springSecurityService
+        springSecurityService.encodePassword(user.password) >> user.password
+        user.save()
+
+        role = new Role(authority: 'ROLE_USER').save(failOnError:true, flush:true)
+
+        UserRole.metaClass.static.exists = { l,j -> 'userRole.exists' }
+
+        UserRole userRole = new UserRole(user:user, role:role)
+    }
 
     def populateValidParams(params) {
         assert params != null
-        params['user'] = new User(username: "loic", password: "aaa", email:"a@a.net",enabled:true,accountExpired:true,
-                accountLocked:false,passwordExpired:false,score:new Score(score1:0l,score2:0l),name:"loic",
-                description:"coucou !")
-        params['role'] = new Role(authority: 'ROLE_USER')
-        params['user.id'] = 1
-        params['role.id'] = 2
+        params['user'] = user
+        params['role'] = role
     }
 
     void "Test the index action returns the correct model"() {

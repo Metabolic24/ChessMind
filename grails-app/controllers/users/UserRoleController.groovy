@@ -36,7 +36,7 @@ class UserRoleController {
             return
         }
 
-        userRoleInstance.save flush: true
+        userRoleInstance.save failOnError : true, flush: true
 
         request.withFormat {
             form multipartForm {
