@@ -13,7 +13,11 @@ class CommentController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def create() {
-        Comment commentInstance = new Comment(text:params.comment,user:users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),solution:Solution.findById(params.solutionId)).save(failOnError: true, flush:true)
+        Comment commentInstance = new Comment(
+                text : params.comment,
+                user : users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),
+                solution : Solution.findById(params.solutionId))
+                .save(failOnError: true, flush:true)
 
         request.withFormat {
             form multipartForm {
