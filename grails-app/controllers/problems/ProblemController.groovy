@@ -28,7 +28,6 @@ class ProblemController {
         respond Problem.list(params), model:[problemInstanceCount: Problem.count()]
     }
 
-    @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def show(Problem problemInstance) {
         respond problemInstance
     }

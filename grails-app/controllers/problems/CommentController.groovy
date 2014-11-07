@@ -1,6 +1,7 @@
 package problems
 
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -12,7 +13,7 @@ class CommentController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def create() {
-        Comment commentInstance = new Comment(text:params.comment,user:users.User.findByUsername("admin"),solution:Solution.findById(params.solutionId)).save(failOnError: true, flush:true)
+        Comment commentInstance = new Comment(text:params.comment,user:users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()),solution:Solution.findById(params.solutionId)).save(failOnError: true, flush:true)
 
         request.withFormat {
             form multipartForm {
@@ -34,7 +35,7 @@ class CommentController {
     }
 
     def edit(Comment commentInstance) {
-        respond Comment.findById(params.commentid)
+        respond commentInstance//Comment.findById(params.commentid)
     }
 
     @Transactional
@@ -45,7 +46,7 @@ class CommentController {
         }
 
         if (commentInstance.hasErrors()) {
-            respond commentInstance.errors, view:'/comment/edit'
+            respond commentInstance.errors, view:'edit'
             return
         }
 
@@ -60,5 +61,13 @@ class CommentController {
         }
     }
 
-
+    protected void notFound() {
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'comment.label', default: 'Comment'), params.id])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
+    }
 }

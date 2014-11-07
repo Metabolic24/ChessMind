@@ -2,22 +2,23 @@ package problems
 
 
 import grails.test.mixin.*
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContext
+import org.springframework.security.core.context.SecurityContextHolder
 import spock.lang.*
+import users.User
 
 @TestFor(CommentController)
 @Mock(Comment)
 class CommentControllerSpec extends Specification {
 
-    void "Test the create action returns the correct model"() {
-        given: "The number of comment"
-        def count = Comment.count()
-
-        when: "The create action is executed"
-        controller.create()
-
-        then: "The model is correctly created"
-        count == Comment.count()-1
+    def populateValidParams(params) {
+        assert params != null
+        params['text'] = "Test"
+        params['solution.id'] = 1
+        params['user'] = Mock(User)
     }
+
 
     void "Test the index action returns the correct model"() {
 
@@ -30,6 +31,21 @@ class CommentControllerSpec extends Specification {
     }
 
     void "Test the create action returns the correct model"() {
+        given: "A logged user"
+        Authentication a = Mock(Authentication)
+        a.getName() >> "admin"
+        SecurityContextHolder.setContext(new SecurityContext() {
+            @Override
+            Authentication getAuthentication() {
+                return a
+            }
+
+            @Override
+            void setAuthentication(Authentication authentication) {
+
+            }
+        })
+
         when: "The create action is executed"
         controller.create()
 
