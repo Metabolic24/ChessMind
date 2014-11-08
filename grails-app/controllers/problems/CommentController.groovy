@@ -50,14 +50,14 @@ class CommentController {
             return
         }
 
-        def commentProblem = commentInstance.solution.problem
+        def commentProblemId = commentInstance.solution.problem
 
         commentInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect commentProblem
+                redirect action:'show', controller:'problem', id:commentProblemId
 
             }
             '*'{ respond commentInstance, [status: OK] }

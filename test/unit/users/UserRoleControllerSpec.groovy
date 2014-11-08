@@ -22,7 +22,7 @@ class UserRoleControllerSpec extends Specification {
 
         role = new Role(authority: 'ROLE_USER').save(failOnError:true, flush:true)
 
-        UserRole.metaClass.static.exists = { l,j -> 'userRole.exists' }
+        UserRole.metaClass.static.exists = { l,j -> null }
 
         UserRole userRole = new UserRole(user:user, role:role)
     }

@@ -16,6 +16,7 @@ class CommentControllerSpec extends Specification {
         assert params != null
         params['text'] = "Test"
         params['solution.id'] = 1
+        params['solution.problem.id'] = 1
         params['user'] = Mock(User)
     }
 
@@ -117,7 +118,7 @@ class CommentControllerSpec extends Specification {
         controller.update(comment)
 
         then: "A redirect is issues to the show action"
-        response.redirectedUrl == "/comment/show/$comment.id"
+        response.redirectedUrl.contains('/problem/show')
         flash.message != null
     }
 }
