@@ -1,6 +1,9 @@
 language: groovy
 jdk: 
      - oraclejdk8
+     - oraclejdk7
+     - openjdk8
+     - openjdk7
 
 env:
      - GRAILS_VERSION=2.3.11
@@ -19,3 +22,6 @@ deploy:
   provider: heroku
   app: chessmind
   api_key: "705b95af-8660-4935-ad4e-acb9991943c5"
+  strategy: git
+  on:
+    branch:master
