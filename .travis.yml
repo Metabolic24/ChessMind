@@ -23,4 +23,4 @@ deploy:
   api_key: "705b95af-8660-4935-ad4e-acb9991943c5"
   strategy: git
   on:
-    branch:master
+    branch: master
