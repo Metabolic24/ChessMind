@@ -38,7 +38,7 @@ class ProblemController {
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
-    def my_problems(Problem problemInstance) {
+    def my_problems() {
         respond Problem.list(params).findAll { p -> p.player.username == SecurityContextHolder.getContext().getAuthentication().name }, model:[problemInstanceCount: Problem.count()]
     }
 

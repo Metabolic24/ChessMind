@@ -47,6 +47,10 @@
 
             <th>Diagramme</th>
 
+            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                <th>Suppression</th>
+            </sec:ifAnyGranted>
+
         </tr>
         </thead>
         <tbody>
@@ -76,6 +80,16 @@
                             <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
                         </li>
                     </td>
+
+                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                        <td>
+                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+                                <g:actionSubmit class="delete" action="delete"
+                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                            </g:form>
+                        </td>
+                    </sec:ifAnyGranted>
 
                 </g:if>
             </tr>
