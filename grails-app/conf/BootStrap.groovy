@@ -54,7 +54,7 @@ class BootStrap {
         }
 
         if (!moderator.authorities.contains(moderatorRole)) {
-            UserRole.create user, moderatorRole, true
+            UserRole.create moderator, moderatorRole, true
         }
 
         byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate1.jpg"))
