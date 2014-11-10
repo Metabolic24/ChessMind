@@ -25,6 +25,13 @@ class ScoreControllerSpec extends Specification {
         then:"The model is correct"
             !model.scoreInstanceList
             model.scoreInstanceCount == 0
+
+        when:"The index action is executed"
+        controller.index(15)
+
+        then:"The model is correct"
+        !model.scoreInstanceList
+        model.scoreInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -37,9 +44,19 @@ class ScoreControllerSpec extends Specification {
 
     void "Test the save action correctly persists an instance"() {
 
+        when:"The save action is executed with a null instance"
+        request.contentType = FORM_CONTENT_TYPE
+        def score = null
+        controller.save(score)
+
+        then:"The create view is rendered again with the correct model"
+        model.scoreInstance== null
+        response.redirectedUrl == '/score/index'
+
         when:"The save action is executed with an invalid instance"
+            response.reset()
             request.contentType = FORM_CONTENT_TYPE
-            def score = new Score()
+            score = new Score()
             score.validate()
             controller.save(score)
 
