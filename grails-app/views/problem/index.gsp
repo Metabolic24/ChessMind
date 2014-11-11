@@ -35,18 +35,6 @@
         <tr>
             <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
 
-            <g:sortableColumn property="description" title="${message(code: 'problem.description.label', default: 'Description')}" />
-
-            <g:sortableColumn property="blackPlayer" title="${message(code: 'problem.blackPlayer.label', default: 'Black Player')}" />
-
-            <g:sortableColumn property="whitePlayer" title="${message(code: 'problem.whitePlayer.label', default: 'White Player')}" />
-
-            <g:sortableColumn property="date" title="${message(code: 'problem.date.label', default: 'Date')}" />
-
-            <g:sortableColumn property="place" title="${message(code: 'problem.place.label', default: 'Place')}" />
-
-            <g:sortableColumn property="tournament" title="${message(code: 'problem.tournament.label', default: 'Tournament')}" />
-
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
             <th>Diagramme</th>
@@ -63,24 +51,10 @@
 
                     <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "description")}</td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "blackPlayer")}</td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "whitePlayer")}</td>
-
-                    <td><g:formatDate date="${problemInstance.date}" /></td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "place")}</td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
-
                     <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
                     <td>
-                        <li class="fieldcontain">
-                            <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
-                        </li>
+                        <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
                     </td>
 
                     <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>

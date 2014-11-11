@@ -16,7 +16,7 @@
 		<g:message code="solution.user.label" default="User" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="user" name="user.id" from="${users.User.list()}" optionKey="id" required="" value="${solutionInstance?.user?.id}" class="many-to-one"/>
+    <g:select id="user" name="user.id" from="${users.User.list()}" optionKey="id" optionValue = "username" required="" value="${solutionInstance?.user?.id}" class="many-to-one"/>
 
 </div>
 
