@@ -36,7 +36,7 @@
 				<g:each in="${scoreInstanceList}" status="i" var="scoreInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                        <td><g:link action="show" controller="Player" id="${scoreInstance.player.id}">${fieldValue(bean: scoreInstance, field: "user")}</g:link></td>
+                        <td><g:link action="show" controller="user" id="${scoreInstance.user.id}">${fieldValue(bean: scoreInstance, field: "user")}</g:link></td>
 
                         <td>${fieldValue(bean: scoreInstance, field: "score1")}</td>
 					
