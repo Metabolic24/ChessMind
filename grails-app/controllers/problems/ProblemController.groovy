@@ -3,6 +3,7 @@ package problems
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.context.request.RequestContextHolder
+import users.Role
 
 import javax.swing.ImageIcon
 import java.awt.Graphics2D
@@ -67,6 +68,11 @@ class ProblemController {
         if (problemInstance.hasErrors()) {
             respond problemInstance.errors, view:'create'
             return
+        }
+
+        if (problemInstance.player.getAuthorities().contains(Role.findByAuthority('ROLE_ADMIN'))
+                || problemInstance.player.getAuthorities().contains(Role.findByAuthority('ROLE_MODERATOR'))){
+            problemInstance.setValide(true)
         }
 
         problemInstance.save flush:true
