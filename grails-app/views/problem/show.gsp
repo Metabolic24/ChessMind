@@ -18,11 +18,13 @@
         <%-- <li><g:link class="create" action="create"><g:message code="default.new.label" /></g:link></li> --%>
         <li><g:link class="create" action="create">New Problem</g:link></li>
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            <li><g:link action="problems_to_validate"><g:message code="Problems to validate" args="[entityName]" /></g:link></li>
+            <li><g:link class="list" action="index"><g:message code="default.list.label"
+                                                               args="[entityName]"/></g:link></li>
+            <li><g:link action="problems_to_validate"><g:message code="Problems to validate"
+                                                                 args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
-        <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
-        <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
+        <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
+        <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
     </ul>
 </div>
 
@@ -124,26 +126,31 @@
                                                                              default="Solutions"/></span>
 
                 <g:each in="${problemInstance.solutions}" var="s">
-                    <span class="property-value" aria-labelledby="solutions-label"><g:link controller="solution"
-                                                                                           action="show"
-                                                                                           id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+                    <span class="property-value" aria-labelledby="solutions-label">
+                        ${s.answer} (
+                        <g:link controller="user" action="show"
+                            id="${s?.user?.id}">${s?.user?.username}</g:link>
+                        )
+                    </span>
                     <g:each in="${s.comments}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
-                            <g:form name="commentEditForm" url="[resource:c,controller:'comment']" >
-                                -> ${c.text} - ${c.user.username}
-                        <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
-                            <g:actionSubmit action="edit" value="Editer"/>
-                            <g:actionSubmit action="supprimer" value="Supprimer"/>
-                        </g:if>
-                        </g:form>
+                            <g:form name="commentEditForm" url="[resource: c, controller: 'comment']">
+                                -> ${c.text} -
+                                <g:link controller="user" action="show"
+                                                       id="${c?.user?.id}">${c?.user?.username}</g:link>
+                                <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
+                                    <g:actionSubmit action="edit" value="Editer"/>
+                                    <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                </g:if>
+                            </g:form>
 
                         </span>
 
                     </g:each>
 
-                    <g:form name="commentForm" url="[action:'create',controller:'comment']" action="create">
+                    <g:form name="commentForm" url="[action: 'create', controller: 'comment']" action="create">
                         <g:textArea name="comment" value="${comment}" rows="5" columns="30"/>
-                        <g:hiddenField name="solutionId" value="${s.id}" />
+                        <g:hiddenField name="solutionId" value="${s.id}"/>
                         <g:actionSubmit action="create" value="Commenter"/>
                     </g:form>
                 </g:each>
@@ -165,30 +172,46 @@
             </g:if>
 
             <li class="fieldcontain">
-
                 <span class="property-value" aria-labelledby="solved-label">
-                    <g:if test="${problemInstance?.valide}">
-                        Valide
+                    <g:if test="${!problemInstance?.valide}">
+                        En attente de Validation
                     </g:if>
 
                 </span>
-
             </li>
-
-        </ol>
+        </sec:ifAnyGranted>
+    </ol>
         <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
             <fieldset class="buttons">
-                <g:link class="edit" action="edit" resource="${problemInstance}"><g:message code="default.button.edit.label"
-                                                                                            default="Edit"/></g:link>
-                <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
-                        code="default.button.answer.label" default="Answer"/></g:link>
-                <g:actionSubmit class="delete" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                <g:actionSubmit value="Validate" action="validate"/>
+                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                    <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
+                            code="default.button.edit.label" default="Edit"/></g:link>
+                    <g:if test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
+                        <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                            code="default.button.answer.label" default="Answer"/></g:link>
+                    </g:if>
+                    <g:actionSubmit class="delete" action="delete"
+                                    value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                    onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                    <g:if test="${!problemInstance?.valide}">
+                        <g:actionSubmit value="Validate" action="validate"/>
+                    </g:if>
+                </sec:ifAnyGranted>
+                <sec:ifNotGranted roles='ROLE_USER'>
+                    <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
+                        <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
+                                code="default.button.edit.label" default="Edit"/></g:link>
+                        <g:actionSubmit class="delete" action="delete"
+                                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                        onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                    </g:if>
+                    <g:elseif test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
+                        <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                                code="default.button.answer.label" default="Answer"/></g:link>
+                    </g:elseif>
+                </sec:ifNotGranted>
             </fieldset>
         </g:form>
-    </sec:ifAnyGranted>
 </div>
 </body>
 </html>
