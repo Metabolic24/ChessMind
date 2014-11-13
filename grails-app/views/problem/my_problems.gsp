@@ -1,4 +1,4 @@
-<%@ page import="problems.Problem" %>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder; problems.Problem" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,20 +73,7 @@
                 </td>
 
                 <td>
-                    <g:if test="${problemInstance?.valide}">
-                        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                            <g:form url="[resource: problemInstance, action: 'edit']">
-                                <g:actionSubmit class="edit" action="edit"
-                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                            </g:form>
-                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-                                <g:actionSubmit class="delete" action="delete"
-                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                            </g:form>
-                        </sec:ifAnyGranted>
-                    </g:if>
-                    <g:else>
+                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                         <g:form url="[resource: problemInstance, action: 'edit']">
                             <g:actionSubmit class="edit" action="edit"
                                             value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
@@ -96,7 +83,23 @@
                                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                         </g:form>
-                    </g:else>
+                    </sec:ifAnyGranted>
+                    <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                        <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
+                            <g:form url="[resource: problemInstance]">
+                                <g:actionSubmit class="edit" action="edit"
+                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                                <g:actionSubmit class="delete" action="delete"
+                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                            </g:form>
+                        </g:if>
+                        <g:elseif
+                                test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
+                            <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                                    code="default.button.answer.label" default="Answer"/></g:link>
+                        </g:elseif>
+                    </sec:ifNotGranted>
                 </td>
             </tr>
         </g:each>
