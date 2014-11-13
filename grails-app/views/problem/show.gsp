@@ -129,7 +129,7 @@
                     <span class="property-value" aria-labelledby="solutions-label">
                         ${s.answer} (
                         <g:link controller="user" action="show"
-                            id="${s?.user?.id}">${s?.user?.username}</g:link>
+                                id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
                     </span>
                     <g:each in="${s.comments}" var="c">
@@ -137,7 +137,7 @@
                             <g:form name="commentEditForm" url="[resource: c, controller: 'comment']">
                                 -> ${c.text} -
                                 <g:link controller="user" action="show"
-                                                       id="${c?.user?.id}">${c?.user?.username}</g:link>
+                                        id="${c?.user?.id}">${c?.user?.username}</g:link>
                                 <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
@@ -181,37 +181,37 @@
             </li>
         </sec:ifAnyGranted>
     </ol>
-        <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-            <fieldset class="buttons">
-                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+    <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+        <fieldset class="buttons">
+            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
+                        code="default.button.edit.label" default="Edit"/></g:link>
+                <g:if test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
+                    <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                            code="default.button.answer.label" default="Answer"/></g:link>
+                </g:if>
+                <g:actionSubmit class="delete" action="delete"
+                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                <g:if test="${!problemInstance?.valide}">
+                    <g:actionSubmit value="Validate" action="validate"/>
+                </g:if>
+            </sec:ifAnyGranted>
+            <sec:ifNotGranted roles='ROLE_USER'>
+                <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
                     <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
                             code="default.button.edit.label" default="Edit"/></g:link>
-                    <g:if test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
-                        <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
-                            code="default.button.answer.label" default="Answer"/></g:link>
-                    </g:if>
                     <g:actionSubmit class="delete" action="delete"
                                     value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                     onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                    <g:if test="${!problemInstance?.valide}">
-                        <g:actionSubmit value="Validate" action="validate"/>
-                    </g:if>
-                </sec:ifAnyGranted>
-                <sec:ifNotGranted roles='ROLE_USER'>
-                    <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
-                        <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
-                                code="default.button.edit.label" default="Edit"/></g:link>
-                        <g:actionSubmit class="delete" action="delete"
-                                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                        onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                    </g:if>
-                    <g:elseif test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
-                        <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
-                                code="default.button.answer.label" default="Answer"/></g:link>
-                    </g:elseif>
-                </sec:ifNotGranted>
-            </fieldset>
-        </g:form>
+                </g:if>
+                <g:elseif test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
+                    <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
+                            code="default.button.answer.label" default="Answer"/></g:link>
+                </g:elseif>
+            </sec:ifNotGranted>
+        </fieldset>
+    </g:form>
 </div>
 </body>
 </html>

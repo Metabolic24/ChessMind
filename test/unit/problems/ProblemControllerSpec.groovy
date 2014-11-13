@@ -3,13 +3,7 @@ package problems
 
 
 import grails.test.mixin.*
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.context.SecurityContext
-import org.springframework.security.core.context.SecurityContextHolder
-import score.Score
 import spock.lang.*
-import users.User
-import java.util.Set
 
 @TestFor(ProblemController)
 @Mock(Problem)
@@ -17,16 +11,8 @@ class ProblemControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["image"] = [0, 1]
-        params["description"] = ''
-        params["blackPlayer"] = ''
-        params["whitePlayer"] = ''
-        params["date"] = new Date()
-        params["place"] = ''
-        params["tournament"] = ''
-        params["solved"] = false
-        params["valide"] = false
-        params["player"] = Mock(User)
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
     }
 
     void "Test the index action returns the correct model"() {
@@ -160,55 +146,4 @@ class ProblemControllerSpec extends Specification {
             response.redirectedUrl == '/problem/index'
             flash.message != null
     }
-    void "Test update valide"() {
-        given: "A valid problem"
-            populateValidParams(params)
-            def problem = new Problem(params).save(failOnError: true, flush: true)
-
-        when:"The valide is executed"
-            controller.validate(problem)
-
-        then:"Valide attribute is true"
-            problem.valide==true
-    }
-/*
-    void "Test that the my_problems returns the correct problems number"() {
-
-        given: "An user and some problems added to him"
-
-            def player = Mock(User)
-            player.getUsername() >> "admin"
-
-            Set<Problem> problems = new ArrayList<Problem>()
-            Problem p1 = new Problem(player: player, image:[0,1], valide:true).save()
-            Problem p2 = new Problem(player: player, image:[0,1], valide:true).save()
-            Problem p3 = new Problem(player: player, image:[0,1], valide:true).save()
-
-            problems.add(p1)
-            problems.add(p2)
-            problems.add(p3)
-
-            player.getProblems() >> problems
-
-            def auth = Mock(Authentication)
-            auth.getName() >> "admin"
-
-            SecurityContextHolder.setContext(new SecurityContext() {
-                @Override
-                Authentication getAuthentication() {
-                    return auth
-                }
-
-                @Override
-                void setAuthentication(Authentication authentication) {
-
-                }
-            })
-
-        when:"The my_problems is executed"
-        controller.my_problems()
-
-        then:"A model is displaying all problems of the current player"
-        model.problemInstanceCount == 3
-    }*/
 }

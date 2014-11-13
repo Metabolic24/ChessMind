@@ -1,5 +1,6 @@
 package problems
 
+import alert.Alert
 import users.User
 
 
@@ -35,7 +36,7 @@ class Problem {
 
     /*GORM constraints*/
 
-    static hasMany = [solutions : Solution]
+    static hasMany = [solutions : Solution, alerts : Alert]
 
     static belongsTo = [player : User]
 }

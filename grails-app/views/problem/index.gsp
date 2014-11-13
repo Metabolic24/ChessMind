@@ -14,7 +14,7 @@
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 
-        <%-- For administrators and moderators, having more menus to administrate the website --%>
+    <%-- For administrators and moderators, having more menus to administrate the website --%>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
             <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
@@ -49,30 +49,30 @@
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                    <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
+                <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
+                <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
+                <td>
+                    <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                </td>
+
+                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                     <td>
-                        <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                        <g:form url="[resource: problemInstance, action: 'edit']">
+                            <g:actionSubmit class="edit" action="edit"
+                                            value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                        </g:form>
                     </td>
 
-                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'edit']">
-                                <g:actionSubmit class="edit" action="edit"
-                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                            </g:form>
-                        </td>
-
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-                                <g:actionSubmit class="delete" action="delete"
-                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                            </g:form>
-                        </td>
-                    </sec:ifAnyGranted>
+                    <td>
+                        <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+                            <g:actionSubmit class="delete" action="delete"
+                                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                        </g:form>
+                    </td>
+                </sec:ifAnyGranted>
             </tr>
         </g:each>
         </tbody>
