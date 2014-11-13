@@ -186,4 +186,10 @@ class ProblemController {
         response.outputStream << img
         response.outputStream.flush()
     }
+
+    def alert(Problem problemInstance) {
+        //redirect(uri:"/alert/create", params:[problem:problemInstance])
+        print "problemInstance : " + problemInstance.id
+        redirect action: 'create', controller: 'alert', params: [problemId: problemInstance.id]
+    }
 }

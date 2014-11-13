@@ -193,6 +193,13 @@
                 <g:actionSubmit class="delete" action="delete"
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+
+                <%-- TODO : A mettre dans un if connecté en tant que user
+                <g:actionSubmit class="alert" action="alert" resource="${problemInstance}" value="${message(code: 'Alerter', default: 'Alerter')}" />
+                <%-- /TODO --%>
+                <g:link class="alert" action="alert" resource="${problemInstance}"><g:message
+                        code="Alerter" default="Alerter"/></g:link>
+
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
