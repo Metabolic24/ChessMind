@@ -142,6 +142,8 @@
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
                                 </g:if>
+                                <g:actionSubmit action="like" value="approuver"/>
+
                             </g:form>
 
                         </span>
