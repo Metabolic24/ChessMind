@@ -5,11 +5,9 @@ import grails.test.mixin.*
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
-import score.Score
 import spock.lang.*
 import users.Role
 import users.User
-import java.util.Set
 
 @TestFor(ProblemController)
 @Mock([Problem, Role])
@@ -48,6 +46,24 @@ class ProblemControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
+        given: "A valid SecurityContext"
+        def auth = Mock(Authentication)
+        auth.getName() >> "admin"
+
+        SecurityContextHolder.setContext(new SecurityContext() {
+            @Override
+            Authentication getAuthentication() {
+                return auth
+            }
+
+            @Override
+            void setAuthentication(Authentication authentication) {
+
+            }
+        })
+
+        User.metaClass.static.findByUsername = { l -> Mock(User) }
+
         when: "Save is called for a domain instance that doesn't exist"
         request.contentType = FORM_CONTENT_TYPE
         controller.save(null)
@@ -55,6 +71,7 @@ class ProblemControllerSpec extends Specification {
         then: "A 404 error is returned"
         response.redirectedUrl == '/problem/index'
         flash.message != null
+
 
         when: "The save action is executed with an invalid instance"
         def problem = new Problem()

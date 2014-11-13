@@ -4,6 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.context.request.RequestContextHolder
 import users.Role
+import users.User
 
 import javax.swing.ImageIcon
 import java.awt.Graphics2D
@@ -65,6 +66,11 @@ class ProblemController {
             return
         }
 
+        if(problemInstance.player == null) {
+            problemInstance.player = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName())
+            problemInstance.validate()
+        }
+
         if (problemInstance.hasErrors()) {
             respond problemInstance.errors, view:'create'
             return
@@ -75,7 +81,7 @@ class ProblemController {
             problemInstance.setValide(true)
         }
 
-        problemInstance.save flush:true
+        problemInstance.save failOnError: true, flush:true
 
         request.withFormat {
             form multipartForm {
