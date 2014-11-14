@@ -70,8 +70,8 @@ class ProblemController {
             return
         }
 
-        if (problemInstance.player.getAuthorities().contains(Role.findByAuthority('ROLE_ADMIN'))
-                || problemInstance.player.getAuthorities().contains(Role.findByAuthority('ROLE_MODERATOR'))){
+        if (problemInstance.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_ADMIN'))
+                || problemInstance.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_MODERATOR'))){
             problemInstance.setValide(true)
         }
 
