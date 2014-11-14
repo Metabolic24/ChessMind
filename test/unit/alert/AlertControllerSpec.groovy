@@ -3,16 +3,22 @@ package alert
 
 
 import grails.test.mixin.*
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContext
+import org.springframework.security.core.context.SecurityContextHolder
+import problems.Problem
 import spock.lang.*
+import users.User
 
 @TestFor(AlertController)
-@Mock(Alert)
+@Mock([Alert])
 class AlertControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params['user'] = Mock(User)
+        params['description'] = "La description doit être plus poussée !"
+        params['problem'] = Mock(Problem)
     }
 
     void "Test the index action returns the correct model"() {
@@ -34,6 +40,25 @@ class AlertControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
+
+        given:"A connected user"
+        def auth = Mock(Authentication)
+        auth.getName() >> "admin"
+
+        SecurityContextHolder.setContext(new SecurityContext() {
+            @Override
+            Authentication getAuthentication() {
+                return auth
+            }
+
+            @Override
+            void setAuthentication(Authentication authentication) {
+
+            }
+        })
+
+        User.metaClass.static.findByUsername = { l -> Mock(User) }
+        Problem.metaClass.static.findById = { id -> Mock(Problem) }
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
@@ -96,7 +121,7 @@ class AlertControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/alert/index'
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
 
 
@@ -127,7 +152,7 @@ class AlertControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/alert/index'
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
 
         when:"A domain instance is created"
@@ -143,7 +168,7 @@ class AlertControllerSpec extends Specification {
 
         then:"The instance is deleted"
             Alert.count() == 0
-            response.redirectedUrl == '/alert/index'
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
     }
 }
