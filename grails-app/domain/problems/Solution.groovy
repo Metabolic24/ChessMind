@@ -6,6 +6,7 @@ class Solution {
 
     User user;
     String answer;
+    //int like;
 
     static hasMany = [comments:Comment]
     static belongsTo = [problem:Problem]
