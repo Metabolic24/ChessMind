@@ -138,6 +138,18 @@ class ScoreControllerSpec extends Specification {
         then:"A redirect is issues to the show action"
             response.redirectedUrl == "/score/show/$score.id"
             flash.message != null
+
+        when:"A valid domain instance is passed to the update action"
+        response.reset()
+        request.format = "html"
+        populateValidParams(params)
+        score = new Score(params).save(flush: true)
+        controller.update(score)
+
+        then:"A redirect is issues to the show action"
+        response.format=="all"
+        response.redirectedUrl == "/score/show/$score.id"
+        flash.message !=  null
     }
 
     void "Test that the delete action deletes an instance if it exists"() {

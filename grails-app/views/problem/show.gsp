@@ -145,6 +145,8 @@
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
                                 </g:if>
+                                <g:actionSubmit action="like" value="approuver"/>
+
                             </g:form>
 
                         </span>
@@ -206,8 +208,11 @@
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
+                <g:elseif test="${!problemInstance?.solved}">
+                    <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
+                </g:elseif>
             </sec:ifAnyGranted>
-            <sec:ifNotGranted roles='ROLE_USER'>
+            <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
                     <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
                             code="default.button.edit.label" default="Edit"/></g:link>

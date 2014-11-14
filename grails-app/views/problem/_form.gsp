@@ -14,7 +14,6 @@
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'description', 'error')} ">
     <label for="description">
         <g:message code="problem.description.label" default="Description" />
-
     </label>
     <g:textField name="description" value="${problemInstance?.description}"/>
 
@@ -23,6 +22,7 @@
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'blackPlayer', 'error')} ">
     <label for="blackPlayer">
         <g:message code="problem.blackPlayer.label" default="Black Player" />
+
 
     </label>
     <g:textField name="blackPlayer" value="${problemInstance?.blackPlayer}"/>
@@ -65,11 +65,15 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'player', 'error')} required">
-    <label for="player">
-        <g:message code="problem.player.label" default="Player" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="player" name="player.id" from="${users.User.list()}" optionKey="id" optionValue = "username" required="" value="${problemInstance?.player?.id}" class="many-to-one"/>
+<sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
 
-</div>
+    <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'player', 'error')} required">
+        <label for="player">
+            <g:message code="problem.player.label" default="Player"/>
+            <span class="required-indicator">*</span>
+        </label>
+        <g:select id="player" name="player.id" from="${users.User.list()}" optionKey="id" optionValue="username"
+                  required="" value="${problemInstance?.player?.id}" noSelection="['null':'Select an user']" class="many-to-one"/>
+
+    </div>
+</sec:ifAnyGranted>

@@ -4,6 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.context.request.RequestContextHolder
 import users.Role
+import users.User
 
 import javax.swing.ImageIcon
 import java.awt.Graphics2D
@@ -65,17 +66,22 @@ class ProblemController {
             return
         }
 
+        if(problemInstance.player == null) {
+            problemInstance.player = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName())
+            problemInstance.validate()
+        }
+
         if (problemInstance.hasErrors()) {
             respond problemInstance.errors, view:'create'
             return
         }
 
-        if (problemInstance.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_ADMIN'))
-                || problemInstance.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_MODERATOR'))){
+        if (problemInstance?.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_ADMIN'))
+                || problemInstance?.player?.getAuthorities()?.contains(Role.findByAuthority('ROLE_MODERATOR'))){
             problemInstance.setValide(true)
         }
 
-        problemInstance.save flush:true
+        problemInstance.save failOnError: true, flush:true
 
         request.withFormat {
             form multipartForm {
@@ -147,6 +153,14 @@ class ProblemController {
         problemInstance.setValide(true)
         problemInstance.save failOnError: true, flush: true
         redirect uri:"/problem/index",method:"PUT"
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
+    def forceResolve(Problem problemInstance) {
+        problemInstance.setSolved(true)
+        problemInstance.save failOnError: true, flush: true
+        //TODO Appliquer les calculs de score
+        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
     }
 
     protected void notFound() {
