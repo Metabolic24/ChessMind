@@ -22,7 +22,7 @@ class BootStrap {
         def moderatorRole = Role.findByAuthority('ROLE_MODERATOR') ?: new Role(authority: 'ROLE_MODERATOR').save(failOnError: true, flush:true)
         def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true, flush:true)
 
-        def adminUser = User.findByUsername('admin') ?: new User(
+        def admin = User.findByUsername('admin') ?: new User(
                 name: "toto",
                 username: 'admin',
                 score: new Score(score1: 0l, score2: 0l),
@@ -46,8 +46,8 @@ class BootStrap {
                 password: "user",
                 enabled: true).save(failOnError: true, flush:true)
 
-        if (!adminUser.authorities.contains(adminRole)) {
-            UserRole.create adminUser, adminRole, true
+        if (!admin.authorities.contains(adminRole)) {
+            UserRole.create admin, adminRole, true
         }
 
         if (!user.authorities.contains(userRole)) {
@@ -55,23 +55,23 @@ class BootStrap {
         }
 
         if (!moderator.authorities.contains(moderatorRole)) {
-            UserRole.create user, moderatorRole, true
+            UserRole.create moderator, moderatorRole, true
         }
 
         byte[] image = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate1.jpg"))
         byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate2.jpg"))
         byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate3.jpg"))
 
-        def problemTest = new Problem(player: adminUser, image:image, valide:true).save(failOnError: true, flush: true)
+        def problemTest = new Problem(player: admin, image:image, valide:true).save(failOnError: true, flush: true)
         def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)
         def problemTest3 = new Problem(player: user, image:image3, valide:false).save(failOnError: true, flush: true)
 
-        def solution1 = new Solution(user: adminUser, answer : "Ca1", problem: problemTest).save(failOnError: true, flush: true)
+        def solution1 = new Solution(user: admin, answer : "Ca1", problem: problemTest).save(failOnError: true, flush: true)
         def solution2 = new Solution(user: user, answer : "Ca2", problem: problemTest2).save(failOnError: true, flush: true)
         def solution3 = new Solution(user: user, answer : "Ca3", problem: problemTest3).save(failOnError: true, flush: true)
 
-        def comment1 = new Comment(text : "C'est une bonne solution 1", user : adminUser, solution: solution1).save(failOnError: true, flush: true)
-        def comment2 = new Comment(text : "C'est une mauvaise solution 2", user : adminUser, solution: solution2).save(failOnError: true, flush: true)
+        def comment1 = new Comment(text : "C'est une bonne solution 1", user : admin, solution: solution1).save(failOnError: true, flush: true)
+        def comment2 = new Comment(text : "C'est une mauvaise solution 2", user : admin, solution: solution2).save(failOnError: true, flush: true)
         def comment3 = new Comment(text : "C'est une bonne solution 3", user : user, solution: solution1).save(failOnError: true, flush: true)
         def comment4 = new Comment(text : "C'est une mauvaise solution 4", user : user, solution: solution2).save(failOnError: true, flush: true)
 

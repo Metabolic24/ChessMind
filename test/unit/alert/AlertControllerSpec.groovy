@@ -1,20 +1,24 @@
-package score
+package alert
 
 
 
 import grails.test.mixin.*
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContext
+import org.springframework.security.core.context.SecurityContextHolder
+import problems.Problem
 import spock.lang.*
 import users.User
 
-@TestFor(ScoreController)
-@Mock([User,Score])
-class ScoreControllerSpec extends Specification {
+@TestFor(AlertController)
+@Mock([Alert])
+class AlertControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["score1"]=2l
-        params["score2"]=3l
-        params["user.id"]=1
+        params['user'] = Mock(User)
+        params['description'] = "La description doit être plus poussée !"
+        params['problem'] = Mock(Problem)
     }
 
     void "Test the index action returns the correct model"() {
@@ -23,15 +27,8 @@ class ScoreControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.scoreInstanceList
-            model.scoreInstanceCount == 0
-
-        when:"The index action is executed"
-        controller.index(15)
-
-        then:"The model is correct"
-        !model.scoreInstanceList
-        model.scoreInstanceCount == 0
+            !model.alertInstanceList
+            model.alertInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -39,42 +36,51 @@ class ScoreControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.scoreInstance!= null
+            model.alertInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
 
-        when:"The save action is executed with a null instance"
-        request.contentType = FORM_CONTENT_TYPE
-        def score = null
-        controller.save(score)
+        given:"A connected user"
+        def auth = Mock(Authentication)
+        auth.getName() >> "admin"
 
-        then:"The create view is rendered again with the correct model"
-        model.scoreInstance== null
-        response.redirectedUrl == '/score/index'
+        SecurityContextHolder.setContext(new SecurityContext() {
+            @Override
+            Authentication getAuthentication() {
+                return auth
+            }
+
+            @Override
+            void setAuthentication(Authentication authentication) {
+
+            }
+        })
+
+        User.metaClass.static.findByUsername = { l -> Mock(User) }
+        Problem.metaClass.static.findById = { id -> Mock(Problem) }
 
         when:"The save action is executed with an invalid instance"
-            response.reset()
             request.contentType = FORM_CONTENT_TYPE
-            score = new Score()
-            score.validate()
-            controller.save(score)
+            def alert = new Alert()
+            alert.validate()
+            controller.save(alert)
 
         then:"The create view is rendered again with the correct model"
-            model.scoreInstance!= null
+            model.alertInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            score = new Score(params)
+            alert = new Alert(params)
 
-            controller.save(score)
+            controller.save(alert)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/score/show/1'
+            response.redirectedUrl == '/alert/show/1'
             controller.flash.message != null
-            Score.count() == 1
+            Alert.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -86,11 +92,11 @@ class ScoreControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def score = new Score(params)
-            controller.show(score)
+            def alert = new Alert(params)
+            controller.show(alert)
 
         then:"A model is populated containing the domain instance"
-            model.scoreInstance == score
+            model.alertInstance == alert
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -102,11 +108,11 @@ class ScoreControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def score = new Score(params)
-            controller.edit(score)
+            def alert = new Alert(params)
+            controller.edit(alert)
 
         then:"A model is populated containing the domain instance"
-            model.scoreInstance == score
+            model.alertInstance == alert
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -115,41 +121,29 @@ class ScoreControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/score/index'
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def score = new Score()
-            score.validate()
-            controller.update(score)
+            def alert = new Alert()
+            alert.validate()
+            controller.update(alert)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.scoreInstance == score
+            model.alertInstance == alert
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            score = new Score(params).save(flush: true)
-            controller.update(score)
+            alert = new Alert(params).save(flush: true)
+            controller.update(alert)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/score/show/$score.id"
+            response.redirectedUrl == "/alert/show/$alert.id"
             flash.message != null
-
-        when:"A valid domain instance is passed to the update action"
-        response.reset()
-        request.format = "html"
-        populateValidParams(params)
-        score = new Score(params).save(flush: true)
-        controller.update(score)
-
-        then:"A redirect is issues to the show action"
-        response.format=="all"
-        response.redirectedUrl == "/score/show/$score.id"
-        flash.message !=  null
     }
 
     void "Test that the delete action deletes an instance if it exists"() {
@@ -158,23 +152,23 @@ class ScoreControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/score/index'
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def score = new Score(params).save(flush: true)
+            def alert = new Alert(params).save(flush: true)
 
         then:"It exists"
-            Score.count() == 1
+            Alert.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(score)
+            controller.delete(alert)
 
         then:"The instance is deleted"
-            Score.count() == 0
-            response.redirectedUrl == '/score/index'
+            Alert.count() == 0
+            response.redirectedUrl == '/alert/custom_index'
             flash.message != null
     }
 }

@@ -15,10 +15,10 @@ class UserRoleControllerSpec extends Specification {
     SpringSecurityService springSecurityService = Mock(SpringSecurityService)
 
     def setup() {
-        user = new User(firstName: "franck", lastName: "s", username: "fsil", email: "mail@mail.com", password: "password")
+        user = new User(firstName: "franck", lastName: "s", username: "fsil", email: "mail@mail.com", password: "password", score: Mock(Score))
         user.springSecurityService = springSecurityService
         springSecurityService.encodePassword(user.password) >> user.password
-        user.save()
+        user.save(failOnError:true, flush:true)
 
         role = new Role(authority: 'ROLE_USER').save(failOnError:true, flush:true)
 

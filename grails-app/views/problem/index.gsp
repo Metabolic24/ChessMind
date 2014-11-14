@@ -14,7 +14,7 @@
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 
-        <%-- For administrators and moderators, having more menus to administrate the website --%>
+    <%-- For administrators and moderators, having more menus to administrate the website --%>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
             <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
@@ -23,6 +23,10 @@
 
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
+
+        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+            <li><a class="alert" href="${createLink(uri: '/alert/custom_index')}"><g:message code="Alertes"/></a></li>
+        </sec:ifAnyGranted>
     </ul>
 </div>
 <div id="list-problem" class="content scaffold-list" role="main">
@@ -34,18 +38,6 @@
         <thead>
         <tr>
             <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
-
-            <g:sortableColumn property="description" title="${message(code: 'problem.description.label', default: 'Description')}" />
-
-            <g:sortableColumn property="blackPlayer" title="${message(code: 'problem.blackPlayer.label', default: 'Black Player')}" />
-
-            <g:sortableColumn property="whitePlayer" title="${message(code: 'problem.whitePlayer.label', default: 'White Player')}" />
-
-            <g:sortableColumn property="date" title="${message(code: 'problem.date.label', default: 'Date')}" />
-
-            <g:sortableColumn property="place" title="${message(code: 'problem.place.label', default: 'Place')}" />
-
-            <g:sortableColumn property="tournament" title="${message(code: 'problem.tournament.label', default: 'Tournament')}" />
 
             <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
 
@@ -61,46 +53,30 @@
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                    <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
+                <td><g:link action="show" id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "description")}</td>
+                <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "blackPlayer")}</td>
+                <td>
+                    <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                </td>
 
-                    <td>${fieldValue(bean: problemInstance, field: "whitePlayer")}</td>
-
-                    <td><g:formatDate date="${problemInstance.date}" /></td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "place")}</td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "tournament")}</td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
-
+                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                     <td>
-                        <li class="fieldcontain">
-                            <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
-                        </li>
+                        <g:form url="[resource: problemInstance, action: 'edit']">
+                            <g:actionSubmit class="edit" action="edit"
+                                            value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+                        </g:form>
                     </td>
 
-                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'edit']">
-                                <g:actionSubmit class="edit" action="edit"
-                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                            </g:form>
-                        </td>
-
-                        <td>
-                        <g:if test="${problemInstance?.valide == false}">
-                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-                                <g:actionSubmit class="delete" action="delete"
-                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                            </g:form>
-                        </g:if>
-                        </td>
-                    </sec:ifAnyGranted>
+                    <td>
+                        <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
+                            <g:actionSubmit class="delete" action="delete"
+                                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                        </g:form>
+                    </td>
+                </sec:ifAnyGranted>
             </tr>
         </g:each>
         </tbody>

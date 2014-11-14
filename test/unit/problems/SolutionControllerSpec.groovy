@@ -36,6 +36,13 @@ class SolutionControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
+        when:"Save is called for a domain instance that doesn't exist"
+        request.contentType = FORM_CONTENT_TYPE
+        controller.save(null)
+
+        then:"A 404 error is returned"
+        response.redirectedUrl == '/solution/index'
+        flash.message != null
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
