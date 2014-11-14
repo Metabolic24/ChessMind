@@ -11,6 +11,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @TestFor(User)
+@Mock([Role,UserRole])
 class UserSpec extends Specification {
 
     User user
@@ -128,4 +129,48 @@ class UserSpec extends Specification {
         then: "The password didn't change"
         user1.getPassword().equals(password)
     }
+
+    void "Test static method filterByAuthority"() {
+        given: "a valid user"
+            user1
+        and: "a valid role"
+            def role = new Role(authority:'ROLE_USER').save(failOnError:true, flush:true)
+
+        when: "we use filterByAuthority on invalid authority role"
+        Set<Role> authorities = new ArrayList<>()
+        User.metaClass.static.getAuthorities = {authorities}
+        def result = User.filterByAuthority(role.getAuthority(),null)
+
+        then: "the result is not null but size is 0"
+        result!=null
+        result.size()==0
+
+        when: "we use filterByAuthority on valid authority role"
+            authorities = new ArrayList<>()
+            authorities.add(role)
+            User.metaClass.static.getAuthorities = {authorities}
+            result = User.filterByAuthority(role.getAuthority(),null)
+
+        then: "the result is not null"
+            result!=null
+            result.size()==1
+            result.get(0).getUsername().equals(user1.getUsername())
+    }
+
+    void "Test getAuthorities"(){
+        given: "a valid user"
+            user1
+        and: "a valid role"
+            def role = new Role(authority:'ROLE_USER').save(failOnError:true, flush:true)
+        and: "a valid userRole"
+            def userRole = new UserRole(user:user1, role:role).save(failOnError: true, flush:true)
+
+        when: "we call getAuthorities"
+            def result = user1.getAuthorities()
+        then: "the result is not empty and the role is well included"
+            result!=null
+            !result.isEmpty()
+            result[0].authority.equals(role.getAuthority())
+    }
+
 }
