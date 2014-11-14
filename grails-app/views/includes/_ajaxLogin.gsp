@@ -1,9 +1,10 @@
 <style>
 #ajaxLogin {
-    background-color: #EEEEFF
+    background-color: #FFFFFF
     display: none;
-    height: 240px;
+    height: 370px;
     width: 400px;
+    border: none;
     transition:opacity 1s;
     -webkit-transition:opacity 1s;
 }
