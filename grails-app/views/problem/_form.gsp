@@ -65,24 +65,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'alerts', 'error')} ">
-    <label for="alerts">
-        <g:message code="problem.alerts.label" default="Alerts" />
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${problemInstance?.alerts?}" var="a">
-            <li><g:link controller="alert" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="alert" action="create" params="['problem.id': problemInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'alert.label', default: 'Alert')])}</g:link>
-        </li>
-    </ul>
-
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'player', 'error')} required">
     <label for="player">
         <g:message code="problem.player.label" default="Player" />
