@@ -155,6 +155,14 @@ class ProblemController {
         redirect uri:"/problem/index",method:"PUT"
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
+    def forceResolve(Problem problemInstance) {
+        problemInstance.setSolved(true)
+        problemInstance.save failOnError: true, flush: true
+        //TODO Appliquer les calculs de score
+        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {

@@ -5,6 +5,7 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import grails.test.mixin.TestMixin
 import grails.test.mixin.support.GrailsUnitTestMixin
+import org.springframework.security.crypto.password.PasswordEncoder
 import score.Score
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -19,11 +20,12 @@ class UserSpec extends Specification {
     def setup() {
         user = new User()
 
-        springSecurityService= Mock(SpringSecurityService)
-        springSecurityService.encodePassword(user.password) >> user.password
+        springSecurityService = Mock(SpringSecurityService)
+        springSecurityService.encodePassword(user.password) >> user.password?.substring(0,3)
 
-        user1 = new User(username: "userTest", password: "userTest", email: "a@a.fr", score : Mock(Score))
-                .save(failOnError: true, flush: true)
+        user1 = new User(username: "userTest", password: "userTest", email: "a@a.fr", score: Mock(Score))
+        user1.springSecurityService = springSecurityService
+        user1.save(failOnError: true, flush: true)
     }
 
     def cleanup() {
@@ -102,5 +104,28 @@ class UserSpec extends Specification {
         7    | "test username" | "pwd"     | null           | "test nom" | "test description"
         8    | "test username" | "pwd"     | "not an email" | "test nom" | "test description"
         9    | "test username" | "pwd"     | "a@a.fr"       | ""         | "test description"
+    }
+
+    void "Test beforeUpdate method"() {
+        given: "A valid User"
+        user1
+        User.metaClass.static.encodePassword = {user1.setPassword(password?.substring(0,3))}
+
+        when: "We change the password and call beforeUpdate"
+        def password = "passwrd"
+        user1.setPassword(password)
+        user1.beforeUpdate()
+        user1.save(failOnError: true, flush: true)
+
+        then: "The password is now encoded"
+        !user1.getPassword().equals(password)
+
+        when: "We don't change the password and call beforeUpdate"
+        password = user1.getPassword()
+        user1.beforeUpdate()
+        user1.save(failOnError: true, flush: true)
+
+        then: "The password didn't change"
+        user1.getPassword().equals(password)
     }
 }

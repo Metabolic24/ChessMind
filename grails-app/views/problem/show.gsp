@@ -196,6 +196,9 @@
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
+                <g:elseif test="${!problemInstance?.solved}">
+                    <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
+                </g:elseif>
             </sec:ifAnyGranted>
             <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
