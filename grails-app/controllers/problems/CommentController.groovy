@@ -97,4 +97,8 @@ class CommentController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def alertComment(Comment commentInstance) {
+        redirect action: 'create', controller: 'alert', params: [commentId: commentInstance.id]
+    }
 }

@@ -4,6 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
 import problems.Problem
 import problems.Solution
+import problems.Comment
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -16,6 +17,7 @@ class AlertController {
 
     // TODO : Ne pas passer par une variable globale entre le create et le save serait cool !
     def problemId
+    def commentId
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -32,9 +34,12 @@ class AlertController {
     }
 
     def create() {
-        def alertId = params['problemId']
-        params['problem.id'] =  alertId
-        problemId = alertId
+        if (params['commentId'] != null){
+            commentId = params['commentId']
+            problemId = problems.Comment.findById(commentId).solution.problem.id
+        } else {
+            problemId = params['problemId']
+        }
         respond new Alert(params)
     }
 
@@ -49,6 +54,13 @@ class AlertController {
         alertInstance.setDescription(params.description)
         alertInstance.setProblem(problems.Problem.findById(problemId))
         alertInstance.setUser(users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()))
+        if (commentId != null) {
+            alertInstance.setComment(problems.Comment.findById(commentId))
+        }
+
+        // On remet les valeurs à null pour la prochaine alerte
+        problemId = null;
+        commentId = null;
 
         alertInstance.validate()
 
