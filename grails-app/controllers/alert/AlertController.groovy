@@ -69,7 +69,7 @@ class AlertController {
             return
         }
 
-        alertInstance.save flush:true
+        alertInstance.save failOnError: true, flush:true
 
         request.withFormat {
             form multipartForm {
@@ -130,7 +130,7 @@ class AlertController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'alert.label', default: 'Alert'), params.id])
-                redirect action: "index", method: "GET"
+                redirect action: "custom_index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

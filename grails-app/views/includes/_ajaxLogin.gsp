@@ -5,8 +5,6 @@
     height: 370px;
     width: 400px;
     border: none;
-    transition:opacity 1s;
-    -webkit-transition:opacity 1s;
 }
 
 #inputs input
@@ -86,8 +84,7 @@
     position: relative;
 }
 
-#ajaxLogin h1:after,
-h1:before {
+#ajaxLogin h1:after,#ajaxLogin h1:before {
     background-color: #777;
     content: "";
     height: 1px;
