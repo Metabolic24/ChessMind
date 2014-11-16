@@ -65,9 +65,9 @@ class BootStrap {
         def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)
         def problemTest3 = new Problem(player: user, image:image3, valide:false).save(failOnError: true, flush: true)
 
-        def solution1 = new Solution(user: admin, answer : "Ca1", problem: problemTest).save(failOnError: true, flush: true)
-        def solution2 = new Solution(user: user, answer : "Ca2", problem: problemTest2).save(failOnError: true, flush: true)
-        def solution3 = new Solution(user: user, answer : "Ca3", problem: problemTest3).save(failOnError: true, flush: true)
+        def solution1 = new Solution(user: admin, answer : "Ca1", aime: 0 , problem: problemTest).save(failOnError: true, flush: true)
+        def solution2 = new Solution(user: user, answer : "Ca2", aime: 0 , problem: problemTest2).save(failOnError: true, flush: true)
+        def solution3 = new Solution(user: user, answer : "Ca3", aime: 0 , problem: problemTest3).save(failOnError: true, flush: true)
 
         def comment1 = new Comment(text : "C'est une bonne solution 1", user : admin, solution: solution1).save(failOnError: true, flush: true)
         def comment2 = new Comment(text : "C'est une mauvaise solution 2", user : admin, solution: solution2).save(failOnError: true, flush: true)

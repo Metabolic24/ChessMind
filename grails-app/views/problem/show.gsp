@@ -134,6 +134,8 @@
                         <g:link controller="user" action="show"
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
+                        <g:actionSubmit action="aime" value="approuver"/>
+                        ${s.aime}
                     </span>
                     <g:each in="${s.comments}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
@@ -145,8 +147,6 @@
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
                                 </g:if>
-                                <g:actionSubmit action="like" value="approuver"/>
-
                             </g:form>
 
                         </span>
