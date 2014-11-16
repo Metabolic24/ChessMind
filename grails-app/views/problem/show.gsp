@@ -146,6 +146,7 @@
                                 <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                    <g:actionSubmit action="alertComment" value="Signaler"/>
                                 </g:if>
                             </g:form>
 
