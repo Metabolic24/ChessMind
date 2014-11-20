@@ -54,6 +54,7 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
         respond userInstance
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER'])
     def showMyProfile() {
         respond User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name)
     }
