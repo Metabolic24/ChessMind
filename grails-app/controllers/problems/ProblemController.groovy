@@ -42,6 +42,10 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
+    def solved_problems() {
+        respond Problem.list(params).findAll { p -> p.isSolved() }, model:[problemInstanceCount: Problem.count()]
+    }
+
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def problems_to_validate() {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]

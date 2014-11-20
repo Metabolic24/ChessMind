@@ -23,6 +23,7 @@
                                                                  args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
         <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
+        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
