@@ -2,11 +2,13 @@ package users
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
+import org.springframework.security.core.context.SecurityContextHolder
+import problems.Problem
 import score.Score
 
-@Secured(['ROLE_ADMIN'])
 class UserController extends grails.plugin.springsecurity.ui.UserController {
 
+    @Secured(['ROLE_ADMIN'])
     def save() {
         User user = lookupUserClass().newInstance(params)
         if (params.password) {
@@ -31,6 +33,7 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
 
     //TODO Verifier que la pagination fonctionne
     //TODO Voir si on ne peut pas remplacer la boucle par une closure
+    @Secured(['ROLE_ADMIN'])
     def administrators(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def list = User.filterByAuthority('ROLE_ADMIN',params)
@@ -38,10 +41,20 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
         respond list, model:[adminInstanceCount: list?.size()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def moderators(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def list = User.filterByAuthority('ROLE_MODERATOR',params)
 
         respond list, model:[moderatorInstanceCount: list?.size()]
+    }
+
+    @Secured(['ROLE_ADMIN'])
+    def show(User userInstance) {
+        respond userInstance
+    }
+
+    def showMyProfile() {
+        respond User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name)
     }
 }
