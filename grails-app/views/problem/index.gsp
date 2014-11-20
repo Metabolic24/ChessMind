@@ -39,7 +39,7 @@
         <tr>
             <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
 
-            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
+            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Auteur')}" />
 
             <th>Diagramme</th>
 
