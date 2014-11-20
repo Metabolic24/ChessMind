@@ -74,7 +74,7 @@ class AlertController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'alert.label', default: 'Alert'), alertInstance.id])
-                redirect alertInstance
+                redirect uri:"/problem/show/" + alertInstance.getProblemId()
             }
             '*' { respond alertInstance, [status: CREATED] }
         }
