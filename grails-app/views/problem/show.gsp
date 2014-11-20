@@ -24,6 +24,7 @@
                                                                  args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
         <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
+        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
             <li><a class="alert" href="${createLink(uri: '/alert/custom_index')}"><g:message code="Alertes"/></a></li>
@@ -146,19 +147,30 @@
                                 <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                                     <g:actionSubmit action="edit" value="Editer"/>
                                     <g:actionSubmit action="supprimer" value="Supprimer"/>
-                                    <g:actionSubmit action="alertComment" value="Signaler"/>
                                 </g:if>
+                                <g:else>
+                                    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_MODERATOR'>
+                                        <g:actionSubmit action="edit" value="Editer"/>
+                                        <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                    </sec:ifAnyGranted>
+                                    <sec:ifAnyGranted roles='ROLE_USER'>
+                                        <g:actionSubmit action="alertComment" value="Signaler"/>
+                                    </sec:ifAnyGranted>
+                                </g:else>
+
                             </g:form>
 
                         </span>
 
                     </g:each>
 
-                    <g:form name="commentForm" url="[action: 'create', controller: 'comment']" action="create">
-                        <g:textArea name="comment" value="${comment}" rows="5" columns="30"/>
-                        <g:hiddenField name="solutionId" value="${s.id}"/>
-                        <g:actionSubmit action="create" value="Commenter"/>
-                    </g:form>
+                    <sec:ifLoggedIn>
+                        <g:form name="commentForm" url="[action: 'create', controller: 'comment']" action="create">
+                            <g:textArea name="comment" value="${comment}" rows="5" columns="30"/>
+                            <g:hiddenField name="solutionId" value="${s.id}"/>
+                            <g:actionSubmit action="create" value="Commenter"/>
+                        </g:form>
+                    </sec:ifLoggedIn>
                 </g:each>
 
             </li>
@@ -200,12 +212,6 @@
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
 
-                <%-- TODO : A mettre dans un if connecté en tant que user
-                <g:actionSubmit class="alert" action="alert" resource="${problemInstance}" value="${message(code: 'Alerter', default: 'Alerter')}" />
-                <%-- /TODO --%>
-                <g:link class="alert" action="alert" resource="${problemInstance}"><g:message
-                        code="Alerter" default="Alerter"/></g:link>
-
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
@@ -213,7 +219,7 @@
                     <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
                 </g:elseif>
             </sec:ifAnyGranted>
-            <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+            <sec:ifAnyGranted roles='ROLE_USER'>
                 <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
                     <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
                             code="default.button.edit.label" default="Edit"/></g:link>
@@ -224,8 +230,10 @@
                 <g:elseif test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
                     <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
                             code="default.button.answer.label" default="Answer"/></g:link>
+                    <g:link class="alert" action="alert" resource="${problemInstance}"><g:message
+                            code="Alerter" default="Alerter"/></g:link>
                 </g:elseif>
-            </sec:ifNotGranted>
+            </sec:ifAnyGranted>
         </fieldset>
     </g:form>
 </div>
