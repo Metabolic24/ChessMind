@@ -4,8 +4,8 @@ import users.User
 
 class Score {
 
-    long score1
-    long score2
+    long score1 // nombre de problèmes résolus
+    long score2 // nombre de "j'aime" acquis
 
     static constraints = {
         score1 min: 0.longValue()

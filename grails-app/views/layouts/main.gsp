@@ -21,9 +21,11 @@
         <img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" />
     </a>
 
-    <span id='loginLink' style='position: relative; margin-right: 30px; float: right'>
+    <span id='loginLink' style='position: relative; margin-right: 30px; float: right; line-height: 0%; top: 10px'>
         <sec:ifLoggedIn>
-            Logged in as <sec:username/> (<g:link controller='logout'>Logout</g:link>)
+            <div style="margin-bottom: 0px">
+                Logged in as <g:link controller="user" action="showMyProfile"><sec:username/></g:link> (<g:link controller='logout'>Logout</g:link>)
+            </div>
         </sec:ifLoggedIn>
         <sec:ifNotLoggedIn>
             <a href='#' onclick='showLogin(); return false;'>Login</a>

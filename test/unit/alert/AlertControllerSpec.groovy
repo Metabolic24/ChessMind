@@ -78,7 +78,7 @@ class AlertControllerSpec extends Specification {
             controller.save(alert)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/alert/show/1'
+            response.redirectedUrl.contains('/problem/show/')
             controller.flash.message != null
             Alert.count() == 1
     }

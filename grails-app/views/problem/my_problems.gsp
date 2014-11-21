@@ -23,6 +23,7 @@
                                                                  args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
         <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
+        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link class="my_problems" action="my_problems"><g:message code="My problems"
                                                                         args="[entityName]"/></g:link></li>
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
@@ -89,7 +90,7 @@
                     </sec:ifAnyGranted>
                     <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                         <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
-                            <g:form url="[resource: problemInstance]">
+                            <g:form url="[resource: problemInstance]" method="DELETE">
                                 <g:actionSubmit class="edit" action="edit"
                                                 value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
                                 <g:actionSubmit class="delete" action="delete"

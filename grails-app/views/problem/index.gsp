@@ -22,6 +22,7 @@
         </sec:ifAnyGranted>
 
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
+        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
@@ -39,7 +40,7 @@
         <tr>
             <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}" />
 
-            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}" />
+            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Auteur')}" />
 
             <th>Diagramme</th>
 

@@ -2,22 +2,16 @@ package problems
 
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.web.context.request.RequestContextHolder
 import users.Role
 import users.User
 
-import javax.swing.ImageIcon
 import java.awt.Graphics2D
-import java.awt.Image
 import java.awt.RenderingHints
-
-import static java.awt.RenderingHints.*
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import java.io.InputStream
 
 @Transactional(readOnly = true)
 class ProblemController {
@@ -46,6 +40,10 @@ class ProblemController {
 
     def valid_problems() {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
+    }
+
+    def solved_problems() {
+        respond Problem.list(params).findAll { p -> p.isSolved() }, model:[problemInstanceCount: Problem.count()]
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
@@ -126,8 +124,13 @@ class ProblemController {
     def delete(Problem problemInstance) {
 
         if (problemInstance == null) {
+            println("test")
             notFound()
             return
+        }
+
+        if(SecurityContextHolder.getContext().getAuthentication().getName().equals(problemInstance?.player.username)&& !problemInstance?.isValide()) {
+
         }
 
         problemInstance.delete flush:true
@@ -140,7 +143,13 @@ class ProblemController {
             '*'{ render status: NO_CONTENT }
         }
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
+    def aime(Problem problemInstance) {
+        problemInstance.solutions.aime=problemInstance.solutions.aime+1
+        print(problemInstance.solutions.aime)
+        problemInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
+    }
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validate(Problem problemInstance) {
         problemInstance.setValide(true)

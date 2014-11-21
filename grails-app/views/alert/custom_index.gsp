@@ -32,6 +32,8 @@
 
             <th><g:message code="alert.problem.label" default="Problem" /></th>
 
+            <th><g:message code="alert.comment.label" default="Commentaire signalé" /></th>
+
             <th><g:message code="alert.user.label" default="User" /></th>
 
             <th>Suppression</th>
@@ -47,6 +49,8 @@
                 <td>${fieldValue(bean: alertInstance, field: "problem")}</td>
                 --%>
                 <td><g:link controller="problem" action="show" id="${alertInstance.problem.id}">${fieldValue(bean: alertInstance, field: "problem.id")}</g:link></td>
+
+                <td><g:link controller="problem" action="show" id="${alertInstance.problem.id}">${fieldValue(bean: alertInstance, field: "comment.text")}</g:link></td>
 
                 <td>${fieldValue(bean: alertInstance, field: "user.username")}</td>
 
