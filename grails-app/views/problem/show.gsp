@@ -204,7 +204,7 @@
             <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <g:link class="edit" action="edit" resource="${problemInstance}"><g:message
                         code="default.button.edit.label" default="Edit"/></g:link>
-                <g:if test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
+                <g:if test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}">
                     <g:link class="edit" action="answer" resource="${problemInstance}"><g:message
                             code="default.button.answer.label" default="Answer"/></g:link>
                 </g:if>

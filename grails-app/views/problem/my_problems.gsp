@@ -90,7 +90,7 @@
                     </sec:ifAnyGranted>
                     <sec:ifNotGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                         <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
-                            <g:form url="[resource: problemInstance]">
+                            <g:form url="[resource: problemInstance]" method="DELETE">
                                 <g:actionSubmit class="edit" action="edit"
                                                 value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
                                 <g:actionSubmit class="delete" action="delete"

@@ -124,8 +124,13 @@ class ProblemController {
     def delete(Problem problemInstance) {
 
         if (problemInstance == null) {
+            println("test")
             notFound()
             return
+        }
+
+        if(SecurityContextHolder.getContext().getAuthentication().getName().equals(problemInstance?.player.username)&& !problemInstance?.isValide()) {
+
         }
 
         problemInstance.delete flush:true

@@ -7,7 +7,7 @@
         <g:message code="problem.image.label" default="Image" />
         <span class="required-indicator">*</span>
     </label>
-    <input type="file" id="image" name="image" />
+    <input type="file" id="image" name="image" required="required"/>
 
 </div>
 
