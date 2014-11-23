@@ -67,7 +67,7 @@ class CommentController {
 
     @Secured(['ROLE_ADMIN'])
     @Transactional
-    def supprimer(Comment commentInstance) {
+    def delete(Comment commentInstance) {
 
         if (commentInstance == null) {
             notFound()

@@ -140,18 +140,20 @@
                     </span>
                     <g:each in="${s.comments}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
-                            <g:form name="commentEditForm" url="[resource: c, controller: 'comment']">
+                            <g:form name="commentEditForm" url="[resource: c, controller: 'comment']" method="DELETE">
                                 -> ${c.text} -
                                 <g:link controller="user" action="show"
                                         id="${c?.user?.id}">${c?.user?.username}</g:link>
                                 <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                                     <g:actionSubmit action="edit" value="Editer"/>
-                                    <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                    <g:actionSubmit action="delete" value="X"
+                                                    onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                                 </g:if>
                                 <g:else>
                                     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_MODERATOR'>
                                         <g:actionSubmit action="edit" value="Editer"/>
-                                        <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                        <g:actionSubmit action="delete" value="X"
+                                                        onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                                     </sec:ifAnyGranted>
                                     <sec:ifAnyGranted roles='ROLE_USER'>
                                         <g:actionSubmit action="alertComment" value="Signaler"/>
