@@ -1,6 +1,8 @@
 package problems
 
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.security.core.context.SecurityContextHolder
+import users.User
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -21,7 +23,13 @@ class SolutionController {
     }
 
     def create() {
-        respond new Solution(params)
+        if(params.problemId != null) {
+            println "ok"
+            respond new Solution(params)
+        } else {
+            notFound()
+            //TODO A changer
+        }
     }
 
     @Transactional
@@ -30,6 +38,16 @@ class SolutionController {
             notFound()
             return
         }
+
+        if(solutionInstance.user == null) {
+            solutionInstance.user = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName())
+        }
+
+        if(solutionInstance.problem == null && params.problemId != null) {
+            solutionInstance.problem = Problem.findById(params.problemId)
+        }
+
+        solutionInstance.validate()
 
         if (solutionInstance.hasErrors()) {
             respond solutionInstance.errors, view:'create'

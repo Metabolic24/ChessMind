@@ -29,6 +29,7 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
+                <g:hiddenField name="problemId" value="${params.problemId}"/>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>

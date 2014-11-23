@@ -16,7 +16,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ProblemController {
 
-
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
@@ -53,7 +52,7 @@ class ProblemController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def answer(Problem problemInstance) {
-        redirect(uri:"/solution/create")
+        redirect(controller: "solution", action:"create", params: [problemId:problemInstance.id] )
     }
 
     @Transactional
