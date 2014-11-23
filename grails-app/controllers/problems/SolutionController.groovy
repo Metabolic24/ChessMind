@@ -24,7 +24,6 @@ class SolutionController {
 
     def create() {
         if(params.problemId != null) {
-            println "ok"
             respond new Solution(params)
         } else {
             notFound()
@@ -48,6 +47,16 @@ class SolutionController {
         }
 
         solutionInstance.validate()
+
+        def solutions = Solution.findAllByProblem(solutionInstance.problem)
+
+        if(!solutions.isEmpty()) {
+            if (solutions.find { a -> a.answer.equals(solutionInstance.answer) } !=null) {
+                flash.message = "This solution has already been proposed for this problem..."
+                respond solutionInstance, view: 'create'
+                return
+            }
+        }
 
         if (solutionInstance.hasErrors()) {
             respond solutionInstance.errors, view:'create'
