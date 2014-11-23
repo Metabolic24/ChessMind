@@ -128,7 +128,7 @@
                 <span id="solutions-label" class="property-label"><g:message code="problem.solutions.label"
                                                                              default="Solutions"/></span>
 
-                <g:each in="${problemInstance.solutions}" var="s">
+                <g:each in="${problemInstance.sortedSolutions()}" var="s">
                     <span class="property-value" aria-labelledby="solutions-label">
                         ${s.answer} (
                         <g:link controller="user" action="show"
@@ -137,7 +137,7 @@
                         <g:actionSubmit action="aime" value="approuver"/>
                         ${s.aime}
                     </span>
-                    <g:each in="${s.comments}" var="c">
+                    <g:each in="${s.sortedComments()}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
                             <g:form name="commentEditForm" url="[resource: c, controller: 'comment']">
                                 -> ${c.text} -

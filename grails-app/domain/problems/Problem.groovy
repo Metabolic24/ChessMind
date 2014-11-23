@@ -39,4 +39,11 @@ class Problem {
     static hasMany = [solutions : Solution, alerts : Alert]
 
     static belongsTo = [player : User]
+
+    def sortedSolutions() {
+        def result = solutions.sort {a,b ->
+            if(a.aime == b.aime) b.comments.size() <=> a.comments.size()
+            else a.aime <=> b.aime}
+        result
+    }
 }

@@ -12,7 +12,12 @@ class Solution {
     static belongsTo = [problem:Problem]
 
     static constraints = {
-        answer matches: "[CTFDR]?[a-h][1-8](([\\-x][CTFDR]?[a-h][1-8]|\\+)?)|0\\-0(\\-0)?" //"([CTFDR]?[a-h][1-8](([\\-x][CTFDR]?[a-h][1-8]) | \\+)?)"// | (0\\-0(\\-0)?)"
+        answer matches: "[CTFDR]?[a-h][1-8](([\\-x][CTFDR]?[a-h][1-8]|\\+)?)|0\\-0(\\-0)?"
         aime blank: true , nullable: true
+    }
+
+    def sortedComments() {
+        def result = comments.sort {a,b -> a.id<=>b.id}
+        result
     }
 }
