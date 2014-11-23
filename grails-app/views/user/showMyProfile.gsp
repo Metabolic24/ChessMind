@@ -87,14 +87,11 @@
         </fieldset>
         --%>
         <fieldset class="buttons">
-            <g:link class="edit" action="editPassword" resource="${userInstance}"><g:message code="Edit password"
-                                                                                     default="Edit password"/></g:link>
+            <g:link class="edit" action="editPassword" >Edit password</g:link>
 
-            <g:link class="edit" action="editName" resource="${userInstance}"><g:message code="Edit name"
-                                                                                             default="Edit name"/></g:link>
+            <g:link class="edit" action="editName" resource="${userInstance}">Edit name</g:link>
 
-            <g:link class="edit" action="editMail" resource="${userInstance}"><g:message code="Edit mail"
-                                                                                             default="Edit mail"/></g:link>
+            <g:link class="edit" action="editMail" resource="${userInstance}">Edit mail</g:link>
         </fieldset>
     </g:form>
 </div>

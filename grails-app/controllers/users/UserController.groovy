@@ -58,4 +58,21 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
     def showMyProfile() {
         respond User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name)
     }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER'])
+    def editPassword() {
+        def pwd = params.newPassword
+        if (pwd != null) {
+            if(pwd.equals(params.confirmPassword)) {
+                def user = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name)
+                user.setPassword(pwd)
+                user.save failOnError:true, flush:true
+                flash.message = "Password updated"
+                redirect uri:"/user/showMyProfile"
+            }
+            else {
+                flash.message = "Passwords don't match...Please type the same password in New and Confirm fields !"
+            }
+        }
+    }
 }
