@@ -128,10 +128,6 @@ class ProblemController {
             return
         }
 
-        if(SecurityContextHolder.getContext().getAuthentication().getName().equals(problemInstance?.player.username)&& !problemInstance?.isValide()) {
-
-        }
-
         problemInstance.delete flush:true
 
         request.withFormat {
@@ -142,6 +138,7 @@ class ProblemController {
             '*'{ render status: NO_CONTENT }
         }
     }
+
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
     def aime(Problem problemInstance) {
         problemInstance.solutions.aime=problemInstance.solutions.aime+1
@@ -149,6 +146,7 @@ class ProblemController {
         problemInstance.save failOnError: true, flush: true
         redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
     }
+
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validate(Problem problemInstance) {
         problemInstance.setValide(true)
@@ -209,6 +207,7 @@ class ProblemController {
         response.outputStream.flush()
     }
 
+    @Secured(['ROLE_USER'])
     def alert(Problem problemInstance) {
         //redirect(uri:"/alert/create", params:[problem:problemInstance])
         print "problemInstance : " + problemInstance.id

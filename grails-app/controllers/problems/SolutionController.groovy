@@ -13,21 +13,12 @@ class SolutionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Solution.list(params), model:[solutionInstanceCount: Solution.count()]
-    }
-
-    def show(Solution solutionInstance) {
-        respond solutionInstance
-    }
-
     def create() {
         if(params.problemId != null) {
             respond new Solution(params)
         } else {
-            notFound()
-            //TODO A changer
+            flash.error = "Action non autorisée..."
+            redirect uri:"/problem/index"
         }
     }
 
@@ -74,33 +65,6 @@ class SolutionController {
         }
     }
 
-    def edit(Solution solutionInstance) {
-        respond solutionInstance
-    }
-
-    @Transactional
-    def update(Solution solutionInstance) {
-        if (solutionInstance == null) {
-            notFound()
-            return
-        }
-
-        if (solutionInstance.hasErrors()) {
-            respond solutionInstance.errors, view:'edit'
-            return
-        }
-
-        solutionInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Solution.label', default: 'Solution'), solutionInstance.id])
-                redirect solutionInstance
-            }
-            '*'{ respond solutionInstance, [status: OK] }
-        }
-    }
-
     @Transactional
     def delete(Solution solutionInstance) {
 
@@ -124,9 +88,9 @@ class SolutionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'solution.label', default: 'Solution'), params.id])
-                redirect action: "index", method: "GET"
+                redirect uri:"/problem/index"
             }
-            '*'{ render status: NOT_FOUND }
+            '*'{render status: NOT_FOUND }
         }
     }
 }

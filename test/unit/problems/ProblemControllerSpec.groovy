@@ -322,10 +322,10 @@ class ProblemControllerSpec extends Specification {
         def problem = new Problem(params).save(failOnError: true, flush: true)
 
         when: "We call the answer method"
-        controller.answer()
+        controller.answer(problem)
 
         then: "The redirection is correct"
-        response.redirectedUrl == '/solution/create'
+        response.redirectedUrl == ("/solution/create?problemId=${problem.id}")
         controller.flash.message == null
         Problem.count() == 1
     }
