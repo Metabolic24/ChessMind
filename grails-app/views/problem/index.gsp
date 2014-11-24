@@ -50,6 +50,7 @@
             <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <th>Edition</th>
                 <th>Suppression</th>
+                <th>Validation</th>
             </sec:ifAnyGranted>
         </tr>
         </thead>
@@ -79,6 +80,15 @@
                                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                         </g:form>
+                    </td>
+
+                    <td>
+                        <g:if test="${problemInstance.valide == false}">
+                            En attente de validation
+                        </g:if>
+                        <g:else>
+                            Problème validé
+                        </g:else>
                     </td>
                 </sec:ifAnyGranted>
             </tr>
