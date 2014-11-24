@@ -57,12 +57,12 @@ class SolutionControllerSpec extends Specification {
         User.metaClass.static.findByUsername = { l -> Mock(User) }
 
         when:"Save is called for a domain instance that doesn't exist"
-        request.contentType = FORM_CONTENT_TYPE
-        controller.save(null)
+            request.contentType = FORM_CONTENT_TYPE
+            controller.save(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/problem/index'
-        flash.message != null
+            response.redirectedUrl == '/problem/index'
+            flash.message != null
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE

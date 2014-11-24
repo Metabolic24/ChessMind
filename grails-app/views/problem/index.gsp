@@ -26,7 +26,7 @@
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><a class="alert" href="${createLink(uri: '/alert/custom_index')}"><g:message code="Alertes"/></a></li>
+            <li><a class="alert" href="${createLink(uri: '/alert/index')}"><g:message code="Alertes"/></a></li>
         </sec:ifAnyGranted>
     </ul>
 </div>
