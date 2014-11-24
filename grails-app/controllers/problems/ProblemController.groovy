@@ -203,7 +203,9 @@ class ProblemController {
         response.outputStream << baos.toByteArray()
         baos.close()
 
-        response.outputStream << img
+        //response.outputStream << img
+        response.setHeader('Content-length', img.length)
+        response.contentType = 'image/jpg' // or the appropriate image content type
         response.outputStream.flush()
     }
 
