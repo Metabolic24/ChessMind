@@ -16,6 +16,7 @@ class CommentControllerSpec extends Specification {
         assert params != null
         params['text'] = "Test"
         params['solution.id'] = 1
+        //params['solution.problem'] = Mock(Problem)
         params['solution.problem.id'] = 1
         params['user'] = Mock(User)
     }
@@ -120,5 +121,31 @@ class CommentControllerSpec extends Specification {
         then: "A redirect is issues to the show action"
         response.redirectedUrl.contains('/problem/show')
         flash.message != null
+    }
+
+    void "Test that the supprimer action deletes an instance if it exists"() {
+        when: "The supprimer action is called for a null instance"
+        request.contentType = FORM_CONTENT_TYPE
+        controller.supprimer(null)
+
+        then: "A 404 is returned"
+        response.redirectedUrl == '/comment/index'
+        flash.message != null
+
+        when: "A domain instance is created"
+        response.reset()
+        populateValidParams(params)
+        def comment = new Comment(params).save(flush: true)
+
+        then: "It exists"
+        Comment.count() == 1
+/*
+        when: "The domain instance is passed to the supprimer action"
+        controller.supprimer(comment)
+
+        then: "The instance is deleted"
+        Comment.count() == 0*/
+        //response.redirectedUrl == '/comment/index'
+        //flash.message != null
     }
 }
