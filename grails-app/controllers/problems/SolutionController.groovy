@@ -96,9 +96,9 @@ class SolutionController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
     def aime(Solution solutionInstance) {
-
         solutionInstance.setAime(solutionInstance.getAime()+1)
-
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.add(solutionInstance)
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).save failOnError: true, flush: true
         solutionInstance.save failOnError: true, flush: true
         redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
     }
