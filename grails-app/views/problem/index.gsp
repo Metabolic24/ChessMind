@@ -22,7 +22,6 @@
         </sec:ifAnyGranted>
 
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
-        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
         <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
 
@@ -85,10 +84,10 @@
 
                     <td>
                         <g:if test="${problemInstance.valide == false}">
-                            En attente de validation
+                            <b style="color:#FF3300">En attente de validation</b>
                         </g:if>
                         <g:else>
-                            Problème validé
+                            <b style="color:#339933">Problème validé</b>
                         </g:else>
                     </td>
                 </sec:ifAnyGranted>

@@ -34,7 +34,7 @@ class ProblemSpec extends Specification {
         problem.date = aDate
         problem.place = aPlace
         problem.tournament = aTournament
-        problem.solved = false
+        problem.bestSolution = null
         problem.player = player
 
         when: "we trigger the validation of the problem"
@@ -74,7 +74,7 @@ class ProblemSpec extends Specification {
         problem.date = new Date()
         problem.place = "A place"
         problem.tournament = "A tournament"
-        problem.solved = false
+        problem.bestSolution = null
         problem.player = player
 
         when: "we trigger the validation of the problem"

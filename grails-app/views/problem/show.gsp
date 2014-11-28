@@ -23,7 +23,6 @@
                                                                  args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
         <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
-        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
         <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
 
@@ -136,8 +135,23 @@
                         <g:link controller="user" action="show"
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
-                        <g:actionSubmit action="aime" value="approuver"/>
+                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                            <g:actionSubmit action="aime" value="J'aime" />
+                        </g:form>
                         ${s.aime}
+                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                        <%-- test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}"> --%>
+                            <g:if test="${s.problem.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && s.isBestSolution == false}">
+                                <g:actionSubmit action="bestSolution" value="V" />
+                            </g:if>
+                            <g:else>
+                                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                                    <g:if test="${s.isBestSolution == false}">
+                                        <g:actionSubmit action="bestSolution" value="V" />
+                                    </g:if>
+                                </sec:ifAnyGranted>
+                            </g:else>
+                        </g:form>
                     </span>
                     <g:each in="${s.sortedComments()}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
@@ -179,13 +193,13 @@
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
 
-            <g:if test="${problemInstance?.solved}">
+            <g:if test="${problemInstance?.bestSolution != null}">
                 <li class="fieldcontain">
                     <span id="solved-label" class="property-label"><g:message code="problem.solved.label"
                                                                               default="Solved"/></span>
 
                     <span class="property-value" aria-labelledby="solved-label"><g:formatBoolean
-                            boolean="${problemInstance?.solved}"/></span>
+                            boolean="${problemInstance?.bestSolution != null}"/></span>
 
                 </li>
             </g:if>
@@ -216,7 +230,7 @@
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
-                <g:elseif test="${!problemInstance?.solved}">
+                <g:elseif test="${!problemInstance?.bestSolution != null}">
                     <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
                 </g:elseif>
             </sec:ifAnyGranted>

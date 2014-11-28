@@ -22,7 +22,7 @@ class ProblemControllerSpec extends Specification {
         params["date"] = new Date()
         params["place"] = ''
         params["tournament"] = ''
-        params["solved"] = false
+        params["bestSolution"] = null
         params["valide"] = false
         params["player"] = Mock(User)
     }
