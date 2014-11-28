@@ -102,4 +102,19 @@ class SolutionController {
         solutionInstance.save failOnError: true, flush: true
         redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
     }
+
+    def bestSolution(Solution solutionInstance) {
+        def problem = solutionInstance?.getProblem()
+        def best = problem.getBestSolution()
+        if (best != null) {
+            best.setIsBestSolution(false)
+        }
+        solutionInstance?.setIsBestSolution(true)
+
+        problem.setBestSolution(solutionInstance)
+        problem.save failOnError: true, flush: true
+        solutionInstance.save failOnError: true, flush: true
+
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
+    }
 }
