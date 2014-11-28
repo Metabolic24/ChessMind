@@ -136,7 +136,9 @@
                         <g:link controller="user" action="show"
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
-                        <g:actionSubmit action="aime" value="approuver"/>
+                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                            <g:actionSubmit action="aime" value="J'aime" />
+                        </g:form>
                         ${s.aime}
                     </span>
                     <g:each in="${s.sortedComments()}" var="c">

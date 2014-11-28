@@ -93,4 +93,13 @@ class SolutionController {
             '*'{render status: NOT_FOUND }
         }
     }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
+    def aime(Solution solutionInstance) {
+
+        solutionInstance.setAime(solutionInstance.getAime()+1)
+
+        solutionInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
+    }
 }

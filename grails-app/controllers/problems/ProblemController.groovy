@@ -139,14 +139,6 @@ class ProblemController {
         }
     }
 
-    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
-    def aime(Problem problemInstance) {
-        problemInstance.solutions.aime=problemInstance.solutions.aime+1
-        print(problemInstance.solutions.aime)
-        problemInstance.save failOnError: true, flush: true
-        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
-    }
-
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validate(Problem problemInstance) {
         problemInstance.setValide(true)
