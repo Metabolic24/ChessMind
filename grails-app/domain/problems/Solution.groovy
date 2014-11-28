@@ -7,6 +7,7 @@ class Solution {
     User user;
     String answer
     int aime
+    boolean isBestSolution = false
 
     static hasMany = [comments:Comment]
     static belongsTo = [problem:Problem]

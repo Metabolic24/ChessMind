@@ -93,4 +93,28 @@ class SolutionController {
             '*'{render status: NOT_FOUND }
         }
     }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
+    def aime(Solution solutionInstance) {
+        solutionInstance.setAime(solutionInstance.getAime()+1)
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.add(solutionInstance)
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).save failOnError: true, flush: true
+        solutionInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
+    }
+
+    def bestSolution(Solution solutionInstance) {
+        def problem = solutionInstance?.getProblem()
+        def best = problem.getBestSolution()
+        if (best != null) {
+            best.setIsBestSolution(false)
+        }
+        solutionInstance?.setIsBestSolution(true)
+
+        problem.setBestSolution(solutionInstance)
+        problem.save failOnError: true, flush: true
+        solutionInstance.save failOnError: true, flush: true
+
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
+    }
 }
