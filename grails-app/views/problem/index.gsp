@@ -85,10 +85,10 @@
 
                     <td>
                         <g:if test="${problemInstance.valide == false}">
-                            En attente de validation
+                            <b style="color:#FF3300">En attente de validation</b>
                         </g:if>
                         <g:else>
-                            Problème validé
+                            <b style="color:#339933">Problème validé</b>
                         </g:else>
                     </td>
                 </sec:ifAnyGranted>
