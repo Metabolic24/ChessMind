@@ -6,7 +6,9 @@ import grails.test.mixin.*
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
+import problems.Comment
 import problems.Problem
+import problems.Solution
 import spock.lang.*
 import users.User
 
@@ -41,6 +43,11 @@ class AlertControllerSpec extends Specification {
 
     void "Test the save action correctly persists an instance"() {
         given:"A connected user"
+        def comment = Mock(Comment)
+        def solution = Mock(Solution)
+        comment.getSolution() >> solution
+        solution.getProblem() >> Mock(Problem)
+
         def auth = Mock(Authentication)
         auth.getName() >> "admin"
 
@@ -58,6 +65,7 @@ class AlertControllerSpec extends Specification {
 
         User.metaClass.static.findByUsername = { l -> Mock(User) }
         Problem.metaClass.static.findById = { id -> Mock(Problem) }
+        Comment.metaClass.static.findById = { id -> comment }
 
         when:"Save is called for a domain instance that doesn't exist"
             request.contentType = FORM_CONTENT_TYPE
@@ -103,6 +111,19 @@ class AlertControllerSpec extends Specification {
         response.redirectedUrl == '/problem/index'
         flash.error != null
 
+        when:"The save action is executed with a specified comment id "
+        response.reset()
+        populateValidParams(params)
+        params.commentId = 1
+        alert = new Alert(params)
+
+        controller.save(alert)
+
+        then:"A redirect is issued to the show action"
+        response.redirectedUrl.contains('/problem/show/')
+        controller.flash.message != null
+        Alert.count() == 1
+
         when:"The save action is executed with a valid instance after setting problemId"
             response.reset()
             populateValidParams(params)
@@ -114,7 +135,7 @@ class AlertControllerSpec extends Specification {
         then:"A redirect is issued to the show action"
             response.redirectedUrl.contains('/problem/show/')
             controller.flash.message != null
-            Alert.count() == 1
+            Alert.count() == 2
     }
 
     void "Test that the delete action deletes an instance if it exists"() {

@@ -24,26 +24,27 @@ class Problem {
 
     // TODO Uncomment constraints
     static constraints = {
-        image nullable : false, blank : false, maxSize : 3145728 // 3 Mo
-        description blank : true, nullable : true
-        blackPlayer blank : true, nullable : true
-        whitePlayer blank : true, nullable : true
-        place blank : true, nullable : true
-        tournament blank : true, nullable : true
+        image nullable: false, blank: false, maxSize: 3145728 // 3 Mo
+        description blank: true, nullable: true
+        blackPlayer blank: true, nullable: true
+        whitePlayer blank: true, nullable: true
+        place blank: true, nullable: true
+        tournament blank: true, nullable: true
         date nullable: true, date: true
 
     }
 
     /*GORM constraints*/
 
-    static hasMany = [solutions : Solution, alerts : Alert]
+    static hasMany = [solutions: Solution, alerts: Alert]
 
-    static belongsTo = [player : User]
+    static belongsTo = [player: User]
 
     def sortedSolutions() {
-        def result = solutions.sort {a,b ->
-            if(a.aime == b.aime) b.comments.size() <=> a.comments.size()
-            else a.aime <=> b.aime}
+        def result = getSolutions()?.sort { a, b ->
+            if (a.getAime() == b.getAime()) b.getComments()?.size() <=> a.getComments()?.size()
+            else a.getAime() <=> b.getAime()
+        }
         result
     }
 }

@@ -16,7 +16,6 @@ class CommentControllerSpec extends Specification {
         assert params != null
         params['text'] = "Test"
         params['solution.id'] = 1
-        //params['solution.problem'] = Mock(Problem)
         params['solution.problem.id'] = 1
         params['user'] = Mock(User)
     }
@@ -34,8 +33,14 @@ class CommentControllerSpec extends Specification {
 
     void "Test the create action returns the correct model"() {
         given: "A logged user"
+        def solution = Mock(Solution)
+        def problem = Mock(Problem)
+        solution.getProblem() >> problem
+        problem.getId() >> 1
         User.metaClass.static.findByUsername = { personne -> Mock(User) }
+        Comment.metaClass.static.getSolution = {solution}
         Solution.metaClass.static.findById = { id -> Mock(Solution) }
+
 
         Authentication a = Mock(Authentication)
         a.getName() >> "admin"
@@ -54,10 +59,13 @@ class CommentControllerSpec extends Specification {
         params.comment = "test"
 
         when: "The create action is executed"
+        request.contentType = FORM_CONTENT_TYPE
         controller.create()
 
         then: "The model is correctly created"
-        model.commentInstance != null
+        Comment.count()==1
+        flash.message == 'Commentaire ajouté'
+        response.redirectedUrl.contains('/problem')
     }
 
     void "Test that the show action returns the correct model"() {
@@ -124,9 +132,10 @@ class CommentControllerSpec extends Specification {
     }
 
     void "Test that the supprimer action deletes an instance if it exists"() {
-        when: "The supprimer action is called for a null instance"
+
+        when: "The delete action is called for a null instance"
         request.contentType = FORM_CONTENT_TYPE
-        controller.supprimer(null)
+        controller.delete(null)
 
         then: "A 404 is returned"
         response.redirectedUrl == '/comment/index'
@@ -135,17 +144,33 @@ class CommentControllerSpec extends Specification {
         when: "A domain instance is created"
         response.reset()
         populateValidParams(params)
-        def comment = new Comment(params).save(flush: true)
+        def comment = new Comment(params).save(failOnError: true, flush: true)
+        controller.delete(comment)
 
-        then: "It exists"
-        Comment.count() == 1
+        then: "It is correctly deleted"
+        Comment.count() == 0
+        flash.message != null
+        response.redirectedUrl.contains('/problem')
 /*
-        when: "The domain instance is passed to the supprimer action"
-        controller.supprimer(comment)
+        when: "The domain instance is passed to the delete action"
+
 
         then: "The instance is deleted"
         Comment.count() == 0*/
         //response.redirectedUrl == '/comment/index'
         //flash.message != null
+    }
+
+    void "Test that the alertComment action redirects correctly"() {
+
+        given:"A valid comment"
+            populateValidParams(params)
+            def comment = new Comment(params).save(failOnError: true, flush: true)
+
+        when: "we call the alertComment method"
+            controller.alertComment(comment)
+
+        then: "A 404 is returned"
+            response.redirectedUrl == '/alert/create?commentId='+ comment.getId()
     }
 }

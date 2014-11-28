@@ -39,7 +39,7 @@ class AlertController {
         else if(params.commentId != null) {
             def comment = problems.Comment.findById(params.commentId)
             alertInstance.setComment(comment)
-            alertInstance.setProblem(comment.solution.problem)
+            alertInstance.setProblem(comment.getSolution().getProblem())
         }
         else {
             flash.error = "Action non autorisée"

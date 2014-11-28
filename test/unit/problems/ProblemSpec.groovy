@@ -84,10 +84,60 @@ class ProblemSpec extends Specification {
         !res
         problem.hasErrors()
 
-        // TODO : Faire marcher le fait d'être obligé de mettre une image
         where:
         anId | anImage
         1    | null
         2    | new byte[3145729]
+    }
+
+    void "Test de la fonction sortedSolutions"() {
+        given: "a valid Problem"
+            def problem = new Problem(image:[0, 1], player:Mock(User))
+            problem.save(failOnError:true, flush:true)
+
+        when: "we use sortedSolutions when no solutions"
+            def res = problem.sortedSolutions()
+
+        then: "the result is null"
+            res==null
+
+        when: "we use sortedSolutions with at least one solution"
+            def solution = Mock(Solution)
+            def solution2 = Mock(Solution)
+            problem.solutions = new HashSet<>();
+            problem.solutions.add(solution);
+            problem.solutions.add(solution2);
+            solution.getAime() >> 2
+            solution2.getAime() >> 1
+
+            res = problem.sortedSolutions()
+
+        then: "the result is not null"
+            res != null
+
+        when: "we use sortedSolutions with at least one solution"
+        problem.solutions = new HashSet<>();
+        solution2.getAime() >> 1
+        solution.getAime() >> 1
+
+        def comments = new HashSet<>();
+        comments.add(Mock(Comment))
+        comments.add(Mock(Comment))
+
+        def comments2 = new HashSet<>();
+        comments2.add(Mock(Comment))
+
+        solution.getComments() >> comments
+        solution2.getComments() >> comments2
+
+        //TODO Problème au niveau des comments (size non appelé?, null object?)
+
+        problem.solutions.add(solution);
+        problem.solutions.add(solution2);
+
+        res = problem.sortedSolutions()
+
+        then: "the result is not null"
+        res != null
     }
 }

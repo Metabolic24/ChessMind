@@ -18,7 +18,7 @@ class CommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Commentaire ajouté"
-                redirect commentInstance.solution.problem
+                redirect uri:'/problem/'+commentInstance.getSolution().getProblem().getId()
             }
             '*' { respond commentInstance, [status: CREATED] }
         }
@@ -67,20 +67,21 @@ class CommentController {
 
     @Secured(['ROLE_ADMIN'])
     @Transactional
-    def supprimer(Comment commentInstance) {
+    def delete(Comment commentInstance) {
 
         if (commentInstance == null) {
             notFound()
             return
         }
-        def commentProblem = commentInstance.solution.problem
+
+        def commentProblem = commentInstance.getSolution().getProblem()
 
         commentInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect commentProblem
+                redirect uri:'/problem/'+commentProblem.getId()
 
             }
             '*'{ render status: NO_CONTENT }

@@ -147,12 +147,12 @@
                                         id="${c?.user?.id}">${c?.user?.username}</g:link>
                                 <g:if test="${c.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name)}">
                                     <g:actionSubmit action="edit" value="Editer"/>
-                                    <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                    <g:actionSubmit action="delete" value="Supprimer"/>
                                 </g:if>
                                 <g:else>
                                     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_MODERATOR'>
                                         <g:actionSubmit action="edit" value="Editer"/>
-                                        <g:actionSubmit action="supprimer" value="Supprimer"/>
+                                        <g:actionSubmit action="delete" value="Supprimer"/>
                                     </sec:ifAnyGranted>
                                     <sec:ifAnyGranted roles='ROLE_USER'>
                                         <g:actionSubmit action="alertComment" value="Signaler"/>
