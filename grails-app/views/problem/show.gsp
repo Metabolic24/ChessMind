@@ -1,4 +1,4 @@
-<%@ page import="problems.Comment; problems.Problem; org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="users.User; problems.Comment; problems.Problem; org.springframework.security.core.context.SecurityContextHolder" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,21 +14,10 @@
 
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <%-- <li><g:link class="create" action="create"><g:message code="default.new.label" /></g:link></li> --%>
-        <li><g:link class="create" action="create">New Problem</g:link></li>
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><g:link class="list" action="index"><g:message code="default.list.label"
-                                                               args="[entityName]"/></g:link></li>
-            <li><g:link action="problems_to_validate"><g:message code="Problems to validate"
-                                                                 args="[entityName]"/></g:link></li>
-        </sec:ifAnyGranted>
-        <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
-        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
-        <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><a class="alert" href="${createLink(uri: '/alert/custom_index')}"><g:message code="Alertes"/></a></li>
-        </sec:ifAnyGranted>
+
+        <g:render template="/shared/commonMenu" />
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+
     </ul>
 </div>
 
@@ -129,16 +118,33 @@
                 <span id="solutions-label" class="property-label"><g:message code="problem.solutions.label"
                                                                              default="Solutions"/></span>
 
-                <g:each in="${problemInstance.solutions}" var="s">
+                <g:each in="${problemInstance.sortedSolutions()}" var="s">
                     <span class="property-value" aria-labelledby="solutions-label">
                         ${s.answer} (
                         <g:link controller="user" action="show"
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
-                        <g:actionSubmit action="aime" value="approuver"/>
+                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.contains(s)}">
+                            <g:actionSubmit action="aime" value="J'aime" />
+                            </g:if>
+                        </g:form>
                         ${s.aime}
+                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                        <%-- test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}"> --%>
+                            <g:if test="${s.problem.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && s.isBestSolution == false}">
+                                <g:actionSubmit action="bestSolution" value="V" />
+                            </g:if>
+                            <g:else>
+                                <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                                    <g:if test="${s.isBestSolution == false}">
+                                        <g:actionSubmit action="bestSolution" value="V" />
+                                    </g:if>
+                                </sec:ifAnyGranted>
+                            </g:else>
+                        </g:form>
                     </span>
-                    <g:each in="${s.comments}" var="c">
+                    <g:each in="${s.sortedComments()}" var="c">
                         <span class="property-value" aria-labelledby="solutions-label">
                             <g:form name="commentEditForm" url="[resource: c, controller: 'comment']" method="DELETE">
                                 -> ${c.text} -
@@ -180,13 +186,13 @@
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
 
-            <g:if test="${problemInstance?.solved}">
+            <g:if test="${problemInstance?.bestSolution != null}">
                 <li class="fieldcontain">
                     <span id="solved-label" class="property-label"><g:message code="problem.solved.label"
                                                                               default="Solved"/></span>
 
                     <span class="property-value" aria-labelledby="solved-label"><g:formatBoolean
-                            boolean="${problemInstance?.solved}"/></span>
+                            boolean="${problemInstance?.bestSolution != null}"/></span>
 
                 </li>
             </g:if>
@@ -217,7 +223,7 @@
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
-                <g:elseif test="${!problemInstance?.solved}">
+                <g:elseif test="${!problemInstance?.bestSolution != null}">
                     <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
                 </g:elseif>
             </sec:ifAnyGranted>

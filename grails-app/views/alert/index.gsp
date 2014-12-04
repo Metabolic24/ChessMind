@@ -11,11 +11,8 @@
 <a href="#list-alert" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><a class="problem" href="${createLink(uri: '/problem/index')}"><g:message code="Problem List"/></a></li>
-        <li><a class="problem" href="${createLink(uri: '/problem/problems_to_validate')}"><g:message code="Problems to validate"/></a></li>
-        <li><a class="problem" href="${createLink(uri: '/problem/valid_problems')}"><g:message code="All valids problems"/></a></li>
-        <li><a class="problem" href="${createLink(uri: '/problem/my_problems')}"><g:message code="My problems"/></a></li>
+
+        <g:render template="/shared/commonMenu" />
 
     </ul>
 </div>
@@ -36,8 +33,6 @@
 
             <th><g:message code="alert.user.label" default="User" /></th>
 
-            <th>Suppression</th>
-
         </tr>
         </thead>
         <tbody>
@@ -45,9 +40,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show" id="${alertInstance.id}">${fieldValue(bean: alertInstance, field: "description")}</g:link></td>
-                <%--
-                <td>${fieldValue(bean: alertInstance, field: "problem")}</td>
-                --%>
+
                 <td><g:link controller="problem" action="show" id="${alertInstance.problem.id}">${fieldValue(bean: alertInstance, field: "problem.id")}</g:link></td>
 
                 <td><g:link controller="problem" action="show" id="${alertInstance.problem.id}">${fieldValue(bean: alertInstance, field: "comment.text")}</g:link></td>

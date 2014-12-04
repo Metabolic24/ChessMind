@@ -9,12 +9,8 @@
 		<a href="#create-alert" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><a class="problem" href="${createLink(uri: '/problem/index')}"><g:message code="Problem List"/></a></li>
-                <li><a class="problem" href="${createLink(uri: '/problem/problems_to_validate')}"><g:message code="Problems to validate"/></a></li>
-                <li><a class="problem" href="${createLink(uri: '/problem/valid_problems')}"><g:message code="All valids problems"/></a></li>
-                <li><a class="problem" href="${createLink(uri: '/problem/my_problems')}"><g:message code="My problems"/></a></li>
-                <li><g:link class="list" action="custom_index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+
+                <g:render template="/shared/commonMenu" />
 
             </ul>
 		</div>
@@ -31,8 +27,13 @@
 			</ul>
 			</g:hasErrors>
 			<g:form url="[resource:alertInstance, action:'save']" >
-                    <g:textArea name="description" value="${comment}" rows="5" columns="30"/>
-                    <g:hiddenField name="problemId" value="${alertInstance}"/>
+                <g:textArea name="description" value="${comment}" rows="5" columns="30"/>
+                <g:if test="${params.problemId != null}">
+                    <g:hiddenField name="problemId" value="${params.problemId}"/>
+                </g:if>
+                <g:else>
+                    <g:hiddenField name="commentId" value="${params.commentId}"/>
+                </g:else>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>

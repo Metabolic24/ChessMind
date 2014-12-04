@@ -15,9 +15,9 @@ class Problem {
     String whitePlayer
     String place
     String tournament
+    Solution bestSolution = null
 
     Date date
-    boolean solved //Pas de nullable: false car boolean est un type primitif (true|false)
     boolean valide
 
     /*Attribute Constraints*/
@@ -31,7 +31,7 @@ class Problem {
         place blank : true, nullable : true
         tournament blank : true, nullable : true
         date nullable: true, date: true
-
+        bestSolution nullable : true
     }
 
     /*GORM constraints*/
@@ -39,4 +39,11 @@ class Problem {
     static hasMany = [solutions : Solution, alerts : Alert]
 
     static belongsTo = [player : User]
+
+    def sortedSolutions() {
+        def result = solutions.sort {a,b ->
+            if(a.aime == b.aime) b.comments.size() <=> a.comments.size()
+            else a.aime <=> b.aime}
+        result
+    }
 }

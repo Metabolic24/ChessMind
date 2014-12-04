@@ -13,9 +13,8 @@
 
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
+        <g:render template="/shared/commonMenu" />
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
     </ul>
 </div>
 
@@ -87,14 +86,11 @@
         </fieldset>
         --%>
         <fieldset class="buttons">
-            <g:link class="edit" action="editPassword" resource="${userInstance}"><g:message code="Edit password"
-                                                                                     default="Edit password"/></g:link>
+            <g:link class="edit" action="editPassword" >Edit password</g:link>
 
-            <g:link class="edit" action="editName" resource="${userInstance}"><g:message code="Edit name"
-                                                                                             default="Edit name"/></g:link>
+            <g:link class="edit" action="editName" resource="${userInstance}">Edit name</g:link>
 
-            <g:link class="edit" action="editMail" resource="${userInstance}"><g:message code="Edit mail"
-                                                                                             default="Edit mail"/></g:link>
+            <g:link class="edit" action="editMail" resource="${userInstance}">Edit mail</g:link>
         </fieldset>
     </g:form>
 </div>

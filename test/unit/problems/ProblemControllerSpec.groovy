@@ -22,9 +22,10 @@ class ProblemControllerSpec extends Specification {
         params["date"] = new Date()
         params["place"] = ''
         params["tournament"] = ''
-        params["solved"] = false
+        params["bestSolution"] = null
         params["valide"] = false
         params["player"] = Mock(User)
+        params[""]
     }
 
     void "Test the index action returns the correct model"() {
@@ -322,10 +323,10 @@ class ProblemControllerSpec extends Specification {
         def problem = new Problem(params).save(failOnError: true, flush: true)
 
         when: "We call the answer method"
-        controller.answer()
+        controller.answer(problem)
 
         then: "The redirection is correct"
-        response.redirectedUrl == '/solution/create'
+        response.redirectedUrl == ("/solution/create?problemId=${problem.id}")
         controller.flash.message == null
         Problem.count() == 1
     }

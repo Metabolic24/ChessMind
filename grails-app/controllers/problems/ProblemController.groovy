@@ -16,7 +16,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ProblemController {
 
-
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
@@ -53,7 +52,7 @@ class ProblemController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'])
     def answer(Problem problemInstance) {
-        redirect(uri:"/solution/create")
+        redirect(controller: "solution", action:"create", params: [problemId:problemInstance.id] )
     }
 
     @Transactional
@@ -129,10 +128,6 @@ class ProblemController {
             return
         }
 
-        if(SecurityContextHolder.getContext().getAuthentication().getName().equals(problemInstance?.player.username)&& !problemInstance?.isValide()) {
-
-        }
-
         problemInstance.delete flush:true
 
         request.withFormat {
@@ -143,13 +138,7 @@ class ProblemController {
             '*'{ render status: NO_CONTENT }
         }
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
-    def aime(Problem problemInstance) {
-        problemInstance.solutions.aime=problemInstance.solutions.aime+1
-        print(problemInstance.solutions.aime)
-        problemInstance.save failOnError: true, flush: true
-        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
-    }
+
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def validate(Problem problemInstance) {
         problemInstance.setValide(true)
@@ -206,13 +195,14 @@ class ProblemController {
         response.outputStream << baos.toByteArray()
         baos.close()
 
-        response.outputStream << img
+        //response.outputStream << img
+        response.setHeader('Content-length', img.length)
+        response.contentType = 'image/jpg' // or the appropriate image content type
         response.outputStream.flush()
     }
 
+    @Secured(['ROLE_USER'])
     def alert(Problem problemInstance) {
-        //redirect(uri:"/alert/create", params:[problem:problemInstance])
-        print "problemInstance : " + problemInstance.id
         redirect action: 'create', controller: 'alert', params: [problemId: problemInstance.id]
     }
 }

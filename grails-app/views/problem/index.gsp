@@ -11,7 +11,8 @@
 <a href="#list-problem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+
+        <g:render template="/shared/commonMenu" />
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 
     <%-- For administrators and moderators, having more menus to administrate the website --%>
@@ -24,9 +25,10 @@
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
         <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
+        <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><a class="alert" href="${createLink(uri: '/alert/custom_index')}"><g:message code="Alertes"/></a></li>
+            <li><a class="alert" href="${createLink(uri: '/alert/index')}"><g:message code="Alertes"/></a></li>
         </sec:ifAnyGranted>
     </ul>
 </div>
@@ -34,6 +36,9 @@
     <h1><g:message code="default.list.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <g:if test="${flash.error}">
+        <div class="errors" role="status">${flash.error}</div>
     </g:if>
     <table>
         <thead>
@@ -47,6 +52,7 @@
             <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                 <th>Edition</th>
                 <th>Suppression</th>
+                <th>Validation</th>
             </sec:ifAnyGranted>
         </tr>
         </thead>
@@ -76,6 +82,15 @@
                                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                         </g:form>
+                    </td>
+
+                    <td>
+                        <g:if test="${problemInstance.valide == false}">
+                            En attente de validation
+                        </g:if>
+                        <g:else>
+                            Problème validé
+                        </g:else>
                     </td>
                 </sec:ifAnyGranted>
             </tr>

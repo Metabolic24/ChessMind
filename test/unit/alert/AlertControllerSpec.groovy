@@ -40,7 +40,6 @@ class AlertControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
-
         given:"A connected user"
         def auth = Mock(Authentication)
         auth.getName() >> "admin"
@@ -60,19 +59,54 @@ class AlertControllerSpec extends Specification {
         User.metaClass.static.findByUsername = { l -> Mock(User) }
         Problem.metaClass.static.findById = { id -> Mock(Problem) }
 
-        when:"The save action is executed with an invalid instance"
+        when:"Save is called for a domain instance that doesn't exist"
             request.contentType = FORM_CONTENT_TYPE
+            controller.save(null)
+
+        then:"A redirect is issued to the index problem action"
+            model.solutionInstance == null
+            response.redirectedUrl == '/problem/index'
+            flash.error != null
+
+        when:"The save action is executed with an invalid instance alone"
+            response.reset()
             def alert = new Alert()
             alert.validate()
             controller.save(alert)
 
+        then:"A redirect is issued to the index problem action"
+            model.solutionInstance == null
+            response.redirectedUrl == '/problem/index'
+            flash.error != null
+
+        when:"The save action is executed with an invalid instance after setting problemId"
+            response.reset()
+            params.problemId = 1
+            alert = new Alert()
+            alert.validate()
+            controller.save(alert)
+
         then:"The create view is rendered again with the correct model"
-            model.alertInstance!= null
+            model.alertInstance != null
             view == 'create'
 
-        when:"The save action is executed with a valid instance"
+        when:"The save action is executed with a valid instance alone"
+        response.reset()
+        populateValidParams(params)
+        params.problemId = null
+        alert = new Alert(params)
+
+        controller.save(alert)
+
+        then:"A redirect is issued to the index problem action"
+        model.solutionInstance == null
+        response.redirectedUrl == '/problem/index'
+        flash.error != null
+
+        when:"The save action is executed with a valid instance after setting problemId"
             response.reset()
             populateValidParams(params)
+            params.problemId = 1
             alert = new Alert(params)
 
             controller.save(alert)
@@ -83,76 +117,13 @@ class AlertControllerSpec extends Specification {
             Alert.count() == 1
     }
 
-    void "Test that the show action returns the correct model"() {
-        when:"The show action is executed with a null domain"
-            controller.show(null)
-
-        then:"A 404 error is returned"
-            response.status == 404
-
-        when:"A domain instance is passed to the show action"
-            populateValidParams(params)
-            def alert = new Alert(params)
-            controller.show(alert)
-
-        then:"A model is populated containing the domain instance"
-            model.alertInstance == alert
-    }
-
-    void "Test that the edit action returns the correct model"() {
-        when:"The edit action is executed with a null domain"
-            controller.edit(null)
-
-        then:"A 404 error is returned"
-            response.status == 404
-
-        when:"A domain instance is passed to the edit action"
-            populateValidParams(params)
-            def alert = new Alert(params)
-            controller.edit(alert)
-
-        then:"A model is populated containing the domain instance"
-            model.alertInstance == alert
-    }
-
-    void "Test the update action performs an update on a valid domain instance"() {
-        when:"Update is called for a domain instance that doesn't exist"
-            request.contentType = FORM_CONTENT_TYPE
-            controller.update(null)
-
-        then:"A 404 error is returned"
-            response.redirectedUrl == '/alert/custom_index'
-            flash.message != null
-
-
-        when:"An invalid domain instance is passed to the update action"
-            response.reset()
-            def alert = new Alert()
-            alert.validate()
-            controller.update(alert)
-
-        then:"The edit view is rendered again with the invalid instance"
-            view == 'edit'
-            model.alertInstance == alert
-
-        when:"A valid domain instance is passed to the update action"
-            response.reset()
-            populateValidParams(params)
-            alert = new Alert(params).save(flush: true)
-            controller.update(alert)
-
-        then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/alert/show/$alert.id"
-            flash.message != null
-    }
-
     void "Test that the delete action deletes an instance if it exists"() {
         when:"The delete action is called for a null instance"
             request.contentType = FORM_CONTENT_TYPE
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/alert/custom_index'
+            response.redirectedUrl == '/alert/index'
             flash.message != null
 
         when:"A domain instance is created"
@@ -168,7 +139,7 @@ class AlertControllerSpec extends Specification {
 
         then:"The instance is deleted"
             Alert.count() == 0
-            response.redirectedUrl == '/alert/custom_index'
+            response.redirectedUrl == '/alert/index'
             flash.message != null
     }
 }

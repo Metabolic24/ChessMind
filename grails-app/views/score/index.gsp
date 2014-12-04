@@ -11,9 +11,10 @@
 		<a href="#list-score" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+
+                <g:render template="/shared/commonMenu" />
+
+            </ul>
 		</div>
 		<div id="list-score" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -23,20 +24,19 @@
 			<table>
 			<thead>
 					<tr>
+                        <g:sortableColumn property="user.username" title="${message(code:"score.player.label", default:"Membre")}" />
+
+                        <g:sortableColumn property="score1" title="${message(code: 'score.score1.label', default: 'Score 1 </br> Problèmes résolus ')}" />
 					
-						<g:sortableColumn property="score1" title="${message(code: 'score.score1.label', default: 'Score1')}" />
-					
-						<g:sortableColumn property="score2" title="${message(code: 'score.score2.label', default: 'Score2')}" />
-					
-						<th><g:message code="score.player.label" default="Player" /></th>
-					
+						<g:sortableColumn property="score2" title="${message(code: 'score.score2.label', default: 'Score 2 </br> Likes')}" />
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${scoreInstanceList}" status="i" var="scoreInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                        <td><g:link action="show" controller="user" id="${scoreInstance.user.id}">${fieldValue(bean: scoreInstance, field: "user")}</g:link></td>
+                        <td><g:link action="show" controller="user" id="${scoreInstance.user.id}">${fieldValue(bean: scoreInstance, field: "user.username")}</g:link></td>
 
                         <td>${fieldValue(bean: scoreInstance, field: "score1")}</td>
 					

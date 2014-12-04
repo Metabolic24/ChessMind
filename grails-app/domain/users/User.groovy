@@ -1,6 +1,7 @@
 package users
 
 import problems.Problem
+import problems.Solution
 import score.Score
 
 class User {
@@ -38,7 +39,7 @@ class User {
     }
 
     /* GORM CONSTRAINTs */
-    static hasMany = [problems:Problem]
+    static hasMany = [problems:Problem, solutions:Solution]
 
     Set<Role> getAuthorities() {
         UserRole.findAllByUser(this).collect { it.role }

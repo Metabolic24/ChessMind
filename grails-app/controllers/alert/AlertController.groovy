@@ -2,9 +2,6 @@ package alert
 
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.context.SecurityContextHolder
-import problems.Problem
-import problems.Solution
-import problems.Comment
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -15,56 +12,48 @@ class AlertController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    // TODO : Ne pas passer par une variable globale entre le create et le save serait cool !
-    def problemId
-    def commentId
-
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Alert.list(params), model:[alertInstanceCount: Alert.count()]
     }
 
-    def custom_index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Alert.list(params), model:[alertInstanceCount: Alert.count()]
-    }
-
-    def show(Alert alertInstance) {
-        respond alertInstance
-    }
-
+    @Secured(['ROLE_USER'])
     def create() {
-        if (params['commentId'] != null){
-            commentId = params['commentId']
-            problemId = problems.Comment.findById(commentId).solution.problem.id
-        } else {
-            problemId = params['problemId']
-        }
         respond new Alert(params)
     }
 
     @Transactional
+    @Secured(['ROLE_USER'])
     def save(Alert alertInstance) {
 
         if (alertInstance == null) {
-            notFound()
+            flash.error = "Action non autorisée..."
+            redirect uri:"/problem/index"
+            return
+        }
+
+        if(params.problemId != null) {
+            alertInstance.setProblem(problems.Problem.findById(params.problemId))
+            alertInstance.comment = null
+        }
+        else if(params.commentId != null) {
+            def comment = problems.Comment.findById(params.commentId)
+            alertInstance.setComment(comment)
+            alertInstance.setProblem(comment.solution.problem)
+        }
+        else {
+            flash.error = "Action non autorisée"
+            redirect uri:"/problem/index"
             return
         }
 
         alertInstance.setDescription(params.description)
-        alertInstance.setProblem(problems.Problem.findById(problemId))
         alertInstance.setUser(users.User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()))
-        if (commentId != null) {
-            alertInstance.setComment(problems.Comment.findById(commentId))
-        }
-
-        // On remet les valeurs à null pour la prochaine alerte
-        problemId = null;
-        commentId = null;
 
         alertInstance.validate()
 
         if (alertInstance.hasErrors()) {
+            println "test"
             respond alertInstance.errors, view:'create'
             return
         }
@@ -77,33 +66,6 @@ class AlertController {
                 redirect uri:"/problem/show/" + alertInstance.getProblemId()
             }
             '*' { respond alertInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(Alert alertInstance) {
-        respond alertInstance
-    }
-
-    @Transactional
-    def update(Alert alertInstance) {
-        if (alertInstance == null) {
-            notFound()
-            return
-        }
-
-        if (alertInstance.hasErrors()) {
-            respond alertInstance.errors, view:'edit'
-            return
-        }
-
-        alertInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Alert.label', default: 'Alert'), alertInstance.id])
-                redirect alertInstance
-            }
-            '*'{ respond alertInstance, [status: OK] }
         }
     }
 
@@ -120,7 +82,7 @@ class AlertController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Alert.label', default: 'Alert'), alertInstance.id])
-                redirect action:"custom_index", method:"GET"
+                redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -130,7 +92,7 @@ class AlertController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'alert.label', default: 'Alert'), params.id])
-                redirect action: "custom_index", method: "GET"
+                redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

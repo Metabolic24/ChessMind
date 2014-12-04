@@ -14,6 +14,7 @@ class Alert {
 
     static constraints = {
         description blank : false, nullable : false
+        user nullable:false
         comment blank : true, nullable : true
     }
 }

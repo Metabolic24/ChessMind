@@ -1,6 +1,8 @@
 package problems
 
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.security.core.context.SecurityContextHolder
+import users.User
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -11,17 +13,13 @@ class SolutionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Solution.list(params), model:[solutionInstanceCount: Solution.count()]
-    }
-
-    def show(Solution solutionInstance) {
-        respond solutionInstance
-    }
-
     def create() {
-        respond new Solution(params)
+        if(params.problemId != null) {
+            respond new Solution(params)
+        } else {
+            flash.error = "Action non autorisée..."
+            redirect uri:"/problem/index"
+        }
     }
 
     @Transactional
@@ -29,6 +27,26 @@ class SolutionController {
         if (solutionInstance == null) {
             notFound()
             return
+        }
+
+        if(solutionInstance.user == null) {
+            solutionInstance.user = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName())
+        }
+
+        if(solutionInstance.problem == null && params.problemId != null) {
+            solutionInstance.problem = Problem.findById(params.problemId)
+        }
+
+        solutionInstance.validate()
+
+        def solutions = Solution.findAllByProblem(solutionInstance.problem)
+
+        if(!solutions.isEmpty()) {
+            if (solutions.find { a -> a.answer.equals(solutionInstance.answer) } !=null) {
+                flash.message = "This solution has already been proposed for this problem..."
+                respond solutionInstance, view: 'create'
+                return
+            }
         }
 
         if (solutionInstance.hasErrors()) {
@@ -44,33 +62,6 @@ class SolutionController {
                 redirect solutionInstance
             }
             '*' { respond solutionInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(Solution solutionInstance) {
-        respond solutionInstance
-    }
-
-    @Transactional
-    def update(Solution solutionInstance) {
-        if (solutionInstance == null) {
-            notFound()
-            return
-        }
-
-        if (solutionInstance.hasErrors()) {
-            respond solutionInstance.errors, view:'edit'
-            return
-        }
-
-        solutionInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Solution.label', default: 'Solution'), solutionInstance.id])
-                redirect solutionInstance
-            }
-            '*'{ respond solutionInstance, [status: OK] }
         }
     }
 
@@ -97,9 +88,33 @@ class SolutionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'solution.label', default: 'Solution'), params.id])
-                redirect action: "index", method: "GET"
+                redirect uri:"/problem/index"
             }
-            '*'{ render status: NOT_FOUND }
+            '*'{render status: NOT_FOUND }
         }
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
+    def aime(Solution solutionInstance) {
+        solutionInstance.setAime(solutionInstance.getAime()+1)
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.add(solutionInstance)
+        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).save failOnError: true, flush: true
+        solutionInstance.save failOnError: true, flush: true
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
+    }
+
+    def bestSolution(Solution solutionInstance) {
+        def problem = solutionInstance?.getProblem()
+        def best = problem.getBestSolution()
+        if (best != null) {
+            best.setIsBestSolution(false)
+        }
+        solutionInstance?.setIsBestSolution(true)
+
+        problem.setBestSolution(solutionInstance)
+        problem.save failOnError: true, flush: true
+        solutionInstance.save failOnError: true, flush: true
+
+        redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
     }
 }
