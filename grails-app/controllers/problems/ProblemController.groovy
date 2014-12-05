@@ -179,7 +179,7 @@ class ProblemController {
         InputStream input = new ByteArrayInputStream(img);
         BufferedImage bImageFromConvert = ImageIO.read(input);
 
-        int width = 300
+        int width = 200
         int height = width
 
         // Operations on image to resize

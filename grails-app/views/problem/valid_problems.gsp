@@ -38,54 +38,39 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <table>
-        <thead>
-        <tr>
-            <g:sortableColumn property="id" title="${message(code: 'problem.id.label', default: 'id')}"/>
-
-            <g:sortableColumn property="owner" title="${message(code: 'problem.player.label', default: 'Owner')}"/>
-
-            <th>Diagramme</th>
-
-            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                <th>Edition</th>
-                <th>Suppression</th>
-            </sec:ifAnyGranted>
-
-        </tr>
-        </thead>
         <tbody>
         <g:each in="${problemInstanceList}" status="i" var="problemInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+        <g:if test="${i %2 == 0}">
+            <tr class="even">
+        </g:if>
 
                 <g:if test="${problemInstance.valide}">
-
-                    <td><g:link action="show"
-                                id="${problemInstance.id}">${fieldValue(bean: problemInstance, field: "id")}</g:link></td>
-
-                    <td>${fieldValue(bean: problemInstance, field: "player.username")}</td>
-
-                    <td>
-                        <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
+                    <td style=" font-size: 17 ; font-weight:bold ; text-align: center ; vertical-align: middle ; padding-bottom: 71px">
+                        ${problemInstance.getId()}.
                     </td>
 
-                    <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'edit']">
-                                <g:actionSubmit class="edit" action="edit"
-                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-                            </g:form>
-                        </td>
-                        <td>
-                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE">
-                                <g:actionSubmit class="delete" action="delete"
-                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                    <td>
+                        <g:link action="show" id="${problemInstance.id}"><img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/></g:link>
+                        <br/>
+                        <span align="right" style="margin-left:35px ; margin-top:20px">
+                            Proposé par
+                            <g:link controller="user" action="show" id="${problemInstance.player.id}">${fieldValue(bean: problemInstance, field: "player.username")}</g:link>
+                        </span>
+
+                        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
+                            <g:form url="[resource: problemInstance, action: 'delete']" method="DELETE" style="margin-left:8px; margin-top:5px">
+                                <g:actionSubmit class="myButton" action="edit"
+                                                value="${message(code: 'default.button.edit.label', default: 'Edit')}" style="margin-right:5px"/>
+                                <g:actionSubmit class="myButton" action="delete"
+                                                value="${message(code: 'default.button.delete.label', default: 'Delete')}" style="margin-left:5px"
                                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
                             </g:form>
-                        </td>
-                    </sec:ifAnyGranted>
-
+                        </sec:ifAnyGranted>
+                    </td>
                 </g:if>
-            </tr>
+            <g:if test="${i % 2 == 1}">
+                </tr>
+            </g:if>
         </g:each>
         </tbody>
     </table>
