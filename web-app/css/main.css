@@ -184,7 +184,7 @@ img {
 	text-decoration: underline;
 }
 
-.nav a.home, .nav a.list, .nav a.create {
+.nav a.home, .nav a.list, .nav a.create, .nav a.score, .nav a.alert, .nav a.problem {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
@@ -200,6 +200,18 @@ img {
 
 .nav a.create {
 	background-image: url(../images/skin/database_add.png);
+}
+
+.nav a.score {
+    background-image: url(../images/skin/information.png);
+}
+
+.nav a.alert {
+    background-image: url(../images/skin/exclamation.png);
+}
+
+.nav a.problem {
+    background-image: url(../images/skin/problem.png);
 }
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */

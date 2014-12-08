@@ -1,4 +1,4 @@
-<%@ page import="problems.Comment; problems.Problem; org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="users.User; problems.Comment; problems.Problem; org.springframework.security.core.context.SecurityContextHolder" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,21 +14,10 @@
 
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create">New Problem</g:link></li>
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><g:link class="list" action="index"><g:message code="default.list.label"
-                                                               args="[entityName]"/></g:link></li>
-            <li><g:link action="problems_to_validate"><g:message code="Problems to validate"
-                                                                 args="[entityName]"/></g:link></li>
-        </sec:ifAnyGranted>
-        <li><g:link action="valid_problems"><g:message code="All valids problems" args="[entityName]"/></g:link></li>
-        <li><g:link action="my_problems"><g:message code="My problems" args="[entityName]"/></g:link></li>
-        <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
 
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><a class="alert" href="${createLink(uri: '/alert/index')}"><g:message code="Alertes"/></a></li>
-        </sec:ifAnyGranted>
+        <g:render template="/shared/commonMenu" />
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+
     </ul>
 </div>
 
@@ -136,7 +125,9 @@
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
                         <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
+                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.contains(s)}">
                             <g:actionSubmit action="aime" value="J'aime" />
+                            </g:if>
                         </g:form>
                         ${s.aime}
                         <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">

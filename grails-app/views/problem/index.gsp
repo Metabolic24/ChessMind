@@ -11,7 +11,8 @@
 <a href="#list-problem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+
+        <g:render template="/shared/commonMenu" />
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 
     <%-- For administrators and moderators, having more menus to administrate the website --%>
@@ -22,6 +23,7 @@
         </sec:ifAnyGranted>
 
         <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
+        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
         <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
         <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
 
@@ -84,10 +86,10 @@
 
                     <td>
                         <g:if test="${problemInstance.valide == false}">
-                            <b style="color:#FF3300">En attente de validation</b>
+                            En attente de validation
                         </g:if>
                         <g:else>
-                            <b style="color:#339933">Problème validé</b>
+                            Problème validé
                         </g:else>
                     </td>
                 </sec:ifAnyGranted>
