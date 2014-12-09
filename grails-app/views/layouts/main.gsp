@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title><g:layoutTitle default="Grails" /></title>
+    <title><g:layoutTitle default="ChessMind" /></title>
     <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
     <link rel="stylesheet" href="${resource(dir:'css',file:'jqModal.css')}" />
     <link rel="shortcut icon" type="image/x-icon"
@@ -24,11 +24,11 @@
     <span id='loginLink' style='position: relative; margin-right: 30px; float: right; line-height: 0%; top: 10px'>
         <sec:ifLoggedIn>
             <div style="margin-bottom: 0px">
-                Logged in as <g:link controller="user" action="showMyProfile"><sec:username/></g:link> (<g:link controller='logout'>Logout</g:link>)
+                Connecté en tant que<g:link controller="user" action="showMyProfile"><sec:username/></g:link>(<g:link controller='logout'>Déconnexion</g:link>)
             </div>
         </sec:ifLoggedIn>
         <sec:ifNotLoggedIn>
-            <a href='#' onclick='showLogin(); return false;'>Login</a>
+            <a href='#' onclick='showLogin(); return false;'>Connexion</a>
         </sec:ifNotLoggedIn>
     </span>
 
@@ -38,6 +38,9 @@
 
 <g:render template='/includes/ajaxLogin'/>
 
+<div class="nav" role="navigation">
+    <ul><g:render template="/includes/commonMenu"/></ul>
+</div>
 <g:layoutBody />
 <r:layoutResources />
 </body>

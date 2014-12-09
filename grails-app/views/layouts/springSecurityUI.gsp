@@ -8,7 +8,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title><g:layoutTitle default='Security Management Console'/></title>
+    <title><g:layoutTitle default='Interface Administrateur'/></title>
 
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon"/>
 
@@ -78,22 +78,18 @@
     <div>
 
         <ul class="jd_menu jd_menu_slate">
-            <li><a class="accessible"><g:message code="spring.security.ui.menu.users"/></a>
+            <li><a class="accessible">Utilisateurs</a>
                 <ul>
-                    <li><g:link controller="user" action='search'><g:message
-                            code="spring.security.ui.search"/></g:link></li>
-                    <li><g:link controller="user" action='create'><g:message
-                            code="spring.security.ui.create"/></g:link></li>
-                    <li><g:link controller="user" action='administrators'>Administrators</g:link></li>
-                    <li><g:link controller="user" action='moderators'>Moderators</g:link></li>
+                    <li><g:link controller="user" action='create'>Créer</g:link></li>
+                    <li><g:link controller="user" action='search'>Rechercher</g:link></li>
+                    <li><g:link controller="user" action='administrators'>Administrateurs</g:link></li>
+                    <li><g:link controller="user" action='moderators'>Modérateurs</g:link></li>
                 </ul>
             </li>
-            <li><a class="accessible"><g:message code="spring.security.ui.menu.roles"/></a>
+            <li><a class="accessible">Rôles</a>
                 <ul>
-                    <li><g:link controller="role" action='search'><g:message
-                            code="spring.security.ui.search"/></g:link></li>
-                    <li><g:link controller="role" action='create'><g:message
-                            code="spring.security.ui.create"/></g:link></li>
+                    <li><g:link controller="role" action='create'>Créer</g:link></li>
+                    <li><g:link controller="role" action='search'>Rechercher</g:link></li>
                 </ul>
             </li>
             <g:if test='${SpringSecurityUtils.securityConfig.securityConfigType?.toString() == 'Requestmap'}'>
@@ -191,15 +187,15 @@
                 <nobr>
                     <div id='loginLinkContainer'>
                         <sec:ifLoggedIn>
-                            Logged in as <sec:username/> (<g:link controller='logout'>Logout</g:link>)
+                            Connecté en tant que <sec:username/> (<g:link controller='logout'>Se déconnecter</g:link>)
                         </sec:ifLoggedIn>
                         <sec:ifNotLoggedIn>
-                            <a href='#' id='loginLink'>Login</a>
+                            <a href='#' id='loginLink'>Connexion</a>
                         </sec:ifNotLoggedIn>
 
                         <sec:ifSwitched>
                             <a href='${request.contextPath}/j_spring_security_exit_user'>
-                                Resume as <sec:switchedUserOriginalUsername/>
+                                Revenir en tant que <sec:switchedUserOriginalUsername/>
                             </a>
                         </sec:ifSwitched>
                     </div>

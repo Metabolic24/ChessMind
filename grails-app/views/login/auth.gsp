@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title><g:message code='spring.security.ui.login.title'/></title>
+    <title>Formulaire d'Inscription</title>
     <meta name='layout' content='register'/>
 </head>
 
@@ -14,34 +14,33 @@
         <form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
             <div class="sign-in">
 
-                <h1><g:message code='spring.security.ui.login.signin'/></h1>
+                <h1>Authentification</h1>
 
                 <table>
                     <tr>
-                        <td><label for="username"><g:message code='spring.security.ui.login.username'/></label></td>
+                        <td><label for="username">Pseudo</label></td>
                         <td><input name="j_username" id="username" size="20"/></td>
                     </tr>
                     <tr>
-                        <td><label for="password"><g:message code='spring.security.ui.login.password'/></label></td>
+                        <td><label for="password">Mot de Passe</label></td>
                         <td><input type="password" name="j_password" id="password" size="20"/></td>
                     </tr>
                     <tr>
                         <td colspan='2'>
                             <input type="checkbox" class="checkbox" name="${rememberMeParameter}" id="remember_me"
                                    checked="checked"/>
-                            <label for='remember_me'><g:message code='spring.security.ui.login.rememberme'/></label> |
+                            <label for='remember_me'>Rester Connecté</label> |
                             <span class="forgot-link">
-                                <g:link controller='register' action='forgotPassword'><g:message
-                                        code='spring.security.ui.login.forgotPassword'/></g:link>
+                                <g:link controller='register' action='forgotPassword'>Mot de Passe oublié?</g:link>
                             </span>
                         </td>
                     </tr>
                     <tr>
                         <td colspan='2' style='text-align:center;padding:3px' >
                             <s2ui:linkButton elementId='register' controller='register'
-                                             messageCode='spring.security.ui.login.register'/>
+                                             messageCode="S'enregistrer"/>
                             <s2ui:submitButton elementId='loginButton' form='loginForm'
-                                               messageCode='spring.security.ui.login.login'/>
+                                               messageCode='Connexion'/>
                         </td>
                     </tr>
                 </table>

@@ -9,11 +9,6 @@
 	</head>
 	<body>
 		<a href="#list-comment" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-                <g:render template="/shared/commonMenu" />
-            </ul>
-		</div>
 		<div id="list-comment" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">

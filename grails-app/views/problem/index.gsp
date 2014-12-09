@@ -1,39 +1,14 @@
-
 <%@ page import="problems.Problem" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'problem.label', default: 'Problem')}" />
-    <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
 <a href="#list-problem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav" role="navigation">
-    <ul>
-
-        <g:render template="/shared/commonMenu" />
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-
-    <%-- For administrators and moderators, having more menus to administrate the website --%>
-
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            <li><g:link action="problems_to_validate"><g:message code="Problems to validate" args="[entityName]" /></g:link></li>
-        </sec:ifAnyGranted>
-
-        <li><g:link action="valid_problems"><g:message code="All valids problems"  args="[entityName]" /></g:link></li>
-        <li><g:link action="solved_problems"><g:message code="Problèmes Archivés" args="[entityName]"/></g:link></li>
-        <li><g:link action="my_problems"><g:message code="My problems"  args="[entityName]" /></g:link></li>
-        <li><a class="score" href="${createLink(uri: '/score/index')}"><g:message code="Classement des scores"/></a></li>
-
-        <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
-            <li><a class="alert" href="${createLink(uri: '/alert/index')}"><g:message code="Alertes"/></a></li>
-        </sec:ifAnyGranted>
-    </ul>
-</div>
 <div id="list-problem" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+    <h1>Liste détaillée des Problèmes</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

@@ -4,21 +4,11 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'problem.label', default: 'Problem')}"/>
-    <title>ChessMind</title>
 </head>
 
 <body>
 <a href="#list-problem" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
-
-<div class="nav" role="navigation">
-    <ul>
-
-        <g:render template="/shared/commonMenu" />
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-
-    </ul>
-</div>
 
 <div id="list-problem" class="content scaffold-list" role="main">
     <h1>Liste des Problèmes</h1>

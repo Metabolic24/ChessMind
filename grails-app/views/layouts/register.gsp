@@ -4,7 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title><g:layoutTitle default='User Registration'/></title>
+    <title><g:layoutTitle default="Formulaire d'Inscription"/></title>
 
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon"/>
 

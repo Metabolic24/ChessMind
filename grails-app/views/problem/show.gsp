@@ -15,7 +15,7 @@
 <div class="nav" role="navigation">
     <ul>
 
-        <g:render template="/shared/commonMenu" />
+        <g:render template="/includes/commonMenu" />
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
 
     </ul>

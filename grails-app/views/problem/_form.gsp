@@ -1,7 +1,5 @@
 <%@ page import="problems.Problem" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: problemInstance, field: 'image', 'error')} required">
     <label for="image">
         <g:message code="problem.image.label" default="Image" />

@@ -1,7 +1,5 @@
 <%@ page import="problems.Solution" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: solutionInstance, field: 'answer', 'error')} required">
 	<label for="answer">
 		<g:message code="solution.answer.label" default="Answer" />

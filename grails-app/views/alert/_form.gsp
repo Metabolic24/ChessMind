@@ -1,7 +1,5 @@
 <%@ page import="alert.Alert" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: alertInstance, field: 'description', 'error')} required">
 	<label for="description">
 		<g:message code="alert.description.label" default="Description" />

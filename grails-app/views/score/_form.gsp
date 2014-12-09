@@ -1,7 +1,5 @@
 <%@ page import="score.Score" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: scoreInstance, field: 'score1', 'error')} required">
 	<label for="score1">
 		<g:message code="score.score1.label" default="Score1" />

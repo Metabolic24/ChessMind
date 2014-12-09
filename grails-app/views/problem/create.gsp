@@ -10,7 +10,7 @@
 <div class="nav" role="navigation">
     <ul>
 
-        <g:render template="/shared/commonMenu" />
+        <g:render template="/includes/commonMenu" />
 
     </ul>
 </div>

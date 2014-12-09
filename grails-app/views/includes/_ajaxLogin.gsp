@@ -139,7 +139,7 @@
     <form action='${request.contextPath}/j_spring_security_check' method='POST'
           id='login' name='ajaxLoginForm'>
 
-        <h1>Log In</h1>
+        <h1>Connexion</h1>
 
         <fieldset id="inputs">
             <input id="username" type="text" placeholder="Username" name='j_username' autofocus required>
@@ -147,16 +147,16 @@
         </fieldset>
 
         <p>
-            <label for='remember_me'>Remember me</label>
+            <label for='remember_me'>Rester Connecté</label>
             <input type='checkbox' class='chk' id='remember_me'
                    name='_spring_security_remember_me'/>
-            <g:link controller='register' action='forgotPassword'><g:message code='spring.security.ui.login.forgotPassword'/></g:link>
-            <g:link controller='register'><g:message code='spring.security.ui.login.register'/></g:link>
+            <g:link controller='register' action='forgotPassword'>Mot de Passe oublié?</g:link>
+            <g:link controller='register'>S'enregistrer</g:link>
         </p>
 
         <fieldset id="actions">
-            <input type="submit" class="button" id="authAjax" value="Log in">
-            <input type="cancel" class="button" id="cancelLogin" value="Cancel">
+            <input type="submit" class="button" id="authAjax" value="Connexion">
+            <input type="cancel" class="button" id="cancelLogin" value="Annuler">
         </fieldset>
 
         <div style='display: none; text-align: left;' id='loginMessage'></div>
