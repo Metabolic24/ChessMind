@@ -41,10 +41,6 @@ class ProblemController {
         respond Problem.list(params).findAll { p -> p.isValide() }, model:[problemInstanceCount: Problem.count()]
     }
 
-    def solved_problems() {
-        respond Problem.list(params).findAll { p -> p.isSolved() }, model:[problemInstanceCount: Problem.count()]
-    }
-
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
     def problems_to_validate() {
         respond Problem.list(params).findAll { p -> !p.isValide() }, model:[problemInstanceCount: Problem.count()]
@@ -151,14 +147,6 @@ class ProblemController {
         problemInstance.setValide(true)
         problemInstance.save failOnError: true, flush: true
         redirect uri:"/problem/index",method:"PUT"
-    }
-
-    @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
-    def forceResolve(Problem problemInstance) {
-        problemInstance.setSolved(true)
-        problemInstance.save failOnError: true, flush: true
-        //TODO Appliquer les calculs de score
-        redirect uri:"/problem/show/${problemInstance.id}",method:"PUT"
     }
 
     protected void notFound() {
