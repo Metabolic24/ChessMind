@@ -20,7 +20,7 @@ class CommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Commentaire ajouté"
-                redirect uri:'/problem/'+commentInstance.getSolution().getProblem().getId()
+                redirect uri:'/problem/show/'+commentInstance.getSolution().getProblem().getId()
             }
             '*' { respond commentInstance, [status: CREATED] }
         }
