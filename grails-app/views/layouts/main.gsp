@@ -17,7 +17,7 @@
 </div>
 
 <div id="grailsLogo" class="logo">
-    <a href="http://grails.org">
+    <a href="${createLink(uri: '/problem/valid_problems')}">
         <img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" />
     </a>
 
