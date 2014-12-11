@@ -19,9 +19,6 @@ class ProblemSpec extends Specification {
         player = Mock(User)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "Constraints test on valid problem (id : #anId)"() {
 

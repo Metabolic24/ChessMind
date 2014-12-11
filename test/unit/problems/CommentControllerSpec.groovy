@@ -1,11 +1,11 @@
 package problems
 
-
-import grails.test.mixin.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
-import spock.lang.*
+import spock.lang.Specification
 import users.User
 
 @TestFor(CommentController)

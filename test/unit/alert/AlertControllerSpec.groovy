@@ -1,15 +1,14 @@
 package alert
 
-
-
-import grails.test.mixin.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
 import problems.Comment
 import problems.Problem
 import problems.Solution
-import spock.lang.*
+import spock.lang.Specification
 import users.User
 
 @TestFor(AlertController)

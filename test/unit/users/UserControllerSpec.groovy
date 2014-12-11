@@ -14,16 +14,6 @@ import spock.lang.Specification
 @Mock([User,Role])
 class UserControllerSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
-    void "Test the save action correctly persists an instance"() {
-        //TODO
-    }
-
     void "Test the administrators method"() {
         when: "The index action is executed"
         controller.administrators()

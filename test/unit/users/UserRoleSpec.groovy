@@ -42,9 +42,6 @@ class UserRoleSpec extends Specification {
         userRole = new UserRole(user: user, role: role).save(failOnError: true,flush: true)
     }
 
-    def cleanup() {
-    }
-
     void "Test method 'equals' with other type object"() {
         given: "a valid userRole"
         userRole

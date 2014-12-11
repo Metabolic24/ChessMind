@@ -1,10 +1,10 @@
 package users
 
 import grails.plugin.springsecurity.SpringSecurityService
-import grails.test.mixin.*
-import problems.Problem
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import score.Score
-import spock.lang.*
+import spock.lang.Specification
 
 @TestFor(UserRoleController)
 @Mock([UserRole,User,Role])
@@ -23,8 +23,6 @@ class UserRoleControllerSpec extends Specification {
         role = new Role(authority: 'ROLE_USER').save(failOnError:true, flush:true)
 
         UserRole.metaClass.static.exists = { l,j -> null }
-
-        UserRole userRole = new UserRole(user:user, role:role)
     }
 
     def populateValidParams(params) {

@@ -22,9 +22,6 @@ class AlertSpec extends Specification {
         user = Mock(User)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "Constraints test on valid alert (id : #anId)"() {
         given: "A valid alert"

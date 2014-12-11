@@ -3,7 +3,6 @@ package users
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
 import org.springframework.security.core.context.SecurityContextHolder
-import problems.Problem
 import score.Score
 
 class UserController extends grails.plugin.springsecurity.ui.UserController {

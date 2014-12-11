@@ -20,9 +20,6 @@ class ScoreSpec extends Specification {
         score.user = Mock(User)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "Constraints test on valid score"() {
 

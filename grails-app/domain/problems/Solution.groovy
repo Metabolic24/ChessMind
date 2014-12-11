@@ -18,7 +18,7 @@ class Solution {
     }
 
     def sortedComments() {
-        def result = comments.sort {a,b -> a.id<=>b.id}
+        def result = comments.sort {a,b -> a.getId()<=>b.getId()}
         result
     }
 }

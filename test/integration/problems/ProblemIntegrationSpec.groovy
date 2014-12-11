@@ -1,9 +1,7 @@
-package Problem
+package problems
 
 import grails.test.spock.IntegrationSpec
 import org.apache.commons.io.IOUtils
-import problems.Problem
-import problems.Solution
 import users.User
 import score.Score
 
@@ -41,9 +39,6 @@ public class ProblemIntegrationSpec extends IntegrationSpec {
         //user2.save(failOnError: true)
         //bestSolution.save(failOnError: true)
         //problem.save(failOnError: true)
-    }
-
-    def cleanup() {
     }
 
     void "test d'ajout d'une proposition d'un problème par un utilisateur"() {

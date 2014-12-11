@@ -1,7 +1,6 @@
 package problems
 
 import grails.test.mixin.TestFor
-import problems.Comment
 import spock.lang.Specification
 import users.User
 
@@ -17,9 +16,6 @@ class CommentSpec extends Specification {
         comment = new Comment()
         comment.user = Mock(User)
         comment.solution = Mock(Solution)
-    }
-
-    def cleanup() {
     }
 
     void "Constraints test on valid comment"() {

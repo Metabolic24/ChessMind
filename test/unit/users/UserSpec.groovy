@@ -3,9 +3,6 @@ package users
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
-import grails.test.mixin.TestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
-import org.springframework.security.crypto.password.PasswordEncoder
 import score.Score
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -27,9 +24,6 @@ class UserSpec extends Specification {
         user1 = new User(username: "userTest", password: "userTest", email: "a@a.fr", score: Mock(Score))
         user1.springSecurityService = springSecurityService
         user1.save(failOnError: true, flush: true)
-    }
-
-    def cleanup() {
     }
 
     @Unroll
@@ -163,7 +157,7 @@ class UserSpec extends Specification {
         and: "a valid role"
             def role = new Role(authority:'ROLE_USER').save(failOnError:true, flush:true)
         and: "a valid userRole"
-            def userRole = new UserRole(user:user1, role:role).save(failOnError: true, flush:true)
+            new UserRole(user:user1, role:role).save(failOnError: true, flush:true)
 
         when: "we call getAuthorities"
             def result = user1.getAuthorities()
@@ -172,5 +166,4 @@ class UserSpec extends Specification {
             !result.isEmpty()
             result[0].authority.equals(role.getAuthority())
     }
-
 }

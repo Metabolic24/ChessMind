@@ -1,9 +1,8 @@
 package score
 
-
-
-import grails.test.mixin.*
-import spock.lang.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
+import spock.lang.Specification
 import users.User
 
 @TestFor(ScoreController)
