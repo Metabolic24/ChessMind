@@ -1,0 +1,2631 @@
+<coverage line-rate="0.6061452513966481" branch-rate="0.3219178082191781" lines-covered="217" lines-valid="358" branches-covered="47" branches-valid="146" complexity="0.0" version="1.9.4.1" timestamp="1418484902080">
+  <sources>
+    <source>
+      C:/Users/user/IdeaProjects/ChessMindSprint3/grails-app/domain
+    </source>
+    <source>
+      C:/Users/user/IdeaProjects/ChessMindSprint3/src/java
+    </source>
+    <source>
+      C:/Users/user/IdeaProjects/ChessMindSprint3/grails-app/taglib
+    </source>
+    <source>
+      C:/Users/user/IdeaProjects/ChessMindSprint3/grails-app/utils
+    </source>
+    <source>
+      C:/Users/user/IdeaProjects/ChessMindSprint3/grails-app/controllers
+    </source>
+  </sources>
+  <packages>
+    <package name="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+      <classes>
+        <class name="ApplicationResources" filename="ApplicationResources.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="run" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="1" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="ApplicationResources$_run_closure1" filename="ApplicationResources.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="2" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="2" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="ApplicationResources$_run_closure1_closure2" filename="ApplicationResources.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="3" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="3" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="problems" line-rate="0.6954022988505747" branch-rate="0.625" complexity="0.0">
+      <classes>
+        <class name="problems.Comment" filename="problems/Comment.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.Comment$__clinit__closure1" filename="problems/Comment.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="13" hits="15" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="15" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController" filename="problems/CommentController.groovy" line-rate="0.7619047619047619" branch-rate="0.625" complexity="0.0">
+          <methods>
+            <method name="$tt__create" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="16" hits="1" branch="false"/>
+                <line number="18" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__delete" signature="(Lproblems/Comment;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="72" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="73" hits="0" branch="false"/>
+                <line number="74" hits="0" branch="false"/>
+                <line number="77" hits="0" branch="false"/>
+                <line number="79" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__edit" signature="(Lproblems/Comment;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="38" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__index" signature="(Ljava/lang/Integer;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="29" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="30" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__show" signature="(Lproblems/Comment;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="34" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__update" signature="(Lproblems/Comment;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="3" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="44" hits="1" branch="false"/>
+                <line number="45" hits="1" branch="false"/>
+                <line number="48" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="49" hits="1" branch="false"/>
+                <line number="50" hits="1" branch="false"/>
+                <line number="53" hits="1" branch="false"/>
+                <line number="55" hits="1" branch="false"/>
+                <line number="57" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="notFound" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="90" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="29" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="30" hits="1" branch="false"/>
+            <line number="34" hits="2" branch="false"/>
+            <line number="38" hits="2" branch="false"/>
+            <line number="43" hits="3" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="44" hits="1" branch="false"/>
+            <line number="45" hits="1" branch="false"/>
+            <line number="48" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="49" hits="1" branch="false"/>
+            <line number="50" hits="1" branch="false"/>
+            <line number="53" hits="1" branch="false"/>
+            <line number="55" hits="1" branch="false"/>
+            <line number="57" hits="1" branch="false"/>
+            <line number="72" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="73" hits="0" branch="false"/>
+            <line number="74" hits="0" branch="false"/>
+            <line number="77" hits="0" branch="false"/>
+            <line number="79" hits="0" branch="false"/>
+            <line number="90" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_$tt__create_closure8" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="19" hits="1" branch="false"/>
+                <line number="23" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_$tt__delete_closure10" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="80" hits="0" branch="false"/>
+                <line number="84" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="80" hits="0" branch="false"/>
+            <line number="84" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_$tt__update_closure9" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="58" hits="1" branch="false"/>
+                <line number="63" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="58" hits="1" branch="false"/>
+            <line number="63" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_create_closure1" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.CommentController$_delete_closure6" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.CommentController$_edit_closure4" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.CommentController$_index_closure2" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.CommentController$_notFound_closure7" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="91" hits="1" branch="false"/>
+                <line number="95" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="91" hits="1" branch="false"/>
+            <line number="95" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_notFound_closure7_closure11" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="92" hits="1" branch="false"/>
+                <line number="93" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="92" hits="1" branch="false"/>
+            <line number="93" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_notFound_closure7_closure12" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="95" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="95" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_show_closure3" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.CommentController$_tt__create_closure8_closure13" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="20" hits="0" branch="false"/>
+                <line number="21" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="0" branch="false"/>
+            <line number="21" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_tt__create_closure8_closure14" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="23" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_tt__delete_closure10_closure17" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="81" hits="0" branch="false"/>
+                <line number="82" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="81" hits="0" branch="false"/>
+            <line number="82" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_tt__delete_closure10_closure18" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="84" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="84" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_tt__update_closure9_closure15" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="59" hits="1" branch="false"/>
+                <line number="60" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="59" hits="1" branch="false"/>
+            <line number="60" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_tt__update_closure9_closure16" filename="problems/CommentController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="63" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="63" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.CommentController$_update_closure5" filename="problems/CommentController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.Problem" filename="problems/Problem.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.Problem$__clinit__closure1" filename="problems/Problem.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="26" hits="44" branch="false"/>
+                <line number="27" hits="44" branch="false"/>
+                <line number="28" hits="44" branch="false"/>
+                <line number="29" hits="44" branch="false"/>
+                <line number="30" hits="44" branch="false"/>
+                <line number="31" hits="44" branch="false"/>
+                <line number="32" hits="44" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="26" hits="44" branch="false"/>
+            <line number="27" hits="44" branch="false"/>
+            <line number="28" hits="44" branch="false"/>
+            <line number="29" hits="44" branch="false"/>
+            <line number="30" hits="44" branch="false"/>
+            <line number="31" hits="44" branch="false"/>
+            <line number="32" hits="44" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController" filename="problems/ProblemController.groovy" line-rate="0.7567567567567568" branch-rate="0.8333333333333334" complexity="0.0">
+          <methods>
+            <method name="$tt__answer" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="56" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__create" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="37" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__delete" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="116" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="117" hits="1" branch="false"/>
+                <line number="118" hits="1" branch="false"/>
+                <line number="121" hits="1" branch="false"/>
+                <line number="123" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__edit" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="85" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__index" signature="(Ljava/lang/Integer;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="27" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="28" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__my_problems" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="42" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__problems_to_validate" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="51" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__save" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.75" branch-rate="0.75">
+              <lines>
+                <line number="62" hits="2" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="63" hits="0" branch="false"/>
+                <line number="64" hits="0" branch="false"/>
+                <line number="67" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="68" hits="1" branch="false"/>
+                <line number="69" hits="1" branch="false"/>
+                <line number="72" hits="1" branch="false"/>
+                <line number="74" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__show" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="32" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__update" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="91" hits="3" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="92" hits="1" branch="false"/>
+                <line number="93" hits="1" branch="false"/>
+                <line number="96" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="97" hits="1" branch="false"/>
+                <line number="98" hits="1" branch="false"/>
+                <line number="101" hits="1" branch="false"/>
+                <line number="103" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__valid_problems" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__validate" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="134" hits="1" branch="false"/>
+                <line number="135" hits="1" branch="false"/>
+                <line number="136" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__validateFromList" signature="(Lproblems/Problem;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="141" hits="0" branch="false"/>
+                <line number="142" hits="0" branch="false"/>
+                <line number="143" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="notFound" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="147" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="27" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="28" hits="1" branch="false"/>
+            <line number="32" hits="2" branch="false"/>
+            <line number="37" hits="1" branch="false"/>
+            <line number="42" hits="0" branch="false"/>
+            <line number="46" hits="0" branch="false"/>
+            <line number="51" hits="0" branch="false"/>
+            <line number="56" hits="0" branch="false"/>
+            <line number="62" hits="2" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="63" hits="0" branch="false"/>
+            <line number="64" hits="0" branch="false"/>
+            <line number="67" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="68" hits="1" branch="false"/>
+            <line number="69" hits="1" branch="false"/>
+            <line number="72" hits="1" branch="false"/>
+            <line number="74" hits="1" branch="false"/>
+            <line number="85" hits="2" branch="false"/>
+            <line number="91" hits="3" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="92" hits="1" branch="false"/>
+            <line number="93" hits="1" branch="false"/>
+            <line number="96" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="97" hits="1" branch="false"/>
+            <line number="98" hits="1" branch="false"/>
+            <line number="101" hits="1" branch="false"/>
+            <line number="103" hits="1" branch="false"/>
+            <line number="116" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="117" hits="1" branch="false"/>
+            <line number="118" hits="1" branch="false"/>
+            <line number="121" hits="1" branch="false"/>
+            <line number="123" hits="1" branch="false"/>
+            <line number="134" hits="1" branch="false"/>
+            <line number="135" hits="1" branch="false"/>
+            <line number="136" hits="1" branch="false"/>
+            <line number="141" hits="0" branch="false"/>
+            <line number="142" hits="0" branch="false"/>
+            <line number="143" hits="0" branch="false"/>
+            <line number="147" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__delete_closure21" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="124" hits="1" branch="false"/>
+                <line number="128" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="124" hits="1" branch="false"/>
+            <line number="128" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__my_problems_closure16" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="42" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="42" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__problems_to_validate_closure18" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="0.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="51" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="51" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__save_closure19" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="75" hits="1" branch="false"/>
+                <line number="79" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="75" hits="1" branch="false"/>
+            <line number="79" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__update_closure20" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="104" hits="1" branch="false"/>
+                <line number="108" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="104" hits="1" branch="false"/>
+            <line number="108" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_$tt__valid_problems_closure17" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="46" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_answer_closure8" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_closure1" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="0.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="158" hits="0" branch="false"/>
+                <line number="159" hits="0" branch="false"/>
+                <line number="161" hits="0" branch="false"/>
+                <line number="162" hits="0" branch="false"/>
+                <line number="164" hits="0" branch="true" condition-coverage="0 % (0/6)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                    <condition number="2" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="165" hits="0" branch="false"/>
+                <line number="168" hits="0" branch="false"/>
+                <line number="169" hits="0" branch="false"/>
+                <line number="170" hits="0" branch="false"/>
+                <line number="171" hits="0" branch="false"/>
+                <line number="172" hits="0" branch="false"/>
+                <line number="174" hits="0" branch="false"/>
+                <line number="176" hits="0" branch="false"/>
+                <line number="177" hits="0" branch="false"/>
+                <line number="178" hits="0" branch="false"/>
+                <line number="180" hits="0" branch="false"/>
+                <line number="181" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="158" hits="0" branch="false"/>
+            <line number="159" hits="0" branch="false"/>
+            <line number="161" hits="0" branch="false"/>
+            <line number="162" hits="0" branch="false"/>
+            <line number="164" hits="0" branch="true" condition-coverage="0 % (0/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+                <condition number="2" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="165" hits="0" branch="false"/>
+            <line number="168" hits="0" branch="false"/>
+            <line number="169" hits="0" branch="false"/>
+            <line number="170" hits="0" branch="false"/>
+            <line number="171" hits="0" branch="false"/>
+            <line number="172" hits="0" branch="false"/>
+            <line number="174" hits="0" branch="false"/>
+            <line number="176" hits="0" branch="false"/>
+            <line number="177" hits="0" branch="false"/>
+            <line number="178" hits="0" branch="false"/>
+            <line number="180" hits="0" branch="false"/>
+            <line number="181" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_create_closure4" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_delete_closure12" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_edit_closure10" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_index_closure2" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_my_problems_closure5" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_notFound_closure15" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="148" hits="2" branch="false"/>
+                <line number="152" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="148" hits="2" branch="false"/>
+            <line number="152" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_notFound_closure15_closure22" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="149" hits="2" branch="false"/>
+                <line number="150" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="149" hits="2" branch="false"/>
+            <line number="150" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_notFound_closure15_closure23" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="152" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="152" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_problems_to_validate_closure7" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_save_closure9" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_show_closure3" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_tt__delete_closure21_closure28" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="125" hits="1" branch="false"/>
+                <line number="126" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="125" hits="1" branch="false"/>
+            <line number="126" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_tt__delete_closure21_closure29" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="128" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="128" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_tt__save_closure19_closure24" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="76" hits="1" branch="false"/>
+                <line number="77" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="76" hits="1" branch="false"/>
+            <line number="77" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_tt__save_closure19_closure25" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="79" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="79" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_tt__update_closure20_closure26" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="105" hits="1" branch="false"/>
+                <line number="106" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="105" hits="1" branch="false"/>
+            <line number="106" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_tt__update_closure20_closure27" filename="problems/ProblemController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="108" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="108" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.ProblemController$_update_closure11" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_valid_problems_closure6" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_validateFromList_closure14" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.ProblemController$_validate_closure13" filename="problems/ProblemController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.Solution" filename="problems/Solution.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.Solution$__clinit__closure1" filename="problems/Solution.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="14" hits="12" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="12" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController" filename="problems/SolutionController.groovy" line-rate="0.9259259259259259" branch-rate="0.8333333333333334" complexity="0.0">
+          <methods>
+            <method name="$tt__create" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="24" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__delete" signature="(Lproblems/Solution;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="80" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="81" hits="1" branch="false"/>
+                <line number="82" hits="1" branch="false"/>
+                <line number="85" hits="1" branch="false"/>
+                <line number="87" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__edit" signature="(Lproblems/Solution;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="51" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__index" signature="(Ljava/lang/Integer;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="16" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__save" signature="(Lproblems/Solution;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.75" branch-rate="0.75">
+              <lines>
+                <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="30" hits="0" branch="false"/>
+                <line number="31" hits="0" branch="false"/>
+                <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="35" hits="1" branch="false"/>
+                <line number="36" hits="1" branch="false"/>
+                <line number="39" hits="1" branch="false"/>
+                <line number="41" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__show" signature="(Lproblems/Solution;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="20" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__update" signature="(Lproblems/Solution;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="57" hits="1" branch="false"/>
+                <line number="58" hits="1" branch="false"/>
+                <line number="61" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="62" hits="1" branch="false"/>
+                <line number="63" hits="1" branch="false"/>
+                <line number="66" hits="1" branch="false"/>
+                <line number="68" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="notFound" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="97" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="16" hits="1" branch="false"/>
+            <line number="20" hits="2" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="35" hits="1" branch="false"/>
+            <line number="36" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="41" hits="1" branch="false"/>
+            <line number="51" hits="2" branch="false"/>
+            <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="57" hits="1" branch="false"/>
+            <line number="58" hits="1" branch="false"/>
+            <line number="61" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="62" hits="1" branch="false"/>
+            <line number="63" hits="1" branch="false"/>
+            <line number="66" hits="1" branch="false"/>
+            <line number="68" hits="1" branch="false"/>
+            <line number="80" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="81" hits="1" branch="false"/>
+            <line number="82" hits="1" branch="false"/>
+            <line number="85" hits="1" branch="false"/>
+            <line number="87" hits="1" branch="false"/>
+            <line number="97" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_$tt__delete_closure11" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="88" hits="1" branch="false"/>
+                <line number="92" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="88" hits="1" branch="false"/>
+            <line number="92" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_$tt__save_closure9" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="42" hits="1" branch="false"/>
+                <line number="46" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="42" hits="1" branch="false"/>
+            <line number="46" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_$tt__update_closure10" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="69" hits="1" branch="false"/>
+                <line number="73" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="69" hits="1" branch="false"/>
+            <line number="73" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_create_closure3" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_delete_closure7" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_edit_closure5" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_index_closure1" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_notFound_closure8" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="98" hits="2" branch="false"/>
+                <line number="102" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="98" hits="2" branch="false"/>
+            <line number="102" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_notFound_closure8_closure12" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="99" hits="2" branch="false"/>
+                <line number="100" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="99" hits="2" branch="false"/>
+            <line number="100" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_notFound_closure8_closure13" filename="problems/SolutionController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="102" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="102" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_save_closure4" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_show_closure2" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="problems.SolutionController$_tt__delete_closure11_closure18" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="89" hits="1" branch="false"/>
+                <line number="90" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="89" hits="1" branch="false"/>
+            <line number="90" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_tt__delete_closure11_closure19" filename="problems/SolutionController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="92" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="92" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_tt__save_closure9_closure14" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="1" branch="false"/>
+                <line number="44" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="43" hits="1" branch="false"/>
+            <line number="44" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_tt__save_closure9_closure15" filename="problems/SolutionController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="46" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_tt__update_closure10_closure16" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="70" hits="1" branch="false"/>
+                <line number="71" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="70" hits="1" branch="false"/>
+            <line number="71" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_tt__update_closure10_closure17" filename="problems/SolutionController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="73" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="73" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="problems.SolutionController$_update_closure6" filename="problems/SolutionController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="score" line-rate="0.8775510204081632" branch-rate="0.8333333333333334" complexity="0.0">
+      <classes>
+        <class name="score.Score" filename="score/Score.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.Score$__clinit__closure1" filename="score/Score.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="11" hits="36" branch="false"/>
+                <line number="12" hits="36" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="36" branch="false"/>
+            <line number="12" hits="36" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController" filename="score/ScoreController.groovy" line-rate="0.9259259259259259" branch-rate="0.8333333333333334" complexity="0.0">
+          <methods>
+            <method name="$tt__create" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="24" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__delete" signature="(Lscore/Score;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="80" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="81" hits="1" branch="false"/>
+                <line number="82" hits="1" branch="false"/>
+                <line number="85" hits="1" branch="false"/>
+                <line number="87" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__edit" signature="(Lscore/Score;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="51" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__index" signature="(Ljava/lang/Integer;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="16" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__save" signature="(Lscore/Score;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.75" branch-rate="0.75">
+              <lines>
+                <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="30" hits="0" branch="false"/>
+                <line number="31" hits="0" branch="false"/>
+                <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="35" hits="1" branch="false"/>
+                <line number="36" hits="1" branch="false"/>
+                <line number="39" hits="1" branch="false"/>
+                <line number="41" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__show" signature="(Lscore/Score;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="20" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__update" signature="(Lscore/Score;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="57" hits="1" branch="false"/>
+                <line number="58" hits="1" branch="false"/>
+                <line number="61" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="62" hits="1" branch="false"/>
+                <line number="63" hits="1" branch="false"/>
+                <line number="66" hits="1" branch="false"/>
+                <line number="68" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="notFound" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="97" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="16" hits="1" branch="false"/>
+            <line number="20" hits="2" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="35" hits="1" branch="false"/>
+            <line number="36" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="41" hits="1" branch="false"/>
+            <line number="51" hits="2" branch="false"/>
+            <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="57" hits="1" branch="false"/>
+            <line number="58" hits="1" branch="false"/>
+            <line number="61" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="62" hits="1" branch="false"/>
+            <line number="63" hits="1" branch="false"/>
+            <line number="66" hits="1" branch="false"/>
+            <line number="68" hits="1" branch="false"/>
+            <line number="80" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="81" hits="1" branch="false"/>
+            <line number="82" hits="1" branch="false"/>
+            <line number="85" hits="1" branch="false"/>
+            <line number="87" hits="1" branch="false"/>
+            <line number="97" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_$tt__delete_closure11" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="88" hits="1" branch="false"/>
+                <line number="92" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="88" hits="1" branch="false"/>
+            <line number="92" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_$tt__save_closure9" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="42" hits="1" branch="false"/>
+                <line number="46" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="42" hits="1" branch="false"/>
+            <line number="46" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_$tt__update_closure10" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="69" hits="1" branch="false"/>
+                <line number="73" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="69" hits="1" branch="false"/>
+            <line number="73" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_create_closure3" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_delete_closure7" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_edit_closure5" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_index_closure1" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_notFound_closure8" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="98" hits="2" branch="false"/>
+                <line number="102" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="98" hits="2" branch="false"/>
+            <line number="102" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_notFound_closure8_closure12" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="99" hits="2" branch="false"/>
+                <line number="100" hits="2" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="99" hits="2" branch="false"/>
+            <line number="100" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_notFound_closure8_closure13" filename="score/ScoreController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="102" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="102" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_save_closure4" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_show_closure2" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="score.ScoreController$_tt__delete_closure11_closure18" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="89" hits="1" branch="false"/>
+                <line number="90" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="89" hits="1" branch="false"/>
+            <line number="90" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_tt__delete_closure11_closure19" filename="score/ScoreController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="92" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="92" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_tt__save_closure9_closure14" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="1" branch="false"/>
+                <line number="44" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="43" hits="1" branch="false"/>
+            <line number="44" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_tt__save_closure9_closure15" filename="score/ScoreController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="46" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_tt__update_closure10_closure16" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="70" hits="1" branch="false"/>
+                <line number="71" hits="1" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="70" hits="1" branch="false"/>
+            <line number="71" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_tt__update_closure10_closure17" filename="score/ScoreController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="73" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="73" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="score.ScoreController$_update_closure6" filename="score/ScoreController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="users" line-rate="0.3787878787878788" branch-rate="0.1276595744680851" complexity="0.0">
+      <classes>
+        <class name="users.Role" filename="users/Role.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.Role$__clinit__closure1" filename="users/Role.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="8" hits="18" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="18" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.Role$__clinit__closure2" filename="users/Role.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="12" hits="16" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="16" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.RoleController" filename="users/RoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.User" filename="users/User.groovy" line-rate="0.3333333333333333" branch-rate="0.125" complexity="0.0">
+          <methods>
+            <method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="26" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="beforeInsert" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="47" hits="3" branch="false"/>
+              </lines>
+            </method>
+            <method name="beforeUpdate" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="51" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="52" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="encodePassword" signature="()V" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="68" hits="3" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="filterByAuthority" signature="(Ljava/lang/String;Ljava/util/Map;)Ljava/util/List;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="57" hits="0" branch="false"/>
+                <line number="58" hits="0" branch="false"/>
+                <line number="59" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="60" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="61" hits="0" branch="false"/>
+                <line number="64" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="getAuthorities" signature="()Ljava/util/Set;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="3" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="26" hits="1" branch="false"/>
+            <line number="43" hits="3" branch="false"/>
+            <line number="47" hits="3" branch="false"/>
+            <line number="51" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="52" hits="0" branch="false"/>
+            <line number="57" hits="0" branch="false"/>
+            <line number="58" hits="0" branch="false"/>
+            <line number="59" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="60" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="61" hits="0" branch="false"/>
+            <line number="64" hits="0" branch="false"/>
+            <line number="68" hits="3" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+          </lines>
+        </class>
+        <class name="users.User$__clinit__closure2" filename="users/User.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="29" hits="31" branch="false"/>
+                <line number="30" hits="31" branch="false"/>
+                <line number="31" hits="31" branch="false"/>
+                <line number="32" hits="31" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="29" hits="31" branch="false"/>
+            <line number="30" hits="31" branch="false"/>
+            <line number="31" hits="31" branch="false"/>
+            <line number="32" hits="31" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.User$__clinit__closure3" filename="users/User.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="36" hits="48" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="36" hits="48" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.User$_getAuthorities_closure1" filename="users/User.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="43" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserController" filename="users/UserController.groovy" line-rate="0.0" branch-rate="0.0" complexity="0.0">
+          <methods>
+            <method name="administrators" signature="(Ljava/lang/Integer;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="35" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="36" hits="0" branch="false"/>
+                <line number="38" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="moderators" signature="(Ljava/lang/Integer;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="42" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="43" hits="0" branch="false"/>
+                <line number="45" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="save" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="11" hits="0" branch="false"/>
+                <line number="12" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="13" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="14" hits="0" branch="true" condition-coverage="0 % (0/6)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                    <condition number="2" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="17" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="18" hits="0" branch="false"/>
+                <line number="19" hits="0" branch="false"/>
+                <line number="22" hits="0" branch="true" condition-coverage="0 % (0/4)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="23" hits="0" branch="false"/>
+                <line number="24" hits="0" branch="false"/>
+                <line number="27" hits="0" branch="false"/>
+                <line number="28" hits="0" branch="false"/>
+                <line number="29" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="0" branch="false"/>
+            <line number="12" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="13" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="14" hits="0" branch="true" condition-coverage="0 % (0/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+                <condition number="2" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="17" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="18" hits="0" branch="false"/>
+            <line number="19" hits="0" branch="false"/>
+            <line number="22" hits="0" branch="true" condition-coverage="0 % (0/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="23" hits="0" branch="false"/>
+            <line number="24" hits="0" branch="false"/>
+            <line number="27" hits="0" branch="false"/>
+            <line number="28" hits="0" branch="false"/>
+            <line number="29" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="35" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="36" hits="0" branch="false"/>
+            <line number="38" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="42" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="43" hits="0" branch="false"/>
+            <line number="45" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+          </lines>
+        </class>
+        <class name="users.UserRole" filename="users/UserRole.groovy" line-rate="0.15384615384615385" branch-rate="0.0" complexity="0.0">
+          <methods>
+            <method name="create" signature="(Lusers/User;Lusers/Role;Z)Lusers/UserRole;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="3" branch="false"/>
+                <line number="44" hits="3" branch="false"/>
+                <line number="45" hits="3" branch="false"/>
+              </lines>
+            </method>
+            <method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="13" hits="0" branch="true" condition-coverage="0 % (0/4)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="14" hits="0" branch="true" condition-coverage="0 % (0/6)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                    <condition number="2" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="17" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="18" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="exists" signature="(JJ)Z" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="36" hits="6" branch="false"/>
+              </lines>
+            </method>
+            <method name="get" signature="(JJ)Lusers/UserRole;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="29" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="hashCode" signature="()I" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="22" hits="0" branch="false"/>
+                <line number="23" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="24" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="25" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="remove" signature="(Lusers/User;Lusers/Role;Z)Z" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="49" hits="0" branch="true" condition-coverage="0 % (0/6)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                    <condition number="2" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="51" hits="0" branch="false"/>
+                <line number="56" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="57" hits="0" branch="true" condition-coverage="0 % (0/8)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                    <condition number="1" type="jump" coverage="0 %"/>
+                    <condition number="2" type="jump" coverage="0 %"/>
+                    <condition number="3" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="60" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="removeAll" signature="(Lusers/Role;Z)V" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="76" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="78" hits="0" branch="false"/>
+                <line number="82" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="83" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="removeAll" signature="(Lusers/User;Z)V" line-rate="0.0" branch-rate="0.0">
+              <lines>
+                <line number="64" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="66" hits="0" branch="false"/>
+                <line number="70" hits="0" branch="true" condition-coverage="0 % (0/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="0 %"/>
+                  </conditions>
+                </line>
+                <line number="71" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="0" branch="true" condition-coverage="0 % (0/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="14" hits="0" branch="true" condition-coverage="0 % (0/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+                <condition number="2" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="17" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="18" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="22" hits="0" branch="false"/>
+            <line number="23" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="24" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="25" hits="0" branch="false"/>
+            <line number="29" hits="0" branch="false"/>
+            <line number="36" hits="6" branch="false"/>
+            <line number="43" hits="3" branch="false"/>
+            <line number="44" hits="3" branch="false"/>
+            <line number="45" hits="3" branch="false"/>
+            <line number="49" hits="0" branch="true" condition-coverage="0 % (0/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+                <condition number="2" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="51" hits="0" branch="false"/>
+            <line number="56" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="57" hits="0" branch="true" condition-coverage="0 % (0/8)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+                <condition number="1" type="jump" coverage="0 %"/>
+                <condition number="2" type="jump" coverage="0 %"/>
+                <condition number="3" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="60" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="64" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="66" hits="0" branch="false"/>
+            <line number="70" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="71" hits="0" branch="false"/>
+            <line number="76" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="78" hits="0" branch="false"/>
+            <line number="82" hits="0" branch="true" condition-coverage="0 % (0/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="0 %"/>
+              </conditions>
+            </line>
+            <line number="83" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$__clinit__closure10" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="102" hits="18" branch="false"/>
+                <line number="103" hits="18" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="102" hits="18" branch="false"/>
+            <line number="103" hits="18" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$__clinit__closure9" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="89" hits="12" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="89" hits="12" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$__clinit__closure9_closure14" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="0.75" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Lusers/Role;Lusers/UserRole;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.75">
+              <lines>
+                <line number="90" hits="9" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="91" hits="9" branch="false"/>
+                <line number="92" hits="9" branch="false"/>
+                <line number="95" hits="9" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="96" hits="3" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="90" hits="9" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="91" hits="9" branch="false"/>
+            <line number="92" hits="9" branch="false"/>
+            <line number="95" hits="9" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="96" hits="3" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$__clinit__closure9_closure14_closure15" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="93" hits="9" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="93" hits="9" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_exists_closure2" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRole$_exists_closure2_closure12" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="37" hits="6" branch="false"/>
+                <line number="38" hits="6" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="37" hits="6" branch="false"/>
+            <line number="38" hits="6" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_get_closure1" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRole$_get_closure1_closure11" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="30" hits="0" branch="false"/>
+                <line number="31" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_removeAll_closure5" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="67" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="67" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_removeAll_closure6" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="71" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="71" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_removeAll_closure7" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="79" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="79" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_removeAll_closure8" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="83" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="83" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_remove_closure3" filename="users/UserRole.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRole$_remove_closure3_closure13" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="52" hits="0" branch="false"/>
+                <line number="53" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="52" hits="0" branch="false"/>
+            <line number="53" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRole$_remove_closure4" filename="users/UserRole.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="57" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="57" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController" filename="users/UserRoleController.groovy" line-rate="0.7407407407407407" branch-rate="0.6666666666666666" complexity="0.0">
+          <methods>
+            <method name="$tt__create" signature="(Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="24" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__delete" signature="(Lusers/UserRole;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.6" branch-rate="0.5">
+              <lines>
+                <line number="80" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="81" hits="1" branch="false"/>
+                <line number="82" hits="1" branch="false"/>
+                <line number="85" hits="0" branch="false"/>
+                <line number="87" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__edit" signature="(Lusers/UserRole;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="51" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__index" signature="(Ljava/lang/Integer;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+              <lines>
+                <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="16" hits="1" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__save" signature="(Lusers/UserRole;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.625" branch-rate="0.75">
+              <lines>
+                <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="30" hits="0" branch="false"/>
+                <line number="31" hits="0" branch="false"/>
+                <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="35" hits="1" branch="false"/>
+                <line number="36" hits="1" branch="false"/>
+                <line number="39" hits="1" branch="false"/>
+                <line number="41" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__show" signature="(Lusers/UserRole;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="20" hits="2" branch="false"/>
+              </lines>
+            </method>
+            <method name="$tt__update" signature="(Lusers/UserRole;Lorg/springframework/transaction/TransactionStatus;)Ljava/lang/Object;" line-rate="0.75" branch-rate="0.75">
+              <lines>
+                <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="100 %"/>
+                  </conditions>
+                </line>
+                <line number="57" hits="2" branch="false"/>
+                <line number="58" hits="2" branch="false"/>
+                <line number="61" hits="1" branch="true" condition-coverage="50 % (1/2)">
+                  <conditions>
+                    <condition number="0" type="jump" coverage="50 %"/>
+                  </conditions>
+                </line>
+                <line number="62" hits="1" branch="false"/>
+                <line number="63" hits="1" branch="false"/>
+                <line number="66" hits="0" branch="false"/>
+                <line number="68" hits="0" branch="false"/>
+              </lines>
+            </method>
+            <method name="notFound" signature="()V" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="97" hits="3" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="16" hits="1" branch="false"/>
+            <line number="20" hits="2" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="29" hits="2" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="34" hits="2" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="35" hits="1" branch="false"/>
+            <line number="36" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="41" hits="0" branch="false"/>
+            <line number="51" hits="2" branch="false"/>
+            <line number="56" hits="3" branch="true" condition-coverage="100 % (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100 %"/>
+              </conditions>
+            </line>
+            <line number="57" hits="2" branch="false"/>
+            <line number="58" hits="2" branch="false"/>
+            <line number="61" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="62" hits="1" branch="false"/>
+            <line number="63" hits="1" branch="false"/>
+            <line number="66" hits="0" branch="false"/>
+            <line number="68" hits="0" branch="false"/>
+            <line number="80" hits="1" branch="true" condition-coverage="50 % (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50 %"/>
+              </conditions>
+            </line>
+            <line number="81" hits="1" branch="false"/>
+            <line number="82" hits="1" branch="false"/>
+            <line number="85" hits="0" branch="false"/>
+            <line number="87" hits="0" branch="false"/>
+            <line number="97" hits="3" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_$tt__delete_closure11" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="88" hits="0" branch="false"/>
+                <line number="92" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="88" hits="0" branch="false"/>
+            <line number="92" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_$tt__save_closure9" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="42" hits="0" branch="false"/>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="42" hits="0" branch="false"/>
+            <line number="46" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_$tt__update_closure10" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="69" hits="0" branch="false"/>
+                <line number="73" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="69" hits="0" branch="false"/>
+            <line number="73" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_create_closure3" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_delete_closure7" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_edit_closure5" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_index_closure1" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_notFound_closure8" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="98" hits="3" branch="false"/>
+                <line number="102" hits="3" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="98" hits="3" branch="false"/>
+            <line number="102" hits="3" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_notFound_closure8_closure12" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+              <lines>
+                <line number="99" hits="3" branch="false"/>
+                <line number="100" hits="3" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="99" hits="3" branch="false"/>
+            <line number="100" hits="3" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_notFound_closure8_closure13" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="102" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="102" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_save_closure4" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_show_closure2" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+        <class name="users.UserRoleController$_tt__delete_closure11_closure18" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="89" hits="0" branch="false"/>
+                <line number="90" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="89" hits="0" branch="false"/>
+            <line number="90" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_tt__delete_closure11_closure19" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="92" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="92" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_tt__save_closure9_closure14" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="43" hits="0" branch="false"/>
+                <line number="44" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="43" hits="0" branch="false"/>
+            <line number="44" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_tt__save_closure9_closure15" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="46" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="46" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_tt__update_closure10_closure16" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="70" hits="0" branch="false"/>
+                <line number="71" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="70" hits="0" branch="false"/>
+            <line number="71" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_tt__update_closure10_closure17" filename="users/UserRoleController.groovy" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+          <methods>
+            <method name="doCall" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+              <lines>
+                <line number="73" hits="0" branch="false"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="73" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="users.UserRoleController$_update_closure6" filename="users/UserRoleController.groovy" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
