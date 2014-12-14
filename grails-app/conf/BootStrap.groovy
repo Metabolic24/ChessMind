@@ -46,15 +46,15 @@ class BootStrap {
                 password: "user",
                 enabled: true).save(failOnError: true, flush: true)
 
-        if (!admin.authorities.contains(adminRole)) {
+        if (! admin.authorities.contains(adminRole)) {
             UserRole.create admin, adminRole, true
         }
 
-        if (!user.authorities.contains(userRole)) {
+        if (! user.authorities.contains(userRole)) {
             UserRole.create user, userRole, true
         }
 
-        if (!moderator.authorities.contains(moderatorRole)) {
+        if (! moderator.authorities.contains(moderatorRole)) {
             UserRole.create moderator, moderatorRole, true
         }
 
