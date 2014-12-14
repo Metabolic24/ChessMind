@@ -98,10 +98,16 @@ class SolutionController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR','ROLE_USER'])
     def aime(Solution solutionInstance) {
+
         solutionInstance.setAime(solutionInstance.getAime()+1)
-        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.add(solutionInstance)
-        User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).save failOnError: true, flush: true
+        def user = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name)
+        user.solutions.add(solutionInstance)
+        solutionInstance.problem.player.score.score2++
+
+        solutionInstance.problem.player.score.save failOnError: true, flush: true
+        user.save failOnError: true, flush: true
         solutionInstance.save failOnError: true, flush: true
+
         redirect uri:"/problem/show/${solutionInstance.getProblem().id}",method:"PUT"
     }
 
@@ -110,10 +116,14 @@ class SolutionController {
         def best = problem.getBestSolution()
         if (best != null) {
             best.setIsBestSolution(false)
+            best.user.score.score1--
+            best.user.score.save failOnError: true, flush: true
         }
         solutionInstance?.setIsBestSolution(true)
-
+        solutionInstance.user.score.score1++
         problem.setBestSolution(solutionInstance)
+
+        solutionInstance.user.score.save failOnError: true, flush: true
         problem.save failOnError: true, flush: true
         solutionInstance.save failOnError: true, flush: true
 
