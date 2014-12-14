@@ -115,9 +115,11 @@
                                 id="${s?.user?.id}">${s?.user?.username}</g:link>
                         )
                         <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
-                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.contains(s)}">
-                            <g:actionSubmit action="aime" value="J'aime" />
-                            </g:if>
+                            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR, ROLE_USER'>
+                                <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.contains(s)}">
+                                    <g:actionSubmit action="aime" value="J'aime" />
+                                </g:if>
+                            </sec:ifAnyGranted>
                         </g:form>
                         ${s.aime}
                         <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
