@@ -28,7 +28,7 @@ class BootStrap {
                 score: new Score(score1: 0l, score2: 0l),
                 email: "m@hotmail.fr",
                 password: "admin",
-                enabled: true).save(failOnError: true, flush:true)
+                enabled: true).save(failOnError: true, flush: true)
 
         def moderator = User.findByUsername('moderator') ?: new User(
                 name: "titi",
@@ -36,7 +36,7 @@ class BootStrap {
                 score: new Score(score1: 0l, score2: 0l),
                 email: "mo@hotmail.fr",
                 password: "moderator",
-                enabled: true).save(failOnError: true, flush:true)
+                enabled: true).save(failOnError: true, flush: true)
 
         def user = User.findByUsername('user') ?: new User(
                 name: "tata",
@@ -44,7 +44,7 @@ class BootStrap {
                 score: new Score(score1: 0l, score2: 0l),
                 email: "u@hotmail.fr",
                 password: "user",
-                enabled: true).save(failOnError: true, flush:true)
+                enabled: true).save(failOnError: true, flush: true)
 
         if (!admin.authorities.contains(adminRole)) {
             UserRole.create admin, adminRole, true
