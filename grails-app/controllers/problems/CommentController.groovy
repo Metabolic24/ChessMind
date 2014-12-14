@@ -52,7 +52,7 @@ class CommentController {
             return
         }
 
-        def commentProblemId = commentInstance.solution.problem
+        def commentProblemId = commentInstance.solution.problem.id
 
         commentInstance.save flush:true
 
@@ -67,7 +67,6 @@ class CommentController {
     }
 
 
-    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(Comment commentInstance) {
 
@@ -83,7 +82,7 @@ class CommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect uri:'/problem/'+commentProblem.getId()
+                redirect uri:'/problem/show/'+commentProblem.getId()
 
             }
             '*'{ render status: NO_CONTENT }
