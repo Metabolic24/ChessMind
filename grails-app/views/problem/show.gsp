@@ -75,9 +75,11 @@
                             <g:link controller="user" action="show"
                                     id="${s?.user?.id}">${s?.user?.username}</g:link>
                             )
-                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext()?.getAuthentication()?.name)?.solutions?.contains(s)}">
-                                <g:actionSubmit action="aime" value="J'aime" />
-                            </g:if>
+                            <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR, ROLE_USER'>
+                                <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext()?.getAuthentication()?.name)?.solutions?.contains(s)}">
+                                    <g:actionSubmit action="aime" value="J'aime" />
+                                </g:if>
+                            </sec:ifAnyGranted>
                              : ${s.aime} 'likes'
                             <%-- test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}"> --%>
                             <g:if test="${s.problem.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && s.isBestSolution == false}">

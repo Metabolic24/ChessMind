@@ -30,7 +30,7 @@
         <g:each in="${alertInstanceList}" status="i" var="alertInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show" id="${alertInstance.id}">${fieldValue(bean: alertInstance, field: "description")}</g:link></td>
+                <td>${fieldValue(bean: alertInstance, field: "description")}</td>
 
                 <td style="text-align: center ; vertical-align: middle"><g:link controller="problem" action="show" id="${alertInstance.problem.id}">${fieldValue(bean: alertInstance, field: "problem.id")}</g:link></td>
 
