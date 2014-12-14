@@ -62,9 +62,9 @@ class BootStrap {
         byte[] image2 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate2.jpg"))
         byte[] image3 = IOUtils.toByteArray(this.class.getResourceAsStream("/resources/mate3.jpg"))
 
-        def problemTest = new Problem(player: admin, image:image, valide:true).save(failOnError: true, flush: true)
-        def problemTest2 = new Problem(player: user, image:image2, valide:true).save(failOnError: true, flush: true)
-        def problemTest3 = new Problem(player: user, image:image3, valide:false).save(failOnError: true, flush: true)
+        def problemTest = new Problem(player: admin, image: image, valide: true).save(failOnError: true, flush: true)
+        def problemTest2 = new Problem(player: user, image: image2, valide: true).save(failOnError: true, flush: true)
+        def problemTest3 = new Problem(player: user, image: image3, valide: false).save(failOnError: true, flush: true)
 
         def solution1 = new Solution(user: admin, answer : "Ca1", aime: 0 , problem: problemTest).save(failOnError: true, flush: true)
         def solution2 = new Solution(user: user, answer : "Ca2", aime: 0 , problem: problemTest2).save(failOnError: true, flush: true)
