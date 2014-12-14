@@ -5,7 +5,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'alert.label', default: 'Alert')}" />
-    <title>ChessMind : Alertes</title>
+    <title>ChessMind : Alertes </title>
 </head>
 <body>
 <a href="#list-alert" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
