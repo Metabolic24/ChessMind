@@ -18,117 +18,75 @@
     </g:if>
     <ol class="property-list problem">
 
-        <g:if test="${problemInstance?.image}">
-            <li class="fieldcontain">
-                <span id="image-label" class="property-label"><g:message code="problem.image.label"
-                                                                         default="Image"/></span>
-                <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"/>
-            </li>
-        </g:if>
+        <div align="center">
+            <g:if test="${problemInstance?.image}">
+                    <img src="${createLink(controller: 'problem', action: 'viewImage', id: problemInstance.id)}"
+                         style="vertical-align: middle"/>
+            </g:if>
 
+        <span style="float:right ; margin-right:200px ; vertical-align: middle">
+
+        <g:if test="${problemInstance?.player}">
+            <span style="margin-left:35px ; margin-top:20px">
+                Proposé par : <g:link controller="user" action="show"
+                                      id="${problemInstance?.player?.id}">${problemInstance?.player?.username?.encodeAsHTML()}</g:link>
+            </span>
+        </g:if>
         <g:if test="${problemInstance?.description}">
             <li class="fieldcontain">
-                <span id="description-label" class="property-label"><g:message code="problem.description.label"
-                                                                               default="Description"/></span>
-
-                <span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${problemInstance}"
-                                                                                               field="description"/></span>
-
+                Description : <g:fieldValue bean="${problemInstance}" field="description"/>
             </li>
         </g:if>
 
-        <g:if test="${problemInstance?.blackPlayer}">
+        <g:if test="${problemInstance?.blackPlayer && problemInstance?.whitePlayer}">
             <li class="fieldcontain">
-                <span id="blackPlayer-label" class="property-label"><g:message code="problem.blackPlayer.label"
-                                                                               default="Black Player"/></span>
-
-                <span class="property-value" aria-labelledby="blackPlayer-label"><g:fieldValue bean="${problemInstance}"
-                                                                                               field="blackPlayer"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${problemInstance?.whitePlayer}">
-            <li class="fieldcontain">
-                <span id="whitePlayer-label" class="property-label"><g:message code="problem.whitePlayer.label"
-                                                                               default="White Player"/></span>
-
-                <span class="property-value" aria-labelledby="whitePlayer-label"><g:fieldValue bean="${problemInstance}"
-                                                                                               field="whitePlayer"/></span>
-
+                <g:fieldValue bean="${problemInstance}" field="blackPlayer"/> (Noir) vs  <g:fieldValue bean="${problemInstance}" field="whitePlayer"/> (Blanc
             </li>
         </g:if>
 
         <g:if test="${problemInstance?.place}">
             <li class="fieldcontain">
-                <span id="place-label" class="property-label"><g:message code="problem.place.label"
-                                                                         default="Place"/></span>
-
-                <span class="property-value" aria-labelledby="place-label"><g:fieldValue bean="${problemInstance}"
-                                                                                         field="place"/></span>
-
+                Observé à : <g:fieldValue bean="${problemInstance}" field="place"/>
             </li>
         </g:if>
 
         <g:if test="${problemInstance?.tournament}">
             <li class="fieldcontain">
-                <span id="tournament-label" class="property-label"><g:message code="problem.tournament.label"
-                                                                              default="Tournament"/></span>
-
-                <span class="property-value" aria-labelledby="tournament-label"><g:fieldValue bean="${problemInstance}"
-                                                                                              field="tournament"/></span>
-
+                Lors de <g:fieldValue bean="${problemInstance}" field="tournament"/>
             </li>
         </g:if>
 
         <g:if test="${problemInstance?.date}">
             <li class="fieldcontain">
-                <span id="date-label" class="property-label"><g:message code="problem.date.label"
-                                                                        default="Date"/></span>
-
-                <span class="property-value" aria-labelledby="date-label"><g:formatDate
-                        date="${problemInstance?.date}"/></span>
-
+                Date : <g:formatDate date="${problemInstance?.date}"/>
             </li>
         </g:if>
+        </span>
 
-        <g:if test="${problemInstance?.player}">
-            <li class="fieldcontain">
-                <span id="player-label" class="property-label"><g:message code="problem.player.username.label"
-                                                                          default="Player"/></span>
-
-                <span class="property-value" aria-labelledby="player-label"><g:link controller="user" action="show"
-                                                                                    id="${problemInstance?.player?.id}">${problemInstance?.player?.username?.encodeAsHTML()}</g:link></span>
-
-            </li>
-        </g:if>
+        </div>
 
         <g:if test="${problemInstance?.solutions}">
-            <li class="fieldcontain">
-                <span id="solutions-label" class="property-label"><g:message code="problem.solutions.label"
-                                                                             default="Solutions"/></span>
-
-                <g:each in="${problemInstance.sortedSolutions()}" var="s">
-                    <span class="property-value" aria-labelledby="solutions-label">
-                        ${s.answer} (
-                        <g:link controller="user" action="show"
-                                id="${s?.user?.id}">${s?.user?.username}</g:link>
-                        )
+            <div style="margin-top:75px">
+                <h2 style="margin-bottom: 30px">Solutions :</h2>
+                <g:each in="${problemInstance?.sortedSolutions()}" var="s">
+                    <span class="property-value" ariga-labelledby="solutions-label">
                         <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
-                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext().getAuthentication().name).solutions.contains(s)}">
-                            <g:actionSubmit action="aime" value="J'aime" />
+                            <b>${s.answer}</b> (
+                            <g:link controller="user" action="show"
+                                    id="${s?.user?.id}">${s?.user?.username}</g:link>
+                            )
+                            <g:if test="${!s.user.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !User.findByUsername(SecurityContextHolder.getContext()?.getAuthentication()?.name)?.solutions?.contains(s)}">
+                                <g:actionSubmit action="aime" value="J'aime" />
                             </g:if>
-                        </g:form>
-                        ${s.aime}
-                        <g:form name="commentEditForm" url="[resource: s, controller: 'solution']">
-                        <%-- test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}"> --%>
+                             : ${s.aime} 'likes'
+                            <%-- test="${!problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && problemInstance?.valide}"> --%>
                             <g:if test="${s.problem.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && s.isBestSolution == false}">
-                                <g:actionSubmit action="bestSolution" value="V" />
+                                <g:actionSubmit action="bestSolution" value="Meilleure" />
                             </g:if>
                             <g:else>
                                 <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
                                     <g:if test="${s.isBestSolution == false}">
-                                        <g:actionSubmit action="bestSolution" value="V" />
+                                        <g:actionSubmit action="bestSolution" value="Meilleure" />
                                     </g:if>
                                 </sec:ifAnyGranted>
                             </g:else>
@@ -163,6 +121,7 @@
 
                     </g:each>
 
+                    <br/>
                     <sec:ifLoggedIn>
                         <g:form name="commentForm" url="[action: 'create', controller: 'comment']" action="create">
                             <g:textArea name="comment" value="${comment}" rows="5" columns="30"/>
@@ -170,9 +129,9 @@
                             <g:actionSubmit action="create" value="Commenter"/>
                         </g:form>
                     </sec:ifLoggedIn>
+                    <br/>
                 </g:each>
-
-            </li>
+            </div>
         </g:if>
 
         <sec:ifAnyGranted roles='ROLE_ADMIN, ROLE_MODERATOR'>
@@ -214,9 +173,6 @@
                 <g:if test="${!problemInstance?.valide}">
                     <g:actionSubmit value="Validate" action="validate"/>
                 </g:if>
-                <g:elseif test="${!problemInstance?.bestSolution != null}">
-                    <g:actionSubmit value="Marquer comme Résolu" action="forceResolve"/>
-                </g:elseif>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles='ROLE_USER'>
                 <g:if test="${problemInstance?.player.username.equals(SecurityContextHolder.getContext().getAuthentication().name) && !problemInstance?.valide}">
